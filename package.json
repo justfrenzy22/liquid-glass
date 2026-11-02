@@ -52,7 +52,13 @@
   },
   "peerDependencies": {
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-aria-components": "1.21.1",
+    "react-aria": "3.52.1",
+    "react-stately": "3.50.0",
+    "@react-aria/ssr": "3.10.1",
+    "@react-aria/utils": "3.34.1",
+    "@react-types/shared": "3.36.1"
   },
   "scripts": {
     "build": "node scripts/build.mjs",
@@ -75,15 +81,16 @@
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "typescript": "^5.9.0",
-    "vite": "8.3.5"
-  },
-  "dependencies": {
-    "@heroui/react": "3.2.6",
-    "@internationalized/date": "3.12.4",
+    "vite": "8.3.5",
     "react-aria-components": "1.21.1",
     "react-aria": "3.52.1",
     "react-stately": "3.50.0",
     "@react-aria/ssr": "3.10.1",
-    "@react-aria/utils": "3.34.1"
+    "@react-aria/utils": "3.34.1",
+    "@react-types/shared": "3.36.1"
+  },
+  "dependencies": {
+    "@heroui/react": "3.2.6",
+    "@internationalized/date": "3.12.4"
   }
 }

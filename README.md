@@ -32,7 +32,7 @@ Import the stylesheet **once**, before application overrides:
 import "@justfrenzy22/liquid-glass/styles.css";
 ```
 
-The CSS contains compiled CSS modules and a small reset scoped to library surfaces. Do not add a Tailwind build or HeroUI global theme just to use this library. HeroUI and its verified React Aria versions are installed as package dependencies; React remains a peer dependency so the application shares one React instance.
+The CSS contains compiled CSS modules and a small reset scoped to library surfaces. Do not add a Tailwind build or HeroUI global theme just to use this library. HeroUI is a package dependency. React and the verified React Aria versions are shared peers, installed automatically by modern npm; this prevents multiple incompatible copies. If your app already uses newer React Aria versions, reconcile those exact peer requirements before upgrading.
 
 ## Native React controls
 
