@@ -23,7 +23,7 @@ import { renderToString } from 'react-dom/server';
 import { GlassButton } from '@justfrenzy22/liquid-glass';
 import { LiquidButton } from '@justfrenzy22/liquid-glass/heroui';
 const require = createRequire(import.meta.url);
-const libraryRequire = createRequire(require.resolve('@justfrenzy22/liquid-glass'));
+const libraryRequire = createRequire(import.meta.resolve('@justfrenzy22/liquid-glass/package.json'));
 const heroRequire = createRequire(libraryRequire.resolve('@heroui/react'));
 for (const name of ['react', 'react-aria-components', 'react-aria', 'react-stately']) {
   assert.equal(libraryRequire.resolve(name), heroRequire.resolve(name), name + ' must resolve to the same peer for library and HeroUI');
