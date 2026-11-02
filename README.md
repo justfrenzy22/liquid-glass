@@ -10,6 +10,8 @@ A React and TypeScript component library for reflective glass interfaces, combin
 
 **[Install](#install) · [Components](#included-components) · [See it move](#see-it-move) · [Try locally](#clone-and-develop)**
 
+Curious about the optics, Safari treatment and design tradeoffs? Read the [research notes](docs/RESEARCH.md) for sources, implementation decisions, reproducible checks and open questions.
+
 - Desktop Chromium can refract the backdrop through SVG displacement maps.
 - Safari, iPhone, iPad, Firefox and other mobile browsers use native blur, curved reflections and beveled highlights.
 - Normal buttons, solid cards and alternating-row tables provide calmer alternatives.
