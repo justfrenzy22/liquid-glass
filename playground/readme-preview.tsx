@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { GlassRenderingProvider, GlassSlider, type GlassRenderMode } from "@justfrenzy22/liquid-glass";
-import { LiquidButton, LiquidSwitch, LiquidInput, LiquidTabs } from "@justfrenzy22/liquid-glass/heroui";
+import { GlassRenderingProvider, GlassSlider, type GlassRenderMode } from "@justfrenzy/liquid-glass";
+import { LiquidButton, LiquidSwitch, LiquidInput, LiquidTabs } from "@justfrenzy/liquid-glass/heroui";
 import "./readme-preview.css";
 
 /** Documentation compositions use the same public exports and styles as consumers. */

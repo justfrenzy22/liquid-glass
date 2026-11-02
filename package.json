@@ -1,5 +1,5 @@
 {
-  "name": "@justfrenzy22/liquid-glass",
+  "name": "@justfrenzy/liquid-glass",
   "version": "0.1.0",
   "description": "React liquid glass components with desktop refraction, reflective Safari/mobile rendering, and optional HeroUI controls.",
   "type": "module",

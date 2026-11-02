@@ -16,14 +16,14 @@ A React and TypeScript component library for reflective glass interfaces, combin
 - Controls retain keyboard operation, disabled states and reduced-motion support. Text remains on a separate, sharp layer.
 - Compiled JavaScript, TypeScript declarations and CSS are included. No Next.js, Tailwind configuration, application aliases or remote visual assets are required.
 
-**Status:** experimental release `0.1.0`. Repository: `liquid-glass`. Package/import name: `@justfrenzy22/liquid-glass`. The package is **not published to the npm registry yet**; install the GitHub release archive below.
+**Status:** experimental release `0.1.0`. Repository: `liquid-glass`. Package/import name: `@justfrenzy/liquid-glass`.
 
 ## Install
 
 Requires React 19 and React DOM 19, with an ESM-aware bundler such as Vite or Next.js. Development uses Node.js 22.12 or newer.
 
 ```sh
-npm install https://github.com/justfrenzy22/liquid-glass/releases/download/v0.1.0/justfrenzy22-liquid-glass-0.1.0.tgz
+npm install @justfrenzy/liquid-glass
 ```
 
 For an application that does not already have React:
@@ -37,7 +37,7 @@ npm install -D @types/react @types/react-dom
 Import the stylesheet **once**, before application overrides:
 
 ```tsx
-import "@justfrenzy22/liquid-glass/styles.css";
+import "@justfrenzy/liquid-glass/styles.css";
 ```
 
 The CSS contains compiled CSS modules and a small reset scoped to library surfaces. Do not add a Tailwind build or HeroUI global theme just to use this library. HeroUI is a package dependency. React and the verified React Aria versions are shared peers, installed automatically by modern npm; this prevents multiple incompatible copies. If your app already uses newer React Aria versions, reconcile those exact peer requirements before upgrading.
@@ -48,7 +48,7 @@ The CSS contains compiled CSS modules and a small reset scoped to library surfac
 "use client";
 
 import { useState } from "react";
-import { GlassButton, GlassSlider, GlassRenderingProvider } from "@justfrenzy22/liquid-glass";
+import { GlassButton, GlassSlider, GlassRenderingProvider } from "@justfrenzy/liquid-glass";
 
 export function Controls() {
   const [volume, setVolume] = useState(40);
@@ -69,7 +69,7 @@ The provider is optional; the default mode is `auto`. Place glass over a picture
 "use client";
 
 import { useState } from "react";
-import { LiquidButton, LiquidSwitch, LiquidInput } from "@justfrenzy22/liquid-glass/heroui";
+import { LiquidButton, LiquidSwitch, LiquidInput } from "@justfrenzy/liquid-glass/heroui";
 
 export function FormControls() {
   const [sync, setSync] = useState(true);
@@ -179,7 +179,7 @@ Open `http://localhost:4173`. The playground imports the **built package and pub
 npm run check          # build, types, package tests, playground production build
 npx playwright install chromium webkit
 npm run test:browser   # Chromium and WebKit desktop/mobile consumer checks
-npm run pack:local     # creates .artifacts/justfrenzy22-liquid-glass-0.1.0.tgz
+npm run pack:local     # creates .artifacts/justfrenzy-liquid-glass-0.1.0.tgz
 npm run verify:package # clean install of that archive, imports, SSR and CSS checks
 ```
 
@@ -206,7 +206,7 @@ npm ci
 npm run pack:local
 
 # In your React application's folder; adjust the path:
-npm install "../liquid-glass/.artifacts/justfrenzy22-liquid-glass-0.1.0.tgz"
+npm install "../liquid-glass/.artifacts/justfrenzy-liquid-glass-0.1.0.tgz"
 ```
 
 Use the same imports shown above. Archives avoid the duplicate-React and symlink issues sometimes caused by `npm link`.
@@ -219,16 +219,17 @@ npm run check
 npm run test:browser
 npm run pack:local
 npm run verify:package
+npm publish .artifacts/justfrenzy-liquid-glass-0.1.1.tgz --access public --registry=https://registry.npmjs.org
 git add .
 git commit -m "Release 0.1.1"
 git tag v0.1.1
 git push origin main --tags
-gh release create v0.1.1 .artifacts/justfrenzy22-liquid-glass-0.1.1.tgz --title "v0.1.1" --generate-notes
+gh release create v0.1.1 .artifacts/justfrenzy-liquid-glass-0.1.1.tgz --title "v0.1.1" --generate-notes
 ```
 
 `dist/` is ignored in Git but included in the installable archive. Dependencies and local artifacts are not committed. The GitHub release archive contains compiled code, styles and declarations, so consumers do not need to build the repository.
 
-For npm registry publication later, first confirm ownership of the `justfrenzy22` npm scope, then run `npm login` and `npm publish --access public` after validation. **Only after npm publication** would `npm install @justfrenzy22/liquid-glass` work. GitHub hosting and npm publication are separate steps. See npm's [archive installation documentation](https://docs.npmjs.com/cli/install/).
+Before publishing, run `npm login --registry=https://registry.npmjs.org` and confirm `npm whoami` reports an account that owns the `justfrenzy` scope. Complete npm's browser security prompt when requested. Publish the exact archive verified above; each npm version can only be published once. GitHub releases and npm publication are separate steps. See npm's [public package publishing documentation](https://docs.npmjs.com/creating-and-publishing-scoped-public-packages/).
 
 ## License
 

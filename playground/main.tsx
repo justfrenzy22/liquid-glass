@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { createRoot } from "react-dom/client";
-import { GlassRenderingProvider, GlassButton, GlassCard, GlassSlider, useGlassEnvironment, type GlassRenderMode } from "@justfrenzy22/liquid-glass";
-import { LiquidButton, LiquidSwitch, LiquidInput, LiquidTabs, LiquidNavbar, LiquidSidebar, LiquidModal, LiquidColorPicker, FinderTable } from "@justfrenzy22/liquid-glass/heroui";
-import "@justfrenzy22/liquid-glass/styles.css";
+import { GlassRenderingProvider, GlassButton, GlassCard, GlassSlider, useGlassEnvironment, type GlassRenderMode } from "@justfrenzy/liquid-glass";
+import { LiquidButton, LiquidSwitch, LiquidInput, LiquidTabs, LiquidNavbar, LiquidSidebar, LiquidModal, LiquidColorPicker, FinderTable } from "@justfrenzy/liquid-glass/heroui";
+import "@justfrenzy/liquid-glass/styles.css";
 import "./playground.css";
 import { ReadmePreview } from "./readme-preview";
 
