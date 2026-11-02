@@ -2,7 +2,7 @@
 
 This document explains the questions, references and engineering decisions behind Liquid Glass. It is an implementation study, not a peer-reviewed paper, a controlled usability study or a claim of equivalence to Apple's materials.
 
-Scope: the experimental `0.1.0` implementation. External references were reviewed on 3 November 2026. Browser behavior can change after this review.
+Scope: the `0.1.1` implementation. External references were reviewed on 3 November 2026. Browser behavior can change after this review.
 
 ## Research questions
 
@@ -13,7 +13,7 @@ Scope: the experimental `0.1.0` implementation. External references were reviewe
 
 ## Method and evidence
 
-The work combined reference reading, iterative implementation, visual inspection of the playground, automated interaction tests and clean package-consumer checks. These methods answer different questions: source inspection explains the mechanism, screenshots show particular scenes, and interaction tests check selected behaviors. None establishes universal browser compatibility or improved usability.
+The work combined reference reading, iterative implementation, visual inspection of the browser consumer fixture, automated interaction tests and clean package-consumer checks. These methods answer different questions: source inspection explains the mechanism, screenshots show particular scenes, and interaction tests check selected behaviors. None establishes universal browser compatibility or improved usability.
 
 The earlier CodeDrive research log recorded inspection of Kube's article implementation at commit [`bd091c537fd502f2d1d4d60817e6f05626508e6b`](https://github.com/kube/kube.io/tree/bd091c537fd502f2d1d4d60817e6f05626508e6b/app/data/articles/2025_10_04_liquid_glass_css_svg). That is a historical reference point, not a dependency or a claim about the current upstream tree. This revised note replaces the file-by-file inventory with questions and decisions relevant to users of the standalone library.
 
@@ -75,13 +75,13 @@ npm run pack:local
 npm run verify:package
 ```
 
-`check` builds the package, checks types, runs four package/SSR/environment tests and builds the playground. Browser tests run one consumer scenario in each of Chromium, desktop WebKit and iPhone-emulated WebKit. They check selected interactions, overlay dismissal, styling, rendering-mode overrides and horizontal overflow. The archive check installs the packed library into a separate consumer and verifies exports, server rendering, CSS and shared React/Aria resolution.
+`check` builds the package, checks types, runs four package/SSR/environment tests and builds the browser consumer fixture. Browser tests run one consumer scenario in each of Chromium, desktop WebKit and iPhone-emulated WebKit. They check selected interactions, overlay dismissal, styling, rendering-mode overrides and horizontal overflow. The archive check installs the packed library into a separate consumer and verifies exports, server rendering, CSS and shared React/Aria resolution.
 
 See [`tests/`](../tests/) for the actual assertions. Passing them does not establish coverage of every exported component, every drag gesture or every accessibility requirement. WebKit emulation is not a physical iPhone or the Safari application.
 
-For visual comparison, run `npm run dev` and use the rendering selector. Keep viewport, background, control dimensions and parameter values constant when switching modes. A striped background reveals displacement; gradients reveal tint and highlights; text behind a surface helps expose excessive distortion. Compare static, hover, pressed and drag states separately.
+For visual comparison, run `npm run build` followed by `npm run test:serve` and use the rendering selector. Keep viewport, background, control dimensions and parameter values constant when switching modes. A striped background reveals displacement; gradients reveal tint and highlights; text behind a surface helps expose excessive distortion. Compare static, hover, pressed and drag states separately.
 
-Actual captured examples are in the [README](../README.md#see-it-move). Regeneration instructions are in its [visuals section](../README.md#regenerate-the-readme-visuals). Captures illustrate particular scenes; there is no automated perceptual-similarity score.
+Actual captured examples are in the [README](../README.md#see-it-move). The original capture tooling was removed in `0.1.1`; the retained images document earlier captures. Captures illustrate particular scenes; there is no automated perceptual-similarity score.
 
 ## Limitations and follow-up research
 

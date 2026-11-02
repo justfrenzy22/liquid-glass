@@ -8,9 +8,9 @@ A React and TypeScript component library for reflective glass interfaces, combin
 
 ![Liquid Glass React components: normal, clear and blue buttons, refractive slider, switch, search field and draggable tabs](https://raw.githubusercontent.com/justfrenzy22/liquid-glass/main/docs/media/preview-desktop.png)
 
-**[Install](#install) · [Components](#included-components) · [See it move](#see-it-move) · [Try locally](#clone-and-develop)**
+**[Install](#install) Â· [Components](#included-components) Â· [See it move](#see-it-move) Â· [Try locally](#clone-and-develop)**
 
-Curious about the optics, Safari treatment and design tradeoffs? Read the [research notes](docs/RESEARCH.md) for sources, implementation decisions, reproducible checks and open questions.
+Curious about the optics, Safari treatment and design tradeoffs? Read the [research notes](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/RESEARCH.md) for sources, implementation decisions, reproducible checks and open questions.
 
 - Desktop Chromium can refract the backdrop through SVG displacement maps.
 - Safari, iPhone, iPad, Firefox and other mobile browsers use native blur, curved reflections and beveled highlights.
@@ -18,11 +18,11 @@ Curious about the optics, Safari treatment and design tradeoffs? Read the [resea
 - Controls retain keyboard operation, disabled states and reduced-motion support. Text remains on a separate, sharp layer.
 - Compiled JavaScript, TypeScript declarations and CSS are included. No Next.js, Tailwind configuration, application aliases or remote visual assets are required.
 
-**Status:** experimental release `0.1.0`. Repository: `liquid-glass`. Package/import name: `@justfrenzy/liquid-glass`.
+**Release:** `0.1.1`. Repository: `liquid-glass`. Package/import name: `@justfrenzy/liquid-glass`.
 
 ## Install
 
-Requires React 19 and React DOM 19, with an ESM-aware bundler such as Vite or Next.js. Development uses Node.js 22.12 or newer.
+Requires React 19 and React DOM 19, with an ESM-aware bundler such as Vite or Next.js.
 
 ```sh
 npm install @justfrenzy/liquid-glass
@@ -102,18 +102,18 @@ Navbar and Sidebar use ordinary links, so no Next.js router is required. Use `on
 
 ![An actual slider drag: the glass thumb expands, moves along the track and refracts the striped background](https://raw.githubusercontent.com/justfrenzy22/liquid-glass/main/docs/media/slider-motion.gif)
 
-Recorded directly from the React playground in Chromium. Pressing expands the thumb; dragging refracts the stripes behind it. These are real component captures, not concept renders.
+Recorded from the library components in Chromium. Pressing expands the thumb; dragging refracts the stripes behind it. These are real component captures, not concept renders.
 
 <details>
 <summary><strong>Safari-compatible finish and mobile layout</strong></summary>
 
 The compatible renderer uses simulated reflections and native blur. These captures use Playwright WebKit, including an iPhone-emulated viewport; they are not photographs of physical Apple devices.
 
-**Compatible glass — WebKit desktop**
+**Compatible glass â€” WebKit desktop**
 
 ![WebKit-compatible glass with curved highlights on buttons, slider, search field and tabs](https://raw.githubusercontent.com/justfrenzy22/liquid-glass/main/docs/media/preview-safari.png)
 
-**Mobile layout — iPhone emulation**
+**Mobile layout â€” iPhone emulation**
 
 <img src="https://raw.githubusercontent.com/justfrenzy22/liquid-glass/main/docs/media/preview-mobile.png" alt="The same actual components in the mobile layout, using compatible reflective glass" width="320" />
 
@@ -127,7 +127,7 @@ The compatible renderer uses simulated reflections and native blur. These captur
 | `compatible` | Forces native blur, simulated curved reflections, corner glints and a deeper beveled rim. |
 | `fallback` | Basic blur and tint without the stronger reflection layers. |
 
-Use `<GlassRenderingProvider mode="compatible">…</GlassRenderingProvider>` to set a default, including for portal overlays. Individual controls accept `glass={{ mode: "compatible" }}`; GlassSurface takes `mode` directly. An explicit per-control mode overrides the provider.
+Use `<GlassRenderingProvider mode="compatible">â€¦</GlassRenderingProvider>` to set a default, including for portal overlays. Individual controls accept `glass={{ mode: "compatible" }}`; GlassSurface takes `mode` directly. An explicit per-control mode overrides the provider.
 
 Detection checks CSS capabilities, navigator information, optional mobile client hints and likely iPadOS desktop UAs. It is a best-effort rendering hint, not guaranteed hardware identification. Responsive layout uses CSS. Safari reflections are simulated and do not bend arbitrary live background content like the Chromium shader. Nested translucent containers can reduce visible effects; real-device review is still useful.
 
@@ -150,7 +150,7 @@ The following names use the `Liquid` prefix in `/heroui`:
 
 Also exported: **SolidCard**, **FinderTable**, **LiquidForm**, **LiquidActionButton**, `toast` and `parseColor`. Label, Description, FieldError and TextField are composed inside controls rather than exposed as standalone styled wrappers. A ToggleButtonGroup is intentionally omitted; draggable tabs cover that interaction.
 
-TypeScript declarations describe each wrapper's exact props; not every possible HeroUI composition is exposed. Table/FinderTable uses `columns: { id, label, isRowHeader? }[]`, `rows: { id, values: Record<string, ReactNode> }[]` and `aria-label`. Navbar/Sidebar uses `items: { id, label, href, icon?, count? }[]`, `activeKey` and `onNavigate`. See `playground/main.tsx` for a runnable example.
+TypeScript declarations describe each wrapper's exact props; not every possible HeroUI composition is exposed. Table/FinderTable uses `columns: { id, label, isRowHeader? }[]`, `rows: { id, values: Record<string, ReactNode> }[]` and `aria-label`. Navbar/Sidebar uses `items: { id, label, href, icon?, count? }[]`, `activeKey` and `onNavigate`. See the usage examples above for direct imports.
 
 ## How it was built
 
@@ -161,77 +161,19 @@ The library was developed iteratively with Codex assistance:
 3. Add native inputs and real HeroUI controls. Custom pointer capture keeps switch/tab lenses under the pointer and commits selection on release while preserving keyboard operation.
 4. Introduce normal, clear and colored finishes, plus calm cards and Finder-style tables for dense content.
 5. Build the Safari/mobile CSS rendering path with reflective bands, edge lighting, automatic selection and explicit overrides.
-6. Extract the implementation into this repository: remove app aliases and Next.js imports, replace utility classes with CSS modules, preserve client boundaries, and verify the built package in an independent React playground.
+6. Extract the implementation into this repository: remove app aliases and Next.js imports, replace utility classes with CSS modules, preserve client boundaries, and verify the built package in an independent React consumer.
 
-Kube's [Liquid Glass article](https://kube.io/blog/liquid-glass-css-svg/) informed the optical/interaction approach. This implementation was independently authored; no Kube code or assets are distributed. HeroUI supplies substantial control behavior. This is not an official Kube or HeroUI package. See [architecture](docs/architecture.md) and [third-party notices](THIRD_PARTY_NOTICES.md).
+Kube's [Liquid Glass article](https://kube.io/blog/liquid-glass-css-svg/) informed the optical/interaction approach. This implementation was independently authored; no Kube code or assets are distributed. HeroUI supplies substantial control behavior. This is not an official Kube or HeroUI package. See [architecture](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/architecture.md) and [third-party notices](THIRD_PARTY_NOTICES.md).
 
-## Clone and develop
+## Package contents
 
-```sh
-git clone https://github.com/justfrenzy22/liquid-glass.git
-cd liquid-glass
-npm ci
-npm run build
-npm run dev
-```
+Install the package into your existing React application and use the imports above. No library development server, demo application, source build or Python setup is required.
 
-Open `http://localhost:4173`. The playground imports the **built package and public stylesheet**, not application-local aliases. Rebuild after changing library source.
+The release archive contains compiled ESM, TypeScript declarations, CSS, this README, the changelog and license notices. It excludes test fixtures, demo pages, development scripts, development dependency metadata and research media. React 19 is supplied by your application; npm installs the library's runtime dependencies and required peers.
 
-```sh
-npm run check          # build, types, package tests, playground production build
-npx playwright install chromium webkit
-npm run test:browser   # Chromium and WebKit desktop/mobile consumer checks
-npm run pack:local     # creates .artifacts/justfrenzy-liquid-glass-0.1.0.tgz
-npm run verify:package # clean install of that archive, imports, SSR and CSS checks
-```
+This is an early `0.1.x` library. Browser differences and the rendering limitations described above still apply; publishing a consumer package is not a claim that all components have completed usability or accessibility audits.
 
-Playwright WebKit validates an engine, not the actual Safari app or iPhone GPU. Tests do not establish every accessibility requirement or contrast on every possible background.
-
-### Regenerate the README visuals
-
-The images are captured from public package exports through the documentation compositions in `playground/readme-preview.tsx`. The animation contains actual browser frames from a pointer drag. To regenerate them:
-
-```sh
-npm run build
-npx playwright install chromium webkit
-python -m pip install Pillow==12.3.0
-npm run docs:images
-```
-
-Use `python3` instead of `python` where appropriate. Python/Pillow is only used to encode the documentation GIF; neither is needed to build or use the library. The capture command starts its own local server on port 4174 and closes it afterward. Preview media stays in GitHub documentation and is excluded from published npm archives.
-
-## Install a local build in another project
-
-```sh
-# In this library:
-npm ci
-npm run pack:local
-
-# In your React application's folder; adjust the path:
-npm install "../liquid-glass/.artifacts/justfrenzy-liquid-glass-0.1.0.tgz"
-```
-
-Use the same imports shown above. Archives avoid the duplicate-React and symlink issues sometimes caused by `npm link`.
-
-## Publish another release
-
-```sh
-npm version patch --no-git-tag-version
-npm run check
-npm run test:browser
-npm run pack:local
-npm run verify:package
-npm publish .artifacts/justfrenzy-liquid-glass-0.1.1.tgz --access public --registry=https://registry.npmjs.org
-git add .
-git commit -m "Release 0.1.1"
-git tag v0.1.1
-git push origin main --tags
-gh release create v0.1.1 .artifacts/justfrenzy-liquid-glass-0.1.1.tgz --title "v0.1.1" --generate-notes
-```
-
-`dist/` is ignored in Git but included in the installable archive. Dependencies and local artifacts are not committed. The GitHub release archive contains compiled code, styles and declarations, so consumers do not need to build the repository.
-
-Before publishing, run `npm login --registry=https://registry.npmjs.org` and confirm `npm whoami` reports an account that owns the `justfrenzy` scope. Complete npm's browser security prompt when requested. Publish the exact archive verified above; each npm version can only be published once. GitHub releases and npm publication are separate steps. See npm's [public package publishing documentation](https://docs.npmjs.com/creating-and-publishing-scoped-public-packages/).
+For source contributions and release checks, see [CONTRIBUTING.md](https://github.com/justfrenzy22/liquid-glass/blob/main/CONTRIBUTING.md). For changes in this release, see [CHANGELOG.md](CHANGELOG.md).
 
 ## License
 

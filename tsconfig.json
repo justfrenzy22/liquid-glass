@@ -12,5 +12,5 @@
     "verbatimModuleSyntax": true,
     "types": ["node"]
   },
-  "include": ["src", "playground", "vite.config.ts"]
+  "include": ["src", "tests/fixtures/consumer", "vite.config.ts"]
 }

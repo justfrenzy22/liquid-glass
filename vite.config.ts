@@ -1,11 +1,11 @@
 import { defineConfig } from "vite";
 export default defineConfig({
-  root: "playground",
+  root: "tests/fixtures/consumer",
   build: {
-    outDir: "../playground-dist", emptyOutDir: true,
+    outDir: "../../../.artifacts/consumer-build", emptyOutDir: true,
     rolldownOptions: {
       onwarn(warning, handler) {
-        // This playground is entirely client-side; RSC directives stay in library dist.
+        // This test fixture is entirely client-side; RSC directives stay in library dist.
         if (warning.code === "MODULE_LEVEL_DIRECTIVE" && warning.message.includes("use client")) return;
         handler(warning);
       },

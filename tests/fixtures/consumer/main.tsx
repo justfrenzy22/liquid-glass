@@ -3,10 +3,9 @@ import { createRoot } from "react-dom/client";
 import { GlassRenderingProvider, GlassButton, GlassCard, GlassSlider, useGlassEnvironment, type GlassRenderMode } from "@justfrenzy/liquid-glass";
 import { LiquidButton, LiquidSwitch, LiquidInput, LiquidTabs, LiquidNavbar, LiquidSidebar, LiquidModal, LiquidColorPicker, FinderTable } from "@justfrenzy/liquid-glass/heroui";
 import "@justfrenzy/liquid-glass/styles.css";
-import "./playground.css";
-import { ReadmePreview } from "./readme-preview";
+import "./consumer.css";
 
-function Demo() {
+function ConsumerFixture() {
   const [mode, setMode] = useState<GlassRenderMode>("auto");
   const [slider, setSlider] = useState(40);
   const [sync, setSync] = useState(true);
@@ -48,4 +47,4 @@ function Demo() {
     <footer>MIT licensed. Desktop Chromium can refract the backdrop; Safari and mobile use simulated reflections and native blur.</footer>
   </main></GlassRenderingProvider>;
 }
-createRoot(document.getElementById("root")!).render(new URLSearchParams(location.search).has("preview") ? <ReadmePreview /> : <Demo />);
+createRoot(document.getElementById("root")!).render(<ConsumerFixture />);

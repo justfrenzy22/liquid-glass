@@ -7,6 +7,12 @@ import { tmpdir } from "node:os";
 const root = fileURLToPath(new URL("..", import.meta.url));
 const manifest = JSON.parse(await readFile(path.join(root, "package.json"), "utf8"));
 const archive = path.join(root, ".artifacts", `justfrenzy-liquid-glass-${manifest.version}.tgz`);
+const packedFiles = execFileSync("tar", ["-tf", archive], { encoding: "utf8" }).trim().split(/\r?\n/);
+const allowedRoot = new Set(["package.json", "README.md", "LICENSE", "THIRD_PARTY_NOTICES.md", "CHANGELOG.md"]);
+for (const entry of packedFiles) {
+  const relative = entry.replace(/^package\//, "");
+  if (!relative.startsWith("dist/") && !allowedRoot.has(relative)) throw new Error(`Unexpected release file: ${entry}`);
+}
 const digest = createHash("sha256").update(await readFile(archive)).digest("hex").slice(0, 12);
 const consumer = path.join(tmpdir(), "liquid-glass-consumers", digest);
 await mkdir(consumer, { recursive: true });
@@ -23,6 +29,9 @@ import { renderToString } from 'react-dom/server';
 import { GlassButton } from '@justfrenzy/liquid-glass';
 import { LiquidButton } from '@justfrenzy/liquid-glass/heroui';
 const require = createRequire(import.meta.url);
+const publishedManifest = require('@justfrenzy/liquid-glass/package.json');
+assert.equal(publishedManifest.scripts, undefined, 'consumer package must not include repository scripts');
+assert.equal(publishedManifest.devDependencies, undefined, 'consumer package must not include development dependency metadata');
 const libraryRequire = createRequire(import.meta.resolve('@justfrenzy/liquid-glass/package.json'));
 const heroRequire = createRequire(libraryRequire.resolve('@heroui/react'));
 for (const name of ['react', 'react-aria-components', 'react-aria', 'react-stately']) {
