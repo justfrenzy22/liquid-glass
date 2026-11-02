@@ -1,0 +1,168 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  font-size: 14px;
+  color: #182236;
+}
+.field > label {
+  font-weight: 600;
+}
+.lens {
+  width: 100%;
+  transition: transform 180ms;
+}
+.lens:focus-within {
+  transform: scale(1.02);
+}
+.field .group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 12px;
+  min-height: 52px;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  border-radius: 22px;
+  outline: none;
+}
+.field .input {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  font-size: 16px;
+  padding: 4px;
+}
+.field .segment {
+  border-radius: 5px;
+  padding: 3px 2px;
+  color: #182236;
+}
+.field .segment[data-focused] {
+  background: #0878ed20;
+  outline: 1px solid #497fad;
+}
+.field .trigger,
+.calendar .nav {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: #ffffff55;
+  border-radius: 50%;
+  color: #182236;
+  cursor: pointer;
+}
+.panel {
+  padding: 18px;
+  width: fit-content;
+  max-width: 100%;
+}
+.panel .calendar {
+  width: 280px;
+  max-width: 100%;
+  background: transparent;
+  padding: 0;
+  color: #182236;
+}
+.calendar .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 16px;
+}
+.header > [data-slot$="heading"] {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+}
+.calendar .cell {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 1;
+  font-size: 13px;
+  cursor: pointer;
+  color: #182236;
+  border-radius: 50%;
+  background: transparent;
+}
+.calendar [role="grid"] {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+  width: 100%;
+}
+.calendar thead,
+.calendar tbody,
+.calendar tr {
+  display: contents;
+}
+.calendar th {
+  font-size: 10px;
+  font-weight: 500;
+  text-align: center;
+  color: #536078;
+  padding: 0 0 8px;
+}
+.calendar td {
+  min-width: 0;
+}
+.calendar .cell[data-disabled="true"] {
+  cursor: default;
+}
+.calendar .cell[data-selected="true"] {
+  background: #ffffff80;
+  color: #075dc3;
+  box-shadow:
+    inset 0 0 0 1px #ffffffc0,
+    0 2px 8px #18223612;
+  font-weight: 700;
+}
+.calendar .cell[data-selection-start],
+.calendar .cell[data-selection-end] {
+  background: #ffffffb0;
+}
+.calendar .cell[data-outside-month="true"] {
+  opacity: 0.35;
+}
+.calendar .cell[data-hovered="true"] {
+  background: #ffffff60;
+}
+.calendar .cell[data-focus-visible="true"],
+.trigger[data-focus-visible],
+.nav[data-focus-visible] {
+  outline: 2px solid #497fad;
+  outline-offset: 2px;
+}
+.field[data-disabled],
+.calendar[data-disabled] {
+  opacity: 0.45;
+}
+.error {
+  color: #9c2636;
+  font-size: 12px;
+}
+.popover {
+  padding: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  max-width: calc(100vw - 24px);
+  border-radius: 24px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .lens {
+    transition: none;
+  }
+}
+@media (forced-colors: active) {
+  .field .segment[data-focused],
+  .calendar .cell[data-selected="true"] {
+    outline: 2px solid Highlight;
+  }
+}

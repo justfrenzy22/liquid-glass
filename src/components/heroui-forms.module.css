@@ -1,0 +1,185 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  min-width: 0;
+  color: #182236;
+}
+.label {
+  font-size: 14px;
+  font-weight: 600;
+}
+.help {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #536078;
+}
+.error {
+  font-size: 12px;
+  color: #9c2636;
+}
+.surface {
+  width: 100%;
+  transition: transform 220ms ease;
+  transform-origin: center;
+}
+.surface:focus-within {
+  transform: scale(1.025);
+}
+.field .group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 52px;
+  padding: 4px 12px;
+  border: 0;
+  border-radius: 22px;
+  background: transparent;
+  box-shadow: none;
+  outline: none;
+}
+.field .input,
+.field .textarea {
+  width: 100%;
+  min-width: 0;
+  font-size: 16px;
+  color: #182236;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  outline: none;
+  border-radius: 0;
+}
+.field .input {
+  flex: 1;
+  padding: 10px 0;
+}
+.field .textarea {
+  display: block;
+  padding: 16px;
+  min-height: 128px;
+  resize: vertical;
+}
+.field .number {
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+.field .step,
+.field .clear {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #ffffff40;
+  color: #182236;
+  cursor: pointer;
+}
+.step {
+  font-size: 22px;
+}
+.field .step {
+  display: grid;
+  place-items: center;
+  padding: 0;
+  line-height: 1;
+}
+.field[data-empty] .clear {
+  visibility: hidden;
+  pointer-events: none;
+}
+.field .step[data-disabled] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.field:has(.input:focus-visible, .textarea:focus-visible) > .label {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+.field .step[data-hovered],
+.field .clear[data-hovered] {
+  background: #ffffff80;
+}
+.step[data-focus-visible],
+.clear[data-focus-visible] {
+  outline: 2px solid #536078;
+  outline-offset: 2px;
+}
+.field[data-disabled] {
+  opacity: 0.45;
+}
+.field[data-invalid] .surface {
+  outline: 1px solid #9c2636;
+  outline-offset: 3px;
+}
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 6px 0;
+}
+.radioContent {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.radio .radioControl {
+  display: block;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.radioLens {
+  width: 24px;
+  height: 24px;
+  transition: transform 180ms;
+}
+.radioLens[data-active="true"] {
+  transform: scale(1.15);
+}
+.dot {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: block;
+  width: 12px;
+  height: 12px;
+  margin: 0;
+  border-radius: 50%;
+  background: #0878f9;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 180ms;
+}
+.dot[data-selected="true"] {
+  transform: translate(-50%, -50%) scale(1);
+}
+.radio[data-disabled] {
+  opacity: 0.45;
+}
+.radio[data-disabled] .radioContent {
+  cursor: not-allowed;
+}
+@media (prefers-reduced-motion: reduce) {
+  .surface,
+  .radioLens,
+  .dot {
+    transition: none;
+  }
+}
+@media (forced-colors: active) {
+  .field .input:focus-visible,
+  .field .textarea:focus-visible {
+    outline: 2px solid Highlight;
+  }
+  .radioLens {
+    border: 1px solid ButtonText;
+  }
+  .dot {
+    background: Highlight;
+  }
+}

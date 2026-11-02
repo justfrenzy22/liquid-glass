@@ -1,0 +1,7 @@
+/* Scoped foundations; no Tailwind setup or global reset is required. */
+:where([data-liquid-glass], [data-liquid-glass] *) { box-sizing: border-box; }
+:where([data-liquid-glass]) { font-family: inherit; }
+:where([data-liquid-glass]) :where(h1, h2, h3, h4, p) { margin: 0; font-size: inherit; font-weight: inherit; }
+:where([data-liquid-glass]) :where(button, input, textarea, select) { font-family: inherit; line-height: inherit; }
+:where([data-liquid-glass]) :where(button, input, textarea, select) { border: 0; padding: 0; background: transparent; color: inherit; margin: 0; }
+:where([data-liquid-glass]) :where(svg) { display: block; }

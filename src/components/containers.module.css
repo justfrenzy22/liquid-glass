@@ -1,0 +1,11 @@
+.card { padding: 24px; }
+.panel { padding: 32px; }
+.toolbar { padding: 12px; }
+.toolbarContent { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.navbar { padding: 16px; }
+.navContent { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; }
+.fileIcon { margin-bottom: 20px; width: 40px; height: 48px; display: grid; place-items: center; border: 1px solid #a1a1aa66; border-radius: 8px; background: #ffffff99; font-size: 12px; font-weight: 700; }
+.folderIcon { margin-bottom: 20px; width: 48px; height: 48px; }
+.title { overflow-wrap: anywhere; font-weight: 600; }
+.details { margin-top: 4px; color: #52525b; font-size: 14px; }
+.actions { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }

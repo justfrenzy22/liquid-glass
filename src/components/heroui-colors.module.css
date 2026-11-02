@@ -1,0 +1,227 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  min-width: 0;
+}
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #182236;
+}
+.area {
+  position: relative;
+  width: 100%;
+  height: 190px;
+  border-radius: 18px;
+  background: var(--color-area-background);
+  box-shadow: inset 0 0 0 1px #18223620;
+  touch-action: none;
+}
+.areaThumb {
+  width: 26px;
+  height: 26px;
+  border: 3px solid white;
+  border-radius: 50%;
+  background: var(--color-area-thumb-color);
+  box-shadow: 0 1px 5px #18223660;
+}
+.thumbLens {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.thumbLens span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 20px;
+}
+.input {
+  width: 100%;
+  min-height: 52px;
+  padding: 12px 16px;
+  font-size: 16px;
+  border-radius: 22px;
+  border: 0;
+  background: transparent;
+  outline: none;
+  color: #182236;
+}
+.input:focus-visible {
+  outline: 2px solid #497fad;
+  outline-offset: 3px;
+}
+.slider {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  width: 100%;
+  gap: 20px 12px;
+  padding: 0 14px 12px;
+}
+.output {
+  font-size: 12px;
+  color: #536078;
+}
+.track {
+  position: relative;
+  height: 18px;
+  border-radius: 20px;
+  grid-column: 1 / -1;
+  touch-action: none;
+}
+.sliderThumb {
+  width: 30px;
+  height: 30px;
+  top: 50%;
+  border: 3px solid white;
+  border-radius: 50%;
+  box-shadow: 0 2px 7px #18223640;
+  cursor: grab;
+}
+.sliderThumb[data-dragging="true"] {
+  cursor: grabbing;
+}
+.areaThumb[data-focus-visible="true"],
+.sliderThumb[data-focus-visible="true"] {
+  outline: 2px solid #182236;
+  outline-offset: 3px;
+}
+.swatchFrame {
+  display: inline-flex;
+}
+.swatch {
+  display: block;
+  width: 68px;
+  height: 68px;
+  border: 5px solid #ffffff8a;
+  border-radius: 20px;
+  background: var(--color-swatch-current);
+}
+.swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 14px;
+}
+.swatchItem {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 3px solid transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: none;
+  transition: transform 180ms;
+}
+.swatchItem[data-hovered="true"] {
+  transform: translateY(-2px) scale(1.06);
+}
+.swatchItem[data-selected="true"],
+.swatchItem[data-focus-visible="true"] {
+  outline: 2px solid #497fad;
+  outline-offset: 2px;
+}
+.pickerSwatch {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+.indicator {
+  display: none;
+  position: absolute;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+.swatchItem[data-selected="true"] .indicator {
+  display: flex;
+}
+.indicator[data-light-color="true"] {
+  color: #182236;
+}
+.indicator svg {
+  width: 16px;
+  height: 16px;
+}
+.pickerTrigger {
+  border-radius: 22px;
+  background: transparent;
+  border: 0;
+  color: #182236;
+  cursor: pointer;
+  transition: transform 180ms;
+}
+.pickerTrigger[data-hovered="true"] {
+  transform: translateY(-2px) scale(1.03);
+}
+.pickerTrigger[data-pressed="true"] {
+  transform: scale(0.97);
+}
+.pickerTrigger[data-focus-visible="true"] {
+  outline: 2px solid #497fad;
+  outline-offset: 3px;
+}
+.triggerInner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 12px 18px;
+  min-height: 54px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.triggerSwatch {
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  background: var(--color-swatch-current);
+  box-shadow: inset 0 0 0 1px #18223615;
+}
+.popover {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  outline: none;
+  border-radius: 22px;
+  max-width: calc(100vw - 24px);
+  z-index: 110;
+}
+.pickerBody {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 290px;
+  max-width: calc(100vw - 24px);
+  padding: 20px;
+}
+.pickerDialog {
+  outline: none;
+}
+.field[data-disabled="true"],
+.area[data-disabled="true"],
+.slider[data-disabled="true"],
+.pickerTrigger[data-disabled="true"],
+.swatchItem[data-disabled="true"] {
+  opacity: 0.45;
+  cursor: default;
+}
+@media (prefers-reduced-motion: reduce) {
+  .swatchItem,
+  .pickerTrigger {
+    transition: none;
+  }
+}
+@media (forced-colors: active) {
+  .swatch,
+  .pickerSwatch,
+  .area,
+  .track {
+    forced-color-adjust: none;
+  }
+}

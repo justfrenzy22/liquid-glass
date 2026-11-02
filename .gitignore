@@ -1,0 +1,12 @@
+node_modules/
+dist/
+playground-dist/
+test-results/
+playwright-report/
+.artifacts/
+*.tgz
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+.DS_Store
