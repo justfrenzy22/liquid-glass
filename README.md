@@ -1,6 +1,14 @@
 # Liquid Glass
 
+[![CI](https://github.com/justfrenzy22/liquid-glass/actions/workflows/ci.yml/badge.svg)](https://github.com/justfrenzy22/liquid-glass/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/justfrenzy22/liquid-glass?label=release)](https://github.com/justfrenzy22/liquid-glass/releases)
+[![MIT license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 A React and TypeScript component library for reflective glass interfaces, combining a custom optical layer with native controls and styled HeroUI components.
+
+![Liquid Glass React components: normal, clear and blue buttons, refractive slider, switch, search field and draggable tabs](https://raw.githubusercontent.com/justfrenzy22/liquid-glass/main/docs/media/preview-desktop.png)
+
+**[Install](#install) · [Components](#included-components) · [See it move](#see-it-move) · [Try locally](#clone-and-develop)**
 
 - Desktop Chromium can refract the backdrop through SVG displacement maps.
 - Safari, iPhone, iPad, Firefox and other mobile browsers use native blur, curved reflections and beveled highlights.
@@ -88,6 +96,27 @@ Import `styles.css` in the App Router root layout. Put callbacks and interactive
 
 Navbar and Sidebar use ordinary links, so no Next.js router is required. Use `onNavigate` or your application's router integration for SPA navigation.
 
+## See it move
+
+![An actual slider drag: the glass thumb expands, moves along the track and refracts the striped background](https://raw.githubusercontent.com/justfrenzy22/liquid-glass/main/docs/media/slider-motion.gif)
+
+Recorded directly from the React playground in Chromium. Pressing expands the thumb; dragging refracts the stripes behind it. These are real component captures, not concept renders.
+
+<details>
+<summary><strong>Safari-compatible finish and mobile layout</strong></summary>
+
+The compatible renderer uses simulated reflections and native blur. These captures use Playwright WebKit, including an iPhone-emulated viewport; they are not photographs of physical Apple devices.
+
+**Compatible glass — WebKit desktop**
+
+![WebKit-compatible glass with curved highlights on buttons, slider, search field and tabs](https://raw.githubusercontent.com/justfrenzy22/liquid-glass/main/docs/media/preview-safari.png)
+
+**Mobile layout — iPhone emulation**
+
+<img src="https://raw.githubusercontent.com/justfrenzy22/liquid-glass/main/docs/media/preview-mobile.png" alt="The same actual components in the mobile layout, using compatible reflective glass" width="320" />
+
+</details>
+
 ## Rendering modes
 
 | Mode | Behavior |
@@ -155,6 +184,19 @@ npm run verify:package # clean install of that archive, imports, SSR and CSS che
 ```
 
 Playwright WebKit validates an engine, not the actual Safari app or iPhone GPU. Tests do not establish every accessibility requirement or contrast on every possible background.
+
+### Regenerate the README visuals
+
+The images are captured from public package exports through the documentation compositions in `playground/readme-preview.tsx`. The animation contains actual browser frames from a pointer drag. To regenerate them:
+
+```sh
+npm run build
+npx playwright install chromium webkit
+python -m pip install Pillow==12.3.0
+npm run docs:images
+```
+
+Use `python3` instead of `python` where appropriate. Python/Pillow is only used to encode the documentation GIF; neither is needed to build or use the library. The capture command starts its own local server on port 4174 and closes it afterward. Preview media stays in GitHub documentation and is excluded from published npm archives.
 
 ## Install a local build in another project
 

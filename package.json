@@ -42,7 +42,7 @@
     "README.md",
     "LICENSE",
     "THIRD_PARTY_NOTICES.md",
-    "docs"
+    "docs/*.md"
   ],
   "sideEffects": [
     "**/*.css"
@@ -70,7 +70,8 @@
     "test:browser": "playwright test",
     "prepack": "npm run build",
     "pack:local": "node scripts/pack.mjs",
-    "verify:package": "node scripts/verify-package.mjs"
+    "verify:package": "node scripts/verify-package.mjs",
+    "docs:images": "node scripts/capture-docs.mjs"
   },
   "devDependencies": {
     "@playwright/test": "1.63.0",

@@ -4,6 +4,7 @@ import { GlassRenderingProvider, GlassButton, GlassCard, GlassSlider, useGlassEn
 import { LiquidButton, LiquidSwitch, LiquidInput, LiquidTabs, LiquidNavbar, LiquidSidebar, LiquidModal, LiquidColorPicker, FinderTable } from "@justfrenzy22/liquid-glass/heroui";
 import "@justfrenzy22/liquid-glass/styles.css";
 import "./playground.css";
+import { ReadmePreview } from "./readme-preview";
 
 function Demo() {
   const [mode, setMode] = useState<GlassRenderMode>("auto");
@@ -47,4 +48,4 @@ function Demo() {
     <footer>MIT licensed. Desktop Chromium can refract the backdrop; Safari and mobile use simulated reflections and native blur.</footer>
   </main></GlassRenderingProvider>;
 }
-createRoot(document.getElementById("root")!).render(<Demo />);
+createRoot(document.getElementById("root")!).render(new URLSearchParams(location.search).has("preview") ? <ReadmePreview /> : <Demo />);
