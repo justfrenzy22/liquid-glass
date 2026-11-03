@@ -8,7 +8,7 @@ A React and TypeScript component library for reflective glass interfaces, combin
 
 ![Liquid Glass React components: normal, clear and blue buttons, refractive slider, switch, search field and draggable tabs](https://raw.githubusercontent.com/justfrenzy22/liquid-glass/main/docs/media/preview-desktop.png)
 
-**[Install](#install) | [Components](#included-components) | [See it move](#see-it-move)**
+**[Install](#install) | [Component guides](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/components/README.md) | [Component list](#included-components) | [See it move](#see-it-move)**
 
 Curious about the optics, Safari treatment and design tradeoffs? Read the [research notes](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/RESEARCH.md) for sources, implementation decisions, reproducible checks and open questions.
 
@@ -170,6 +170,19 @@ Colored buttons keep white labels by default. You can override the foreground to
 Use `<GlassRenderingProvider mode="compatible">...</GlassRenderingProvider>` to set a default, including for portal overlays. Individual controls accept `glass={{ mode: "compatible" }}`; GlassSurface takes `mode` directly. An explicit per-control mode overrides the provider.
 
 Detection checks CSS capabilities, navigator information, optional mobile client hints and likely iPadOS desktop UAs. It is a best-effort rendering hint, not guaranteed hardware identification. Responsive layout uses CSS. Safari reflections are simulated and do not bend arbitrary live background content like the Chromium shader. Nested translucent containers can reduce visible effects; real-device review is still useful.
+
+## Component guides
+
+**[Browse all 90 component guides](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/components/README.md)** to find a component's import, copyable example, required props and usage notes.
+
+| Start here | Guide |
+| --- | --- |
+| Installation, Next.js and themes | [Getting started](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/getting-started.md) |
+| Buttons and appearance options | [Button](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/components/LiquidButton.md) |
+| Navigation links and active routes | [Navbar](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/components/LiquidNavbar.md) |
+| Collapsible navigation | [Sidebar](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/components/LiquidSidebar.md) |
+| Text fields and controlled values | [Input](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/components/LiquidInput.md) |
+| Data, row selection and appearance | [Table](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/components/LiquidTable.md) |
 
 ## Included components
 
