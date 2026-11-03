@@ -136,3 +136,31 @@ test("modal actions are optional and caller-controlled", async ({ page }) => {
   await dialog.getByRole("button", { name: "Close from body", exact: true }).click();
   await expect(dialog).toBeHidden();
 });
+
+
+test("buttons fit short labels and support centered icon-only actions", async ({ page }) => {
+  await page.goto("/");
+  for (const appearance of ["normal", "glass", "colored"]) {
+    const group = page.locator(`[data-button-sizes="${appearance}"]`);
+    const single = group.getByRole("button", { name: "A", exact: true });
+    const cancel = group.getByRole("button", { name: "Cancel", exact: true });
+    const small = (await single.boundingBox())!;
+    const large = (await cancel.boundingBox())!;
+    expect(small.width).toBeLessThan(100);
+    expect(large.width).toBeGreaterThan(small.width + 20);
+    expect(large.width).toBeLessThan(150);
+    for (const name of [`Add ${appearance}`, `Save ${appearance}`]) {
+      const button = group.getByRole("button", { name, exact: true });
+      const bounds = (await button.boundingBox())!;
+      expect(bounds.width).toBe(56);
+      expect(bounds.height).toBe(56);
+      const icon = (await button.locator('[data-slot="button-content"] > svg').boundingBox())!;
+      expect(Math.abs((icon.x + icon.width / 2) - (bounds.x + bounds.width / 2))).toBeLessThan(1);
+      expect(Math.abs((icon.y + icon.height / 2) - (bounds.y + bounds.height / 2))).toBeLessThan(1);
+      await expect(button).toHaveAttribute("type", name.startsWith("Save") ? "submit" : "button");
+    }
+  }
+  await page.getByRole("button", { name: "Add glass", exact: true }).focus();
+  await page.keyboard.press("Enter");
+  await expect(page.getByLabel("Button presses")).toHaveText("1 presses");
+});

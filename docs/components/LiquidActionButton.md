@@ -29,8 +29,8 @@ The table includes the component-specific props and common control props. Requir
 | `onClick` | No | `(e: MouseEvent<FocusableElement, MouseEvent>) => void` | **Not recommended – use `onPress` instead.** `onClick` is an alias for `onPress` provided for compatibility with other libraries. `onPress` provides additional event details for non-mouse interactions. |
 | `name` | No | `string` | Submitted as a pair with the button's value as part of the form data. |
 | `isDisabled` | No | `boolean` | Whether the button is disabled. |
-| `onPress` | No | `(e: PressEvent) => void` | Handler that is called when the press is released over the target. |
 | `type` | No | `"button" \| "submit" \| "reset"` | The behavior of the button when used in an HTML form. |
+| `onPress` | No | `(e: PressEvent) => void` | Handler that is called when the press is released over the target. |
 | `value` | No | `string` | The value associated with the button's name when it's submitted with the form data. |
 | `children` | Yes | `ChildrenOrFunction<ButtonRenderProps> & ReactNode` | The children of the component. A function may be provided to alter the children based on component state. |
 | `style` | No | `StyleOrFunction<ButtonRenderProps>` | The inline [style](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style) for the element. A function may be provided to compute the style based on component state. |

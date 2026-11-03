@@ -32,6 +32,12 @@ function ConsumerFixture() {
             <LiquidButton appearance="normal" onPress={() => setClicks(clicks + 1)}>Normal</LiquidButton>
             <LiquidButton onPress={() => setClicks(clicks + 1)}>Clear glass</LiquidButton>
             <LiquidButton className={cn("font-medium", "font-bold")} classNames={{ content: "px-8" }} appearance="colored" onPress={() => setClicks(clicks + 1)}>Blue glass</LiquidButton>
+            {(["normal", "glass", "colored"] as const).map(appearance => <div key={appearance} data-button-sizes={appearance} className="flex gap-3">
+              <LiquidButton appearance={appearance}>A</LiquidButton>
+              <LiquidButton appearance={appearance}>Cancel</LiquidButton>
+              <LiquidButton appearance={appearance} type="icon" aria-label={`Add ${appearance}`} onPress={() => setClicks(value => value + 1)}><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4v16M4 12h16" fill="none" stroke="currentColor" strokeWidth="2" /></svg></LiquidButton>
+              <LiquidButton appearance={appearance} isIconOnly type="submit" aria-label={`Save ${appearance}`}><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 4h16v16H4z" fill="none" stroke="currentColor" /></svg></LiquidButton>
+            </div>)}
             <output aria-label="Button presses">{clicks} presses</output>
           </div></section>
           <section><GlassEmptyState title="No files yet" description="Upload a file to get started." actions={<GlassButton onClick={() => setClicks(clicks + 1)}>Upload first file</GlassButton>} /></section>

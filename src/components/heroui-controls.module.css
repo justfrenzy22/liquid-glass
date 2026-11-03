@@ -1,6 +1,6 @@
 @reference "../tailwind-reference.css";
 .button {
-  @apply liquid:inline-flex liquid:p-0 liquid:font-semibold;
+  @apply liquid:inline-flex liquid:items-center liquid:justify-center liquid:box-border liquid:min-w-0 liquid:p-0 liquid:font-semibold;
   border: 0;
   background: transparent;
   color: var(--lg-foreground, inherit);
@@ -23,10 +23,9 @@
   outline: 2px solid #0377f7;
 }
 .buttonSurface {
-  @apply liquid:min-w-[160px];
+  @apply liquid:w-full liquid:min-w-0;
 }
 .button[data-button-appearance="normal"] {
-  @apply liquid:min-w-[160px];
   background: var(--lg-solid-background);
   border: 1px solid #d5deeb;
   box-shadow: 0 2px 4px #18223608;
@@ -53,6 +52,19 @@
   @apply liquid:h-[56px] liquid:flex liquid:items-center liquid:justify-center;
   padding: 0 24px;
   @apply liquid:gap-[10px];
+}
+.button[data-icon-only="true"] {
+  @apply liquid:w-[56px] liquid:h-[56px] liquid:shrink-0;
+}
+.button[data-icon-only="true"] .buttonSurface,
+.button[data-icon-only="true"] .buttonSurface > [data-slot="glass-content"] {
+  @apply liquid:h-full;
+}
+.button[data-icon-only="true"] .buttonContent {
+  @apply liquid:w-full liquid:h-full liquid:p-0;
+}
+.button[data-icon-only="true"] .buttonContent > :where(svg) {
+  @apply liquid:w-[24px] liquid:h-[24px] liquid:shrink-0;
 }
 .slider {
   @apply liquid:grid;

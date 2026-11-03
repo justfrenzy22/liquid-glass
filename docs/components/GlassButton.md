@@ -31,9 +31,10 @@ The table includes the component-specific props and common control props. Requir
 | `name` | No | `string` | Submitted as a pair with the button's value as part of the form data. |
 | `isDisabled` | No | `boolean` | Whether the button is disabled. |
 | `onPress` | No | `(e: PressEvent) => void` | Handler that is called when the press is released over the target. |
-| `type` | No | `"button" \| "submit" \| "reset"` | The behavior of the button when used in an HTML form. |
 | `value` | No | `string` | The value associated with the button's name when it's submitted with the form data. |
+| `isIconOnly` | No | `boolean` | Square icon-only layout. Add an aria-label describing the action. |
 | `children` | Yes | `ReactNode` |  |
+| `type` | No | `"button" \| "submit" \| "reset" \| "icon"` | Use icon for a square icon-only button, or a standard HTML button type. |
 | `glass` | No | `GlassConfig` |  |
 | `appearance` | No | `"glass" \| "normal" \| "colored"` |  |
 | `glassColor` | No | `string` |  |
@@ -53,6 +54,10 @@ See [LiquidButton](LiquidButton.md) for the main usage guide. Import either name
 ```
 
 Use `isDisabled` to disable the button. Use `onPress` for mouse, touch and keyboard activation. A button defaults to an ordinary action; set `type="submit"` inside a form when it should submit. Only the optional `/native` entry retains `onClick` and `disabled` as its native button API. A button does not perform navigation, save data or submit an API request unless you provide that behavior.
+
+## Size and icon-only buttons
+
+Text buttons fit their label with 24px horizontal padding; there is no fixed minimum width. Set `className="w-full"` or your own width when needed. Use `type="icon"` with an SVG/icon child and an `aria-label` for a centered 56px square hit area. This renders HTML `type="button"`. For an icon-only submit or reset button, use `isIconOnly` together with `type="submit"` or `type="reset"`. All three appearances support icons. Tailwind root utilities such as `className="size-10"` can change the hit area; use `classNames.content` to customize the icon.
 
 ## Tailwind customization
 

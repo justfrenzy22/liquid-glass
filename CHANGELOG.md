@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.2
+
+- Remove the fixed 160px minimum width from text buttons; labels determine width with consistent padding.
+- Support `type="icon"` and `isIconOnly` for square, centered icon actions across normal, glass and colored finishes. Preserve submit/reset semantics with `isIconOnly`.
+
 ## 0.3.1
 
 - Remove the mandatory Done action from LiquidModal. No footer is rendered unless supplied.

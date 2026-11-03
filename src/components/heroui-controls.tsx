@@ -28,8 +28,12 @@ import styles from "./heroui-controls.module.css";
 import { useGlassDrag } from "./use-glass-drag.js";
 import { cn } from "../lib/cn.js";
 
-export type LiquidNextUIButtonProps = Omit<ButtonProps, "children"> & {
+export type LiquidNextUIButtonProps = Omit<ButtonProps, "children" | "type"> & {
   children: ReactNode;
+  /** Use icon for a square icon-only button, or a standard HTML button type. */
+  type?: ButtonProps["type"] | "icon";
+  /** Square icon-only layout. Add an aria-label describing the action. */
+  isIconOnly?: boolean;
   glass?: GlassConfig;
   appearance?: "normal" | "glass" | "colored";
   glassColor?: string;
@@ -39,6 +43,8 @@ export type LiquidNextUIButtonProps = Omit<ButtonProps, "children"> & {
 
 export function LiquidNextUIButton({
   children,
+  type = "button",
+  isIconOnly = false,
   glass,
   appearance = "glass",
   glassColor = "#0878ed",
@@ -46,15 +52,19 @@ export function LiquidNextUIButton({
   className = "",
   ...props
 }: LiquidNextUIButtonProps) {
+  const iconOnly = isIconOnly || type === "icon";
   return (
     <Button
       {...props}
+      type={type === "icon" ? "button" : type}
+      isIconOnly={iconOnly}
+      data-icon-only={iconOnly || undefined}
       data-liquid-glass=""
       data-button-appearance={appearance}
       className={typeof className === "function" ? state => cn(styles.button, classNames?.root, className(state)) : cn(styles.button, classNames?.root, className)}
     >
       {appearance === "normal" ? (
-        <span className={cn(styles.buttonContent, classNames?.content)}>{children}</span>
+        <span data-slot="button-content" className={cn(styles.buttonContent, classNames?.content)}>{children}</span>
       ) : (
         <GlassSurface
           radius={28}
@@ -67,7 +77,7 @@ export function LiquidNextUIButton({
           data-colored={appearance === "colored"}
           style={{ "--button-tint": glassColor } as CSSProperties}
         >
-          <span className={cn(styles.buttonContent, classNames?.content)}>{children}</span>
+          <span data-slot="button-content" className={cn(styles.buttonContent, classNames?.content)}>{children}</span>
         </GlassSurface>
       )}
     </Button>

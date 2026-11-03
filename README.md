@@ -18,7 +18,7 @@ Curious about the optics, Safari treatment and design tradeoffs? Read the [resea
 - Controls retain keyboard operation, disabled states and reduced-motion support. Text remains on a separate, sharp layer.
 - Compiled JavaScript, TypeScript declarations and CSS are included. Styles load automatically. Tailwind CSS 4 powers layout authoring; no library source scanning, Next.js or remote assets are required.
 
-**Release:** `0.3.1`. Repository: `liquid-glass`. Package/import name: `@justfrenzy/liquid-glass`.
+**Release:** `0.3.2`. Repository: `liquid-glass`. Package/import name: `@justfrenzy/liquid-glass`.
 
 ## Tailwind customization
 
