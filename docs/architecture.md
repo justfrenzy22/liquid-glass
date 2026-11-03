@@ -1,6 +1,6 @@
 # Architecture and browser behavior
 
-`src/lib/` contains geometry, refraction, map generation, defaults and environment selection. `src/components/` contains native primitives, the rendering provider, CSS modules and HeroUI wrappers. The public entry points are `src/index.ts` and `src/heroui.ts`.
+`src/lib/` contains geometry, refraction, map generation, defaults and environment selection. `src/components/` contains native primitives, the rendering provider, CSS modules and HeroUI wrappers. The public entry points are `src/index.ts` and `src/heroui.ts`. Browser export conditions select generated wrappers that import `styles.css`; Node selects CSS-free entries for direct server rendering.
 
 GlassSurface renders an absolutely positioned decoration layer and separate sharp content. Supported desktop Chromium uses local SVG backdrop filters and canvas-generated displacement/specular maps. A rounded-rectangle signed-distance field supplies normals; an analytic superellipse bevel and an angle-based Snell-law calculation approximate displacement. This is not a full physical renderer: it omits exit refraction, chromatic aberration, perspective and real environment reflections.
 
@@ -18,4 +18,4 @@ The build emits ESM, shared chunks, compiled CSS and TypeScript declarations wit
 
 HeroUI 3.2.6 and its verified React Aria versions are pinned. Fresh newer React Aria peers exposed incompatible APIs during extraction. Upgrade these together and run types, SSR/archive checks and browser tests before changing the pins.
 
-The current visual theme is light. Applications should review contrast on their own backgrounds. Navigation uses ordinary links; router integration, uploads, storage, authentication and data loading belong to the application.
+Text inherits the host application color. Neutral fills follow system or explicit light/dark theme markers. Applications should review contrast on their own backgrounds. Navigation uses ordinary links; router integration, uploads, storage, authentication and data loading belong to the application.

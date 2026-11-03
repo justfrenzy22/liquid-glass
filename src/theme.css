@@ -1,0 +1,45 @@
+/* Only theme variables are global. Text is inherited from the host application. */
+:where(:root) {
+  --lg-accent-text: #075dc3;
+  --lg-selection-background: #dde3eb;
+  --lg-hover-background: #e6edf6;
+  --lg-solid-background: #ffffff;
+  --lg-glass-rgb: 255 255 255;
+  --lg-neutral-rgb: 255 255 255;
+  --lg-subtle-background: #f0f2f5;
+  --lg-muted: color-mix(in srgb, currentColor 72%, transparent);
+  --lg-danger: #b4233b;
+}
+@media (prefers-color-scheme: dark) {
+  :where(:root) {
+    --lg-accent-text: #8fc4ff;
+    --lg-selection-background: #36465d;
+    --lg-hover-background: #303c50;
+    --lg-solid-background: #1c2432;
+    --lg-glass-rgb: 24 32 46;
+    --lg-neutral-rgb: 28 36 50;
+    --lg-subtle-background: #252f40;
+    --lg-danger: #ff8ca0;
+  }
+}
+/* Explicit application themes take precedence over the OS preference. */
+:where(.light, [data-theme="light"], [data-liquid-theme="light"]) {
+  --lg-accent-text: #075dc3;
+  --lg-selection-background: #dde3eb;
+  --lg-hover-background: #e6edf6;
+  --lg-solid-background: #ffffff;
+  --lg-glass-rgb: 255 255 255;
+  --lg-neutral-rgb: 255 255 255;
+  --lg-subtle-background: #f0f2f5;
+  --lg-danger: #b4233b;
+}
+:where(.dark, [data-theme="dark"], [data-liquid-theme="dark"]) {
+  --lg-accent-text: #8fc4ff;
+  --lg-selection-background: #36465d;
+  --lg-hover-background: #303c50;
+  --lg-solid-background: #1c2432;
+  --lg-glass-rgb: 24 32 46;
+  --lg-neutral-rgb: 28 36 50;
+  --lg-subtle-background: #252f40;
+  --lg-danger: #ff8ca0;
+}

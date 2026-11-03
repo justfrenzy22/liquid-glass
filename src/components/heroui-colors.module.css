@@ -8,7 +8,7 @@
 .label {
   font-size: 13px;
   font-weight: 600;
-  color: #182236;
+  color: var(--lg-foreground, inherit);
 }
 .area {
   position: relative;
@@ -47,7 +47,7 @@
   border: 0;
   background: transparent;
   outline: none;
-  color: #182236;
+  color: var(--lg-foreground, inherit);
 }
 .input:focus-visible {
   outline: 2px solid #497fad;
@@ -62,7 +62,7 @@
 }
 .output {
   font-size: 12px;
-  color: #536078;
+  color: var(--lg-muted);
 }
 .track {
   position: relative;
@@ -142,7 +142,7 @@
   display: flex;
 }
 .indicator[data-light-color="true"] {
-  color: #182236;
+  color: var(--lg-foreground, inherit);
 }
 .indicator svg {
   width: 16px;
@@ -152,7 +152,7 @@
   border-radius: 22px;
   background: transparent;
   border: 0;
-  color: #182236;
+  color: var(--lg-foreground, inherit);
   cursor: pointer;
   transition: transform 180ms;
 }

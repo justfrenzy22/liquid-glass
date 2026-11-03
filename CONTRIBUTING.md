@@ -21,16 +21,28 @@ The library lives in `src/components/`, with the core exports in `src/index.ts` 
 
 The retained README screenshots were captured before the public demo was removed. The original capture application and Python GIF encoder are no longer maintained in this repository. Keep any new captures based on actual component rendering and document the browser/viewport used.
 
+## Component documentation
+
+Every public component has a Markdown guide under `docs/components/`. Update the curated examples and usage notes in `scripts/generate-component-docs.mjs`, then run:
+
+```sh
+npm run docs:generate
+npm run build
+npm run docs:check
+```
+
+The prop reference is derived from the TypeScript API. `docs:check` compiles complete example functions against the built public entry points, and runs as part of `npm run check`. Keep the setup guide, README and changelog consistent with the examples. Component guides ship with the consumer archive; research media and internal test fixtures do not.
+
 ## Publish a release
 
 Update the changelog and version, then run the checks above. `pack:local` builds the library and stages a separate manifest without repository scripts or development dependencies. `verify:package` checks the archive allowlist and installs it into a clean consumer. Publish that verified archive rather than the repository directory.
 
-For version `0.1.1`:
+For version `0.1.4`:
 
 ```sh
 npm login --registry=https://registry.npmjs.org
 npm whoami
-npm publish .artifacts/justfrenzy-liquid-glass-0.1.1.tgz --access public --registry=https://registry.npmjs.org
+npm publish .artifacts/justfrenzy-liquid-glass-0.1.4.tgz --access public --registry=https://registry.npmjs.org
 ```
 
 Complete npm's security challenge in your browser. Publishing requires an account authorized for the `justfrenzy` scope. Never commit credentials. Once published, a version cannot be replaced with different contents.

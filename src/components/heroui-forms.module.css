@@ -4,7 +4,7 @@
   gap: 10px;
   width: 100%;
   min-width: 0;
-  color: #182236;
+  color: var(--lg-foreground, inherit);
 }
 .label {
   font-size: 14px;
@@ -13,11 +13,11 @@
 .help {
   font-size: 12px;
   line-height: 1.5;
-  color: #536078;
+  color: var(--lg-muted);
 }
 .error {
   font-size: 12px;
-  color: #9c2636;
+  color: var(--lg-danger);
 }
 .surface {
   width: 100%;
@@ -44,7 +44,7 @@
   width: 100%;
   min-width: 0;
   font-size: 16px;
-  color: #182236;
+  color: var(--lg-foreground, inherit);
   background: transparent;
   border: 0;
   box-shadow: none;
@@ -71,8 +71,8 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: #ffffff40;
-  color: #182236;
+  background: rgb(var(--lg-neutral-rgb) / 0.251);
+  color: var(--lg-foreground, inherit);
   cursor: pointer;
 }
 .step {
@@ -98,7 +98,7 @@
 }
 .field .step[data-hovered],
 .field .clear[data-hovered] {
-  background: #ffffff80;
+  background: rgb(var(--lg-neutral-rgb) / 0.502);
 }
 .step[data-focus-visible],
 .clear[data-focus-visible] {

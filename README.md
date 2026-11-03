@@ -18,9 +18,11 @@ Curious about the optics, Safari treatment and design tradeoffs? Read the [resea
 - Controls retain keyboard operation, disabled states and reduced-motion support. Text remains on a separate, sharp layer.
 - Compiled JavaScript, TypeScript declarations and CSS are included. No Next.js, Tailwind configuration, application aliases or remote visual assets are required.
 
-**Release:** `0.1.3`. Repository: `liquid-glass`. Package/import name: `@justfrenzy/liquid-glass`.
+**Release:** `0.1.4`. Repository: `liquid-glass`. Package/import name: `@justfrenzy/liquid-glass`.
 
 ## Install
+
+Need working examples? Start with the [setup guide](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/getting-started.md), [Button](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/components/LiquidButton.md), [Navbar](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/components/LiquidNavbar.md), or [all component guides](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/components/README.md).
 
 Requires React 19 and React DOM 19, with an ESM-aware bundler such as Vite or Next.js.
 
@@ -36,11 +38,9 @@ npm install react@19 react-dom@19
 npm install -D @types/react @types/react-dom
 ```
 
-Import the stylesheet **once**, before application overrides:
+Styles load automatically when your frontend imports a component from the core or `/heroui` entry. No separate stylesheet import or library development server is needed.
 
-```tsx
-import "@justfrenzy/liquid-glass/styles.css";
-```
+The explicit `@justfrenzy/liquid-glass/styles.css` export remains available if your build requires manual stylesheet placement. Plain Node.js server rendering uses a CSS-free entry; browser bundlers use the entry that loads styles.
 
 The CSS contains compiled CSS modules and a small reset scoped to library surfaces. Do not add a Tailwind build or HeroUI global theme just to use this library. HeroUI is a package dependency. React and the verified React Aria versions are shared peers, installed automatically by modern npm; this prevents multiple incompatible copies. If your app already uses newer React Aria versions, reconcile those exact peer requirements before upgrading.
 
@@ -116,7 +116,7 @@ The core entry does not import HeroUI JavaScript. The `/heroui` entry provides t
 
 ### Next.js
 
-Import `styles.css` in the App Router root layout. Put callbacks and interactive state in a component marked `"use client"`. Generated entry points and shared chunks retain that directive; SSR starts with readable basic glass before client detection enhances it. The compiled archive does not require `transpilePackages`.
+Component imports load the styles in the client bundle. Put callbacks and interactive state in a component marked `"use client"`. Generated entry points and shared chunks retain that directive; SSR starts with readable basic glass before client detection enhances it. The compiled archive does not require `transpilePackages`.
 
 Navbar and Sidebar use ordinary links, so no Next.js router is required. Use `onNavigate` or your application's router integration for SPA navigation.
 
@@ -140,6 +140,24 @@ The compatible renderer uses simulated reflections and native blur. These captur
 <img src="https://raw.githubusercontent.com/justfrenzy22/liquid-glass/main/docs/media/preview-mobile.png" alt="The same actual components in the mobile layout, using compatible reflective glass" width="320" />
 
 </details>
+
+## Light and dark themes
+
+Control text inherits your application's `color` instead of forcing black. Neutral glass tints and solid fills follow the operating-system preference; `.dark`, `.light`, `data-theme="dark|light"` and `data-liquid-theme="dark|light"` on an ancestor override that preference. Put the theme marker on `html` or `body` so portal overlays receive it too. The library does not change the application's body text color or background.
+
+Colored buttons keep white labels by default. You can override the foreground tokens for your palette:
+
+```css
+.my-theme {
+  --lg-foreground: #edf2f7;
+  --lg-muted: #b9c5d8;
+  --lg-solid-background: #1c2432;
+  --lg-glass-rgb: 24 32 46;
+  --lg-on-accent: white;
+}
+```
+
+`--lg-foreground` is optional: leave it unset to inherit text color. Check contrast for your chosen background and accent colors; arbitrary color combinations are not automatically contrast-corrected.
 
 ## Rendering modes
 
@@ -191,7 +209,7 @@ Kube's [Liquid Glass article](https://kube.io/blog/liquid-glass-css-svg/) inform
 
 Install the package into your existing React application and use the imports above. No library development server, demo application, source build or Python setup is required.
 
-The release archive contains compiled ESM, TypeScript declarations, CSS, this README, the changelog and license notices. It excludes test fixtures, demo pages, development scripts, development dependency metadata and research media. React 19 is supplied by your application; npm installs the library's runtime dependencies and required peers.
+The release archive contains compiled ESM, TypeScript declarations, CSS, this README, component usage guides, the changelog and license notices. It excludes test fixtures, demo pages, development scripts, development dependency metadata and research media. React 19 is supplied by your application; npm installs the library's runtime dependencies and required peers.
 
 This is an early `0.1.x` library. Browser differences and the rendering limitations described above still apply; publishing a consumer package is not a claim that all components have completed usability or accessibility audits.
 

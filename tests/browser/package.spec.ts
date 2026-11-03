@@ -35,3 +35,34 @@ test("the standalone package keeps styles, state, overlays and navigation workin
   await page.screenshot({ path: `test-results/package-${testInfo.project.name}.png`, fullPage: true });
   expect(errors).toEqual([]);
 });
+
+test("automatic styles inherit host text and respect system and explicit themes", async ({ page }) => {
+  await page.goto("/");
+  const clear = page.getByRole("button", { name: "Clear glass", exact: true });
+  const normal = page.getByRole("button", { name: "Normal", exact: true });
+  const input = page.getByRole("searchbox", { name: "Find a file" });
+  await expect(clear).toHaveCSS("border-radius", "28px");
+  for (const scenario of [
+    { scheme: "dark", theme: null, text: "rgb(230, 237, 247)", background: "rgb(28, 36, 50)" },
+    { scheme: "dark", theme: "light", text: "rgb(23, 32, 51)", background: "rgb(255, 255, 255)" },
+    { scheme: "light", theme: "dark", text: "rgb(230, 237, 247)", background: "rgb(28, 36, 50)" },
+  ] as const) {
+    await page.emulateMedia({ colorScheme: scenario.scheme });
+    await page.evaluate(({ theme, text }) => {
+      if (theme) document.documentElement.dataset.theme = theme;
+      else delete document.documentElement.dataset.theme;
+      document.body.style.color = text;
+      document.body.style.background = theme === "light" ? "white" : "#0b1220";
+      (document.querySelector(".scene") as HTMLElement).style.background = "transparent";
+    }, scenario);
+    await expect(clear).toHaveCSS("color", scenario.text);
+    await expect(clear.locator("[data-glass-mode]")).toHaveCSS("color", scenario.text);
+    await expect(input).toHaveCSS("color", scenario.text);
+    await expect(normal).toHaveCSS("color", scenario.text);
+    await expect(normal).toHaveCSS("background-color", scenario.background);
+    await expect(page.getByRole("button", { name: "Native button" })).toHaveCSS("color", scenario.text);
+    const blue = page.getByRole("button", { name: "Blue glass", exact: true });
+    await expect(blue.locator("[data-colored]")).toHaveCSS("color", "rgb(255, 255, 255)");
+  }
+  await page.screenshot({ path: `test-results/theme-${test.info().project.name}.png`, fullPage: true });
+});

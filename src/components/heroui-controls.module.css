@@ -3,7 +3,7 @@
   padding: 0;
   border: 0;
   background: transparent;
-  color: #182236;
+  color: var(--lg-foreground, inherit);
   border-radius: 28px;
   cursor: pointer;
   outline-offset: 5px;
@@ -27,12 +27,12 @@
 }
 .button[data-button-appearance="normal"] {
   min-width: 160px;
-  background: #ffffff;
+  background: var(--lg-solid-background);
   border: 1px solid #d5deeb;
   box-shadow: 0 2px 4px #18223608;
 }
 .buttonSurface[data-colored="true"] {
-  color: white;
+  color: var(--lg-on-accent, white);
   background: linear-gradient(
     135deg,
     color-mix(in srgb, var(--button-tint) 75%, white) 0%,
@@ -234,10 +234,10 @@
   height: 60px;
 }
 .input::placeholder {
-  color: #536078;
+  color: var(--lg-muted);
 }
 .fieldError {
-  color: #9c2636;
+  color: var(--lg-danger);
   font-size: 12px;
   line-height: 1.5;
 }

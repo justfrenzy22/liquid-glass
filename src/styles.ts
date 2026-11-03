@@ -1,4 +1,5 @@
 import "./base.css";
+import "./theme.css";
 import "./components/liquid-glass.module.css";
 import "./components/optical-controls.module.css";
 import "./components/containers.module.css";

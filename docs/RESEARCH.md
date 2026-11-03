@@ -2,7 +2,7 @@
 
 This document explains the questions, references and engineering decisions behind Liquid Glass. It is an implementation study, not a peer-reviewed paper, a controlled usability study or a claim of equivalence to Apple's materials.
 
-Scope: the `0.1.1` implementation. External references were reviewed on 3 November 2026. Browser behavior can change after this review.
+Scope: the `0.1.4` implementation. External references were reviewed on 3 November 2026. Browser behavior can change after this review.
 
 ## Research questions
 
@@ -88,7 +88,7 @@ Actual captured examples are in the [README](../README.md#see-it-move). The orig
 - Test physical iPhones, iPads and Macs, recording OS/browser versions, hardware and rendering mode.
 - Measure frame-time percentiles, map rebuild cost and memory for increasing surface counts and sizes; compare against ordinary controls.
 - Audit keyboard, focus, screen-reader output, zoom, reduced motion and forced colors across representative components.
-- Evaluate text contrast on light, dark, patterned and moving backgrounds. The current theme is light; blur does not guarantee sufficient contrast.
+- Evaluate text contrast on light, dark, patterned and moving backgrounds. Theme-aware fills and inherited text do not guarantee sufficient contrast against every background.
 - Run task-based user studies before claiming improved clarity, preference or reduced distraction. Record the task, participants, baseline and measures.
 - Revisit browser-selection heuristics as implementations change, while retaining explicit rendering overrides.
 

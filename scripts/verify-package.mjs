@@ -11,7 +11,8 @@ const packedFiles = execFileSync("tar", ["-tf", archive], { encoding: "utf8" }).
 const allowedRoot = new Set(["package.json", "README.md", "LICENSE", "THIRD_PARTY_NOTICES.md", "CHANGELOG.md"]);
 for (const entry of packedFiles) {
   const relative = entry.replace(/^package\//, "");
-  if (!relative.startsWith("dist/") && !allowedRoot.has(relative)) throw new Error(`Unexpected release file: ${entry}`);
+  const componentGuide = relative.startsWith("docs/components/") && relative.endsWith(".md");
+  if (!relative.startsWith("dist/") && !allowedRoot.has(relative) && !componentGuide && relative !== "docs/getting-started.md") throw new Error(`Unexpected release file: ${entry}`);
 }
 const digest = createHash("sha256").update(await readFile(archive)).digest("hex").slice(0, 12);
 const consumer = path.join(tmpdir(), "liquid-glass-consumers", digest);

@@ -31,7 +31,7 @@
   outline: none;
   box-shadow: none;
   font-size: 16px;
-  color: #182236;
+  color: var(--lg-foreground, inherit);
 }
 .field .trigger {
   display: grid;
@@ -40,7 +40,7 @@
   height: 40px;
   border-radius: 50%;
   padding: 0;
-  background: #ffffff50;
+  background: rgb(var(--lg-neutral-rgb) / 0.314);
   cursor: pointer;
 }
 .field:focus-within .surface {
@@ -70,7 +70,7 @@
   gap: 16px;
   padding: 14px 12px;
   border-radius: 14px;
-  color: #182236;
+  color: var(--lg-foreground, inherit);
   outline: none;
   cursor: pointer;
 }
@@ -85,12 +85,12 @@
 }
 .optionText [data-slot="description"] {
   font-size: 11px;
-  color: #536078;
+  color: var(--lg-muted);
 }
 .option[data-selected="true"],
 .option[data-focused="true"],
 .option[data-hovered="true"] {
-  background: #ffffff60;
+  background: rgb(var(--lg-neutral-rgb) / 0.376);
 }
 .option[data-disabled="true"] {
   opacity: 0.4;
@@ -105,7 +105,7 @@
   font-size: 13px;
 }
 .error {
-  color: #9c2636;
+  color: var(--lg-danger);
   font-size: 12px;
 }
 .breadcrumbs {
@@ -126,14 +126,14 @@
   cursor: pointer;
   padding: 4px;
   border-radius: 6px;
-  color: #536078;
+  color: var(--lg-muted);
 }
 .crumb:last-child > [role="link"] {
-  color: #182236;
+  color: var(--lg-foreground, inherit);
   font-weight: 600;
 }
 .crumb > [role="link"]:hover {
-  background: #ffffff70;
+  background: rgb(var(--lg-neutral-rgb) / 0.439);
 }
 .pagination {
   padding: 8px;
@@ -160,17 +160,17 @@
   border: 0;
   border-radius: 50%;
   font-size: 13px;
-  color: #182236;
+  color: var(--lg-foreground, inherit);
   cursor: pointer;
 }
 .pageButton[aria-current="page"] {
-  background: #ffffff80;
+  background: rgb(var(--lg-neutral-rgb) / 0.502);
   box-shadow: inset 0 0 0 1px white;
   color: #0878ed;
   font-weight: 700;
 }
 .pageButton[data-hovered] {
-  background: #ffffff60;
+  background: rgb(var(--lg-neutral-rgb) / 0.376);
 }
 .pageButton[data-disabled] {
   opacity: 0.4;
@@ -193,16 +193,16 @@
   min-width: 480px;
   border-collapse: collapse;
   font-size: 13px;
-  color: #182236;
+  color: var(--lg-foreground, inherit);
   outline: none;
 }
 .column {
   padding: 16px;
   text-align: left;
   font-size: 11px;
-  color: #536078;
+  color: var(--lg-muted);
   font-weight: 500;
-  background: #ffffff40;
+  background: rgb(var(--lg-neutral-rgb) / 0.251);
 }
 .column [data-slot="table-sortable-column-header"] {
   display: inline-flex;
@@ -226,7 +226,7 @@
 }
 .row[data-selected="true"],
 .row[data-hovered="true"] {
-  background: #ffffff60;
+  background: rgb(var(--lg-neutral-rgb) / 0.376);
 }
 .row[data-disabled="true"] {
   opacity: 0.45;
@@ -235,7 +235,7 @@
 .finderTable {
   padding: 0;
   overflow: hidden;
-  background: #ffffff;
+  background: var(--lg-solid-background);
   border: 1px solid #d9dce2;
   border-radius: 14px;
   box-shadow: 0 2px 6px #18223608;
@@ -244,9 +244,9 @@
   border-radius: 0;
 }
 .finderTable .column {
-  background: #eceef1;
+  background: var(--lg-subtle-background);
   padding: 12px 16px;
-  color: #515965;
+  color: var(--lg-muted);
   border-bottom: 1px solid #d9dce2;
 }
 .finderTable .column + .column {
@@ -256,16 +256,16 @@
   padding: 12px 16px;
 }
 .finderTable .row:nth-child(odd) {
-  background: #ffffff;
+  background: var(--lg-solid-background);
 }
 .finderTable .row:nth-child(even) {
-  background: #f0f2f5;
+  background: var(--lg-subtle-background);
 }
 .finderTable .row + .row {
   border-top: 0;
 }
 .finderTable .row[data-hovered="true"] {
-  background: #e6edf6;
+  background: var(--lg-hover-background);
 }
 .finderTable .row[data-selected="true"] {
   background: #0878ed;
@@ -275,12 +275,12 @@
   outline-color: #ffffff;
 }
 .finderTable[data-selection-appearance="subtle"] .row[data-selected="true"] {
-  background: #dde3eb;
-  color: #182236;
+  background: var(--lg-selection-background);
+  color: var(--lg-foreground, inherit);
 }
 .finderTable[data-selection-appearance="subtle"]
   .row[data-focus-visible="true"] {
-  outline-color: #536078;
+  outline-color: var(--lg-muted);
 }
 .table[data-selection-appearance="blue"]:not(.finderTable)
   .row[data-selected="true"] {

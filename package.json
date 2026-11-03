@@ -1,6 +1,6 @@
 {
   "name": "@justfrenzy/liquid-glass",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "React liquid glass components with desktop refraction, reflective Safari/mobile rendering, and optional HeroUI controls.",
   "type": "module",
   "license": "MIT",
@@ -26,26 +26,35 @@
   "exports": {
     ".": {
       "types": "./dist/types/index.d.ts",
-      "import": "./dist/index.js"
+      "browser": "./dist/index.browser.js",
+      "node": "./dist/index.js",
+      "import": "./dist/index.browser.js",
+      "default": "./dist/index.browser.js"
     },
     "./heroui": {
       "types": "./dist/types/heroui.d.ts",
-      "import": "./dist/heroui.js"
+      "browser": "./dist/heroui.browser.js",
+      "node": "./dist/heroui.js",
+      "import": "./dist/heroui.browser.js",
+      "default": "./dist/heroui.browser.js"
     },
     "./styles.css": "./dist/styles.css",
     "./package.json": "./package.json"
   },
   "types": "./dist/types/index.d.ts",
-  "module": "./dist/index.js",
+  "module": "./dist/index.browser.js",
   "files": [
     "dist",
     "README.md",
     "LICENSE",
     "THIRD_PARTY_NOTICES.md",
-    "CHANGELOG.md"
+    "CHANGELOG.md",
+    "docs/components",
+    "docs/getting-started.md"
   ],
   "sideEffects": [
-    "**/*.css"
+    "**/*.css",
+    "./dist/*.browser.js"
   ],
   "publishConfig": {
     "access": "public"
@@ -64,12 +73,14 @@
     "build": "node scripts/build.mjs",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "test": "node --test tests/*.test.mjs",
-    "check": "npm run build && npm run typecheck && npm test && npm run test:build",
+    "check": "npm run build && npm run typecheck && npm run docs:check && npm test && npm run test:build",
     "test:browser": "playwright test",
     "pack:local": "node scripts/pack.mjs",
     "verify:package": "node scripts/verify-package.mjs",
     "test:serve": "vite --host 127.0.0.1 --port 4175 --strictPort",
-    "test:build": "vite build"
+    "test:build": "vite build",
+    "docs:generate": "node scripts/generate-component-docs.mjs",
+    "docs:check": "node scripts/check-component-docs.mjs"
   },
   "devDependencies": {
     "@playwright/test": "1.63.0",

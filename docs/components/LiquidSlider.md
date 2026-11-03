@@ -1,0 +1,53 @@
+# LiquidSlider
+
+Use LiquidSlider in a React client component. The example below uses the exported library API.
+
+## Example
+
+```tsx
+"use client";
+
+import { LiquidSlider } from "@justfrenzy/liquid-glass/heroui";
+
+export function LiquidSliderExample() {
+  return (
+    <LiquidSlider label="Volume" defaultValue={40} onChange={(value) => console.log(value)} />
+  );
+}
+```
+
+Browser imports load styling automatically. For Next.js, keep interactive state and handlers inside a client component. See [getting started](../getting-started.md).
+
+## Props
+
+The table includes the component-specific props and common control props. Required means the TypeScript prop must be supplied; accessibility may also require a visible label or `aria-label`. Additional inherited DOM/HeroUI props are available through the shipped declarations.
+
+| Prop | Required | Type | Notes |
+| --- | --- | --- | --- |
+| `style` | No | `StyleOrFunction<SliderRenderProps>` | The inline [style](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style) for the element. A function may be provided to compute the style based on component state. |
+| `step` | No | `number` | The slider's step value. |
+| `defaultValue` | No | `number \| number[]` | The default value (uncontrolled). |
+| `className` | No | `ClassNameOrFunction<SliderRenderProps>` | The CSS [className](https://developer.mozilla.org/en-US/docs/Web/API/Element/className) for the element. A function may be provided to compute the class based on component state. |
+| `aria-label` | No | `string` | Defines a string value that labels the current element. |
+| `onChange` | No | `(value: number \| number[]) => void` | Handler that is called when the value changes. |
+| `onClick` | No | `MouseEventHandler<HTMLDivElement>` |  |
+| `value` | No | `number \| number[]` | The current value (controlled). |
+| `isDisabled` | No | `boolean` | Whether the whole Slider is disabled. |
+| `minValue` | No | `number` | The slider's minimum value. |
+| `maxValue` | No | `number` | The slider's maximum value. |
+| `label` | Yes | `string` |  |
+| `glass` | No | `GlassConfig` |  |
+| `forceActive` | No | `boolean` |  |
+
+
+## TypeScript
+
+```tsx
+import type { ComponentProps } from "react";
+import { LiquidSlider } from "@justfrenzy/liquid-glass/heroui";
+type Props = ComponentProps<typeof LiquidSlider>;
+```
+
+Text follows the host application color. Theme markers and foreground overrides are documented in [getting started](../getting-started.md#themes). Glass controls accept either a `glass` configuration or direct surface props as listed above; these are not interchangeable.
+
+[All component guides](README.md)

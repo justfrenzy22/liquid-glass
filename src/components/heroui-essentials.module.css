@@ -160,7 +160,7 @@
   z-index: 50;
 }
 .menuSurface {
-  color: #182236;
+  color: var(--lg-foreground, inherit);
 }
 .list {
   padding: 8px;
@@ -180,7 +180,7 @@
 }
 .listItem[data-focused="true"],
 .listItem[data-selected="true"] {
-  background: #ffffff80;
+  background: rgb(var(--lg-neutral-rgb) / 0.502);
   box-shadow: inset 0 0 0 1px #ffffffaa;
 }
 .itemIndicator {
@@ -204,8 +204,8 @@
   max-width: 350px;
   border: 1px solid #dce2eb;
   border-radius: 24px;
-  background: #fff;
-  color: #182236;
+  background: var(--lg-solid-background);
+  color: var(--lg-foreground, inherit);
   box-shadow: 0 2px 6px #18223605;
 }
 .cardTitle {
@@ -216,7 +216,7 @@
   font-size: 13px;
   line-height: 1.5;
   margin-top: 6px;
-  color: #43516a;
+  color: var(--lg-muted);
 }
 .cardContent {
   padding: 20px 0;
@@ -249,7 +249,7 @@
 }
 .dialogContent {
   padding: 28px;
-  color: #182236;
+  color: var(--lg-foreground, inherit);
 }
 .dialogHeader {
   display: flex;
@@ -267,7 +267,7 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: #ffffff80;
+  background: rgb(var(--lg-neutral-rgb) / 0.502);
   cursor: pointer;
 }
 .dialogBody {

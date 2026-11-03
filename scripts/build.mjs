@@ -13,7 +13,7 @@ await mkdir(dist, { recursive: true });
 const foundations = ["liquid-glass.module.css", "optical-controls.module.css", "containers.module.css"];
 const styles = [...foundations, ...(await readdir(path.join(root, "src/components"))).filter((name) => name.endsWith(".css") && !foundations.includes(name)).sort()];
 await writeFile(path.join(root, "src/styles.ts"), [
-  'import "./base.css";', ...styles.map((name) => `import "./components/${name}";`), "",
+  'import "./base.css";', 'import "./theme.css";', ...styles.map((name) => `import "./components/${name}";`), "",
 ].join("\n"));
 await build({
   absWorkingDir: root,
@@ -32,4 +32,8 @@ await build({
   logOverride: { "ignored-directives": "silent" },
   logLevel: "info",
 });
+// Browser consumers get CSS automatically; Node SSR uses the CSS-free entries.
+for (const entry of ["index", "heroui"]) {
+  await writeFile(path.join(dist, `${entry}.browser.js`), `"use client";\nimport "./styles.css";\nexport * from "./${entry}.js";\n`);
+}
 execFileSync(process.execPath, [path.join(root, "node_modules/typescript/bin/tsc"), "-p", "tsconfig.build.json"], { cwd: root, stdio: "inherit" });

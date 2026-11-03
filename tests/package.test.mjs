@@ -44,13 +44,17 @@ test("empty states associate their heading and description without hiding action
   assert.doesNotMatch(minimal, /aria-describedby=/);
   assert.equal(controls.LiquidEmptyState, core.GlassEmptyState);
 });
-test("published bundles preserve client boundaries and have no app or CSS-module imports", async () => {
+test("browser entries load CSS while Node entries preserve CSS-free SSR", async () => {
   const files = (await readdir(new URL("../dist/", import.meta.url))).filter((name) => name.endsWith(".js"));
   for (const file of files) {
     const text = await readFile(new URL(`../dist/${file}`, import.meta.url), "utf8");
     assert.match(text, /^"use client";/);
     assert.doesNotMatch(text, /(?:from\s*["']|import\s*["'])(?:@\/|next\/)/);
-    assert.doesNotMatch(text, /import\s*["'][^"']+\.css["']/);
+    if (file.endsWith(".browser.js")) {
+      assert.match(text, /import "\.\/styles\.css"/);
+    } else {
+      assert.doesNotMatch(text, /import\s*["'][^"']+\.css["']/);
+    }
   }
   const css = await readFile(new URL("../dist/styles.css", import.meta.url), "utf8");
   assert.match(css, /backdrop-filter/);

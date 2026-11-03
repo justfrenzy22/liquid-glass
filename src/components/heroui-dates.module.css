@@ -4,7 +4,7 @@
   gap: 10px;
   width: 100%;
   font-size: 14px;
-  color: #182236;
+  color: var(--lg-foreground, inherit);
 }
 .field > label {
   font-weight: 600;
@@ -38,7 +38,7 @@
 .field .segment {
   border-radius: 5px;
   padding: 3px 2px;
-  color: #182236;
+  color: var(--lg-foreground, inherit);
 }
 .field .segment[data-focused] {
   background: #0878ed20;
@@ -51,9 +51,9 @@
   width: 36px;
   height: 36px;
   padding: 0;
-  background: #ffffff55;
+  background: rgb(var(--lg-neutral-rgb) / 0.333);
   border-radius: 50%;
-  color: #182236;
+  color: var(--lg-foreground, inherit);
   cursor: pointer;
 }
 .panel {
@@ -66,7 +66,7 @@
   max-width: 100%;
   background: transparent;
   padding: 0;
-  color: #182236;
+  color: var(--lg-foreground, inherit);
 }
 .calendar .header {
   display: flex;
@@ -87,7 +87,7 @@
   aspect-ratio: 1;
   font-size: 13px;
   cursor: pointer;
-  color: #182236;
+  color: var(--lg-foreground, inherit);
   border-radius: 50%;
   background: transparent;
 }
@@ -106,7 +106,7 @@
   font-size: 10px;
   font-weight: 500;
   text-align: center;
-  color: #536078;
+  color: var(--lg-muted);
   padding: 0 0 8px;
 }
 .calendar td {
@@ -116,8 +116,8 @@
   cursor: default;
 }
 .calendar .cell[data-selected="true"] {
-  background: #ffffff80;
-  color: #075dc3;
+  background: rgb(var(--lg-neutral-rgb) / 0.502);
+  color: var(--lg-accent-text);
   box-shadow:
     inset 0 0 0 1px #ffffffc0,
     0 2px 8px #18223612;
@@ -125,13 +125,13 @@
 }
 .calendar .cell[data-selection-start],
 .calendar .cell[data-selection-end] {
-  background: #ffffffb0;
+  background: rgb(var(--lg-neutral-rgb) / 0.690);
 }
 .calendar .cell[data-outside-month="true"] {
   opacity: 0.35;
 }
 .calendar .cell[data-hovered="true"] {
-  background: #ffffff60;
+  background: rgb(var(--lg-neutral-rgb) / 0.376);
 }
 .calendar .cell[data-focus-visible="true"],
 .trigger[data-focus-visible],
@@ -144,7 +144,7 @@
   opacity: 0.45;
 }
 .error {
-  color: #9c2636;
+  color: var(--lg-danger);
   font-size: 12px;
 }
 .popover {
