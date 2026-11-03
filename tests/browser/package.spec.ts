@@ -102,3 +102,37 @@ test("automatic styles inherit host text and respect system and explicit themes"
   }
   await page.screenshot({ path: `test-results/theme-${test.info().project.name}.png`, fullPage: true });
 });
+
+
+test("modal actions are optional and caller-controlled", async ({ page }) => {
+  await page.goto("/");
+  const open = page.getByRole("button", { name: "Open modal", exact: true });
+  const dialog = page.getByRole("dialog");
+  await open.click();
+  await expect(dialog.getByRole("button", { name: "Done", exact: true })).toHaveCount(0);
+  await dialog.getByRole("button", { name: "Cancel", exact: true }).click();
+  await expect(dialog).toBeHidden();
+  await expect(page.getByLabel("Modal closes")).toHaveText("1");
+  await expect(open).toBeFocused();
+  await open.click();
+  await dialog.getByRole("button", { name: "Save", exact: true }).click();
+  await expect(dialog).toBeHidden();
+  await expect(page.getByLabel("Button presses")).toHaveText("1 presses");
+  await expect(page.getByLabel("Modal closes")).toHaveText("2");
+  await open.click();
+  await page.keyboard.press("Escape");
+  await expect(dialog).toBeHidden();
+  await expect(page.getByLabel("Modal closes")).toHaveText("3");
+  await open.click();
+  await dialog.getByRole("button", { name: "Close dialog", exact: true }).click();
+  await expect(dialog).toBeHidden();
+  await expect(page.getByLabel("Modal closes")).toHaveText("4");
+  await page.getByRole("button", { name: "No footer modal", exact: true }).click();
+  await expect(dialog.locator('[data-slot="modal-footer"]')).toHaveCount(0);
+  await page.keyboard.press("Escape");
+  await expect(dialog).toBeHidden();
+  await page.getByRole("button", { name: "Body actions modal", exact: true }).click();
+  await expect(dialog.getByRole("button", { name: "Close dialog", exact: true })).toHaveCount(0);
+  await dialog.getByRole("button", { name: "Close from body", exact: true }).click();
+  await expect(dialog).toBeHidden();
+});

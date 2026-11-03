@@ -76,3 +76,5 @@ export {
   LiquidNextUIRadioGroup as LiquidRadioGroup,
   LiquidNextUICheckboxGroup as LiquidCheckboxGroup,
 } from "./components/nextui.js";
+
+export type { LiquidModalProps, LiquidModalRenderProps } from "./components/heroui-essentials.js";

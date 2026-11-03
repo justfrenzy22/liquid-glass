@@ -17,6 +17,7 @@ import { GlassSurface } from "./glass-surface.js";
 import { LiquidNextUIButton } from "./heroui-controls.js";
 import type { GlassConfig } from "../lib/types.js";
 import styles from "./heroui-essentials.module.css";
+import { cn } from "../lib/cn.js";
 import { useGlassDrag } from "./use-glass-drag.js";
 
 export function LiquidNextUICheckbox({
@@ -299,62 +300,64 @@ export function NextUICard(
   return <LiquidNextUICard {...props} appearance="solid" />;
 }
 
-export function LiquidNextUIModal({
-  triggerLabel,
-  title,
-  children,
-  glass,
-  isDisabled,
-}: {
+export type LiquidModalRenderProps = { close: () => void };
+export type LiquidModalProps = {
   triggerLabel: string;
   title: string;
-  children: ReactNode;
+  children: ReactNode | ((controls: LiquidModalRenderProps) => ReactNode);
+  /** Custom actions. No footer is rendered when omitted. */
+  footer?: ReactNode | ((controls: LiquidModalRenderProps) => ReactNode);
   glass?: GlassConfig;
   isDisabled?: boolean;
-}) {
+  /** Controlled open state. Pair with onOpenChange. */
+  isOpen?: boolean;
+  defaultOpen?: boolean;
+  onOpenChange?: (isOpen: boolean) => void;
+  /** Called when a close is requested, including Escape, backdrop and custom actions. */
+  onClose?: () => void;
+  hideCloseButton?: boolean;
+  isDismissable?: boolean;
+  isKeyboardDismissDisabled?: boolean;
+  classNames?: Partial<Record<"trigger" | "backdrop" | "container" | "dialog" | "surface" | "content" | "header" | "title" | "closeButton" | "body" | "footer", string>>;
+};
+
+export function LiquidNextUIModal({
+  triggerLabel, title, children, footer, glass, isDisabled,
+  isOpen, defaultOpen = false, onOpenChange, onClose,
+  hideCloseButton = false, isDismissable = true, isKeyboardDismissDisabled = false,
+  classNames,
+}: LiquidModalProps) {
+  const [localOpen, setLocalOpen] = useState(defaultOpen);
+  const open = isOpen ?? localOpen;
+  const changeOpen = (next: boolean) => {
+    if (next === open) return;
+    if (isOpen === undefined) setLocalOpen(next);
+    onOpenChange?.(next);
+    if (!next) onClose?.();
+  };
+  const controls: LiquidModalRenderProps = { close: () => changeOpen(false) };
+  const customFooter = typeof footer === "function" ? footer(controls) : footer;
   return (
-    <Modal>
-      <LiquidNextUIButton isDisabled={isDisabled} glass={glass}>
+    <Modal isOpen={open} onOpenChange={changeOpen}>
+      <LiquidNextUIButton isDisabled={isDisabled} glass={glass} className={classNames?.trigger}>
         {triggerLabel}
       </LiquidNextUIButton>
-      <Modal.Backdrop className={styles.modalBackdrop}>
-        <Modal.Container className={styles.modalContainer}>
-          <Modal.Dialog className={styles.dialog} aria-label={title}>
-            <GlassSurface
-              {...glass}
-              radius={32}
-              opacity={0.6}
-              blur={3}
-              thickness={80}
-            >
-              <div className={styles.dialogContent}>
-                <Modal.Header className={styles.dialogHeader}>
-                  <Modal.Heading className={styles.dialogTitle}>
-                    {title}
-                  </Modal.Heading>
-                  <Modal.CloseTrigger
-                    aria-label="Close dialog"
-                    className={styles.close}
-                  >
-                    ×
-                  </Modal.CloseTrigger>
+      <Modal.Backdrop className={cn(styles.modalBackdrop, classNames?.backdrop)}
+        isDismissable={isDismissable} isKeyboardDismissDisabled={isKeyboardDismissDisabled}>
+        <Modal.Container className={cn(styles.modalContainer, classNames?.container)}>
+          <Modal.Dialog className={cn(styles.dialog, classNames?.dialog)} aria-label={title}>
+            <GlassSurface {...glass} radius={32} opacity={0.6} blur={3} thickness={80} className={classNames?.surface}>
+              <div className={cn(styles.dialogContent, classNames?.content)}>
+                <Modal.Header className={cn(styles.dialogHeader, classNames?.header)}>
+                  <Modal.Heading className={cn(styles.dialogTitle, classNames?.title)}>{title}</Modal.Heading>
+                  {!hideCloseButton && <Modal.CloseTrigger aria-label="Close dialog" className={cn(styles.close, classNames?.closeButton)}>×</Modal.CloseTrigger>}
                 </Modal.Header>
-                <Modal.Body className={styles.dialogBody}>
-                  {children}
+                <Modal.Body className={cn(styles.dialogBody, classNames?.body)}>
+                  {typeof children === "function" ? children(controls) : children}
                 </Modal.Body>
-                <Modal.Footer className={styles.dialogFooter}>
-                  <Modal.CloseTrigger className={styles.done} aria-label="Done">
-                    <GlassSurface
-                      {...glass}
-                      opacity={0.15}
-                      radius={24}
-                      blur={0}
-                      thickness={60}
-                    >
-                      <span>Done</span>
-                    </GlassSurface>
-                  </Modal.CloseTrigger>
-                </Modal.Footer>
+                {customFooter != null && <Modal.Footer data-slot="modal-footer" className={cn(styles.dialogFooter, classNames?.footer)}>
+                  {customFooter}
+                </Modal.Footer>}
               </div>
             </GlassSurface>
           </Modal.Dialog>

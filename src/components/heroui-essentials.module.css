@@ -229,22 +229,9 @@
   font-size: 15px;
 }
 .dialogFooter {
-  @apply liquid:flex liquid:justify-end;
+  @apply liquid:flex liquid:flex-wrap liquid:justify-end liquid:gap-3;
 }
-.done {
-  @apply liquid:p-0;
-  background: transparent;
-  @apply liquid:rounded-[24px];
-  cursor: pointer;
-}
-.done span {
-  @apply liquid:flex liquid:items-center liquid:justify-center liquid:h-[48px];
-  padding: 0 28px;
-  font-size: 14px;
-  @apply liquid:font-semibold;
-}
-.close:focus-visible,
-.done:focus-visible {
+.close:focus-visible {
   outline: 1px solid #536078;
   outline-offset: 4px;
 }

@@ -37,7 +37,7 @@ The table includes the component-specific props and common control props. Requir
 | `children` | No | `ReactNode` | Custom body content below the optional navigation links. |
 | `footer` | No | `ReactNode` | Bottom content, outside the scrollable body. |
 | `style` | No | `CSSProperties` | Root sizing and styling, such as width and height. |
-| `classNames` | No | `Partial<Record<"body" \| "footer" \| "header" \| "heading" \| "navigation" \| "content" \| "surface" \| "item" \| "actions" \| "container" \| "headingRow" \| "collapseButton", string>>` | Tailwind classes for individual sidebar slots. |
+| `classNames` | No | `Partial<Record<"body" \| "footer" \| "header" \| "heading" \| "navigation" \| "content" \| "container" \| "surface" \| "item" \| "actions" \| "headingRow" \| "collapseButton", string>>` | Tailwind classes for individual sidebar slots. |
 | `isCollapsed` | No | `boolean` |  |
 | `onCollapsedChange` | No | `(collapsed: boolean) => void` |  |
 

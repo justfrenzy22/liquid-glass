@@ -17,6 +17,7 @@ import {
 } from "@justfrenzy/liquid-glass";
 
 export function SidebarWithFolderDialog() {
+  const [isOpen, setIsOpen] = useState(false);
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
   const [folders, setFolders] = useState<
@@ -31,7 +32,7 @@ export function SidebarWithFolderDialog() {
         ...folders,
       ]}
       actions={
-        <LiquidModal triggerLabel="New folder" title="Create a folder">
+        <LiquidModal triggerLabel="New folder" title="Create a folder" isOpen={isOpen} onOpenChange={setIsOpen}>
           <LiquidForm
             onSubmit={(event) => {
               event.preventDefault();
@@ -43,6 +44,7 @@ export function SidebarWithFolderDialog() {
                 { id, label: folderName, href: `#folder-${id}` },
               ]);
               setName("");
+              setIsOpen(false);
               setMessage(`Created folder "${folderName}".`);
             }}
           >
@@ -77,7 +79,7 @@ export function SidebarWithFolderDialog() {
 
 This example adds a sidebar item to local React state. It does not persist a folder or call a backend. Replace the state-only creation with your own API request when integrating storage; only add the item after that request succeeds. The sample hash links are placeholders for your application's folder navigation.
 
-The modal opens when its New Folder button is pressed. Use its built-in **Done**, close button or Escape to dismiss it. The current `LiquidModal` wrapper does not expose controlled `isOpen`/`onOpenChange` props; it does not automatically close after this form submits.
+The modal closes after this local save succeeds. Control `isOpen` with `onOpenChange` to close it after your own async request. There is no default Done button; add custom actions with `footer={({ close }) => ...}`. See the [Modal reference](../components/LiquidModal.md) for closing and dismissal options.
 
 ## Other sidebar content
 

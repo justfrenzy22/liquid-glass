@@ -1,6 +1,6 @@
 {
   "name": "@justfrenzy/liquid-glass",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "React liquid glass components with desktop refraction, reflective Safari/mobile rendering, and optional HeroUI controls.",
   "type": "module",
   "license": "MIT",

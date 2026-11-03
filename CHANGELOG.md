@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.1
+
+- Remove the mandatory Done action from LiquidModal. No footer is rendered unless supplied.
+- Add custom footer and body render functions receiving `close()`, controlled open state, `onClose`, dismissal options and per-part classes.
+- Keep the accessible header close button by default, with an option to hide it.
+
 ## 0.3.0
 
 - Author layout, spacing and typography in all 14 component style modules with Tailwind CSS 4, while retaining custom optical CSS.

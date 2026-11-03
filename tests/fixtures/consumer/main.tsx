@@ -6,6 +6,8 @@ import { GlassButton, GlassSlider, GlassCard } from "@justfrenzy/liquid-glass/na
 import "./consumer.css";
 
 function ConsumerFixture() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [closeCount, setCloseCount] = useState(0);
   const [mode, setMode] = useState<GlassRenderMode>("auto");
   const [slider, setSlider] = useState(40);
   const [sync, setSync] = useState(true);
@@ -38,7 +40,7 @@ function ConsumerFixture() {
           <section><h2>Draggable tabs</h2><LiquidTabs label="File views" selectedKey={tab} onSelectionChange={setTab} items={[
             { id: "files", label: "Files", content: "All your files in one place." }, { id: "recent", label: "Recent", content: "Continue where you left off." }, { id: "shared", label: "Shared", content: "A space for the whole team." },
           ]} /></section>
-          <section><h2>Overlays</h2><div className="stack"><LiquidModal triggerLabel="Open modal" title="A little more detail"><p>This is the packaged HeroUI modal. Press Escape or Done to close it.</p></LiquidModal><LiquidColorPicker label="Choose accent" defaultValue="#0878ed" /></div></section>
+          <section><h2>Overlays</h2><div className="stack"><LiquidModal triggerLabel="Open modal" title="A little more detail" isOpen={modalOpen} onOpenChange={setModalOpen} onClose={() => setCloseCount(value => value + 1)} footer={({ close }) => <><LiquidButton appearance="normal" onPress={close}>Cancel</LiquidButton><LiquidButton appearance="colored" onPress={() => { setClicks(value => value + 1); close(); }}>Save</LiquidButton></>}><p>This is the packaged HeroUI modal. Press Escape or use your own footer actions to close it.</p></LiquidModal><output aria-label="Modal closes">{closeCount}</output><LiquidModal triggerLabel="No footer modal" title="No default actions"><p>No footer supplied.</p></LiquidModal><LiquidModal triggerLabel="Body actions modal" title="Custom body actions" hideCloseButton>{({ close }) => <LiquidButton onPress={close}>Close from body</LiquidButton>}</LiquidModal><LiquidColorPicker label="Choose accent" defaultValue="#0878ed" /></div></section>
           <section><h2>Glass panel</h2><GlassCard opacity={0.1} blur={0}><h3>Your next idea</h3><p>A separate decoration layer keeps text and controls sharp.</p></GlassCard></section>
           <section className="full"><h2>Quiet file lists</h2><FinderTable aria-label="Example files" columns={[{ id: "name", label: "Name", isRowHeader: true }, { id: "kind", label: "Kind" }]} rows={[
             { id: "brief", values: { name: "Project brief", kind: "Document" } }, { id: "research", values: { name: "Research", kind: "Folder" } }, { id: "notes", values: { name: "Meeting notes", kind: "Document" } },
