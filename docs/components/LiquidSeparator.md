@@ -7,7 +7,7 @@ Use LiquidSeparator in a React client component. The example below uses the expo
 ```tsx
 "use client";
 
-import { LiquidSeparator } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidSeparator } from "@justfrenzy/liquid-glass";
 
 export function LiquidSeparatorExample() {
   return (
@@ -34,7 +34,7 @@ The table includes the component-specific props and common control props. Requir
 
 ```tsx
 import type { ComponentProps } from "react";
-import { LiquidSeparator } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidSeparator } from "@justfrenzy/liquid-glass";
 type Props = ComponentProps<typeof LiquidSeparator>;
 ```
 

@@ -7,7 +7,7 @@ A button with normal, clear-glass and colored-glass finishes. Uses HeroUI onPres
 ```tsx
 "use client";
 
-import { LiquidButton } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidButton } from "@justfrenzy/liquid-glass";
 
 export function LiquidButtonExample() {
   return (
@@ -29,10 +29,10 @@ The table includes the component-specific props and common control props. Requir
 | `aria-label` | No | `string` | Defines a string value that labels the current element. |
 | `onClick` | No | `(e: MouseEvent<FocusableElement, MouseEvent>) => void` | **Not recommended – use `onPress` instead.** `onClick` is an alias for `onPress` provided for compatibility with other libraries. `onPress` provides additional event details for non-mouse interactions. |
 | `name` | No | `string` | Submitted as a pair with the button's value as part of the form data. |
-| `type` | No | `"button" \| "submit" \| "reset"` | The behavior of the button when used in an HTML form. |
-| `value` | No | `string` | The value associated with the button's name when it's submitted with the form data. |
 | `isDisabled` | No | `boolean` | Whether the button is disabled. |
 | `onPress` | No | `(e: PressEvent) => void` | Handler that is called when the press is released over the target. |
+| `type` | No | `"button" \| "submit" \| "reset"` | The behavior of the button when used in an HTML form. |
+| `value` | No | `string` | The value associated with the button's name when it's submitted with the form data. |
 | `children` | Yes | `ReactNode` |  |
 | `glass` | No | `GlassConfig` |  |
 | `appearance` | No | `"glass" \| "normal" \| "colored"` |  |
@@ -47,13 +47,13 @@ The table includes the component-specific props and common control props. Requir
 <LiquidButton appearance="colored" glassColor="#0878ed">Blue glass</LiquidButton>
 ```
 
-Use `isDisabled` to disable the button. Use `onPress` for mouse, touch and keyboard activation. A button defaults to an ordinary action; set `type="submit"` inside a form when it should submit. `GlassButton` uses `onClick` and `disabled` instead. A button does not perform navigation, save data or submit an API request unless you provide that behavior.
+Use `isDisabled` to disable the button. Use `onPress` for mouse, touch and keyboard activation. A button defaults to an ordinary action; set `type="submit"` inside a form when it should submit. Only the optional `/native` entry retains `onClick` and `disabled` as its native button API. A button does not perform navigation, save data or submit an API request unless you provide that behavior.
 
 ## TypeScript
 
 ```tsx
 import type { ComponentProps } from "react";
-import { LiquidButton } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidButton } from "@justfrenzy/liquid-glass";
 type Props = ComponentProps<typeof LiquidButton>;
 ```
 

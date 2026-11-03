@@ -7,7 +7,7 @@ Use LiquidAutocomplete in a React client component. The example below uses the e
 ```tsx
 "use client";
 
-import { LiquidAutocomplete } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidAutocomplete } from "@justfrenzy/liquid-glass";
 
 export function LiquidAutocompleteExample() {
   return (
@@ -30,10 +30,10 @@ The table includes the component-specific props and common control props. Requir
 | `onChange` | No | `(value: Key) => void` | Handler that is called when the value changes. |
 | `onClick` | No | `MouseEventHandler<HTMLDivElement>` |  |
 | `name` | No | `string` | The name of the input, used when submitting an HTML form. |
-| `value` | No | `Key` | The current value (controlled). |
 | `selectionMode` | No | `"single"` | Whether single or multiple selection is enabled. |
 | `onSelectionChange` | No | `(key: Key) => void` | Handler that is called when the selection changes. |
 | `isDisabled` | No | `boolean` | Whether the input is disabled. |
+| `value` | No | `Key` | The current value (controlled). |
 | `isRequired` | No | `boolean` | Whether user input is required on the input before form submission. |
 | `isInvalid` | No | `boolean` | Whether the input value is invalid. |
 | `selectedKey` | No | `Key` | The currently selected key in the collection (controlled). |
@@ -50,7 +50,7 @@ The table includes the component-specific props and common control props. Requir
 
 ```tsx
 import type { ComponentProps } from "react";
-import { LiquidAutocomplete } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidAutocomplete } from "@justfrenzy/liquid-glass";
 type Props = ComponentProps<typeof LiquidAutocomplete>;
 ```
 

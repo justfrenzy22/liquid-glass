@@ -7,7 +7,7 @@ Use LiquidButtonGroup in a React client component. The example below uses the ex
 ```tsx
 "use client";
 
-import { LiquidButtonGroup } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidButtonGroup } from "@justfrenzy/liquid-glass";
 
 export function LiquidButtonGroupExample() {
   return (
@@ -34,7 +34,7 @@ The table includes the component-specific props and common control props. Requir
 
 ```tsx
 import type { ComponentProps } from "react";
-import { LiquidButtonGroup } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidButtonGroup } from "@justfrenzy/liquid-glass";
 type Props = ComponentProps<typeof LiquidButtonGroup>;
 ```
 

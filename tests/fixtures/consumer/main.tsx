@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { createRoot } from "react-dom/client";
-import { GlassRenderingProvider, GlassEmptyState, GlassButton, GlassCard, GlassSlider, useGlassEnvironment, type GlassRenderMode } from "@justfrenzy/liquid-glass";
+import { GlassRenderingProvider, GlassEmptyState, GlassNavbar, GlassSidebar, GlassSwitch, useGlassEnvironment, type GlassRenderMode } from "@justfrenzy/liquid-glass";
 import { LiquidButton, LiquidSwitch, LiquidInput, LiquidTabs, LiquidNavbar, LiquidSidebar, LiquidModal, LiquidColorPicker, FinderTable } from "@justfrenzy/liquid-glass/heroui";
+import { GlassButton, GlassSlider, GlassCard } from "@justfrenzy/liquid-glass/native";
 import "./consumer.css";
 
 function ConsumerFixture() {
@@ -21,8 +22,8 @@ function ConsumerFixture() {
       <output aria-label="Environment">{environment ? `${environment.browser} · ${environment.device}` : "Detecting…"}</output>
     </div>
     <div className="scene">
-      <LiquidNavbar brand="Liquid Glass" items={items.slice(0, 2)} activeKey={active} onNavigate={setActive} />
-      <div className="workspace"><LiquidSidebar heading="Workspace" items={items} activeKey={active} onNavigate={setActive} isCollapsed={collapsed} onCollapsedChange={setCollapsed} footer="Your space to create." />
+      <GlassNavbar brand="Liquid Glass" items={items.slice(0, 2)} activeKey={active} onNavigate={setActive} />
+      <div className="workspace"><GlassSidebar heading="Workspace" items={items} activeKey={active} onNavigate={setActive} isCollapsed={collapsed} onCollapsedChange={setCollapsed} footer="Your space to create." />
         <div className="examples">
           <section><h2>Button finishes</h2><div className="stack">
             <LiquidButton appearance="normal" onPress={() => setClicks(clicks + 1)}>Normal</LiquidButton>
@@ -32,7 +33,7 @@ function ConsumerFixture() {
           </div></section>
           <section><GlassEmptyState title="No files yet" description="Upload a file to get started." actions={<GlassButton onClick={() => setClicks(clicks + 1)}>Upload first file</GlassButton>} /></section>
           <section><h2>Native primitives</h2><div className="stack"><GlassSlider label="Glass slider" value={slider} onValueChange={setSlider} /><GlassButton onClick={() => setClicks(clicks + 1)}>Native button</GlassButton></div></section>
-          <section><h2>HeroUI interactions</h2><div className="stack"><LiquidSwitch label="Automatic sync" isSelected={sync} onChange={setSync} /><LiquidInput label="Find a file" value={query} onChange={setQuery} inputProps={{ type: "search", placeholder: "Search…" }} /><output aria-label="Search result">{query || "Your files are ready."}</output></div></section>
+          <section><h2>HeroUI interactions</h2><div className="stack"><GlassSwitch label="Automatic sync" isSelected={sync} onChange={setSync} /><LiquidInput label="Find a file" value={query} onChange={setQuery} inputProps={{ type: "search", placeholder: "Search…" }} /><output aria-label="Search result">{query || "Your files are ready."}</output></div></section>
           <section><h2>Draggable tabs</h2><LiquidTabs label="File views" selectedKey={tab} onSelectionChange={setTab} items={[
             { id: "files", label: "Files", content: "All your files in one place." }, { id: "recent", label: "Recent", content: "Continue where you left off." }, { id: "shared", label: "Shared", content: "A space for the whole team." },
           ]} /></section>

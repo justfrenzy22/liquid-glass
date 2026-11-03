@@ -7,7 +7,7 @@ Use LiquidDisclosure in a React client component. The example below uses the exp
 ```tsx
 "use client";
 
-import { LiquidDisclosure } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidDisclosure } from "@justfrenzy/liquid-glass";
 
 export function LiquidDisclosureExample() {
   return (
@@ -36,7 +36,7 @@ The table includes the component-specific props and common control props. Requir
 
 ```tsx
 import type { ComponentProps } from "react";
-import { LiquidDisclosure } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidDisclosure } from "@justfrenzy/liquid-glass";
 type Props = ComponentProps<typeof LiquidDisclosure>;
 ```
 

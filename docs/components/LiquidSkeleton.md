@@ -7,7 +7,7 @@ Use LiquidSkeleton in a React client component. The example below uses the expor
 ```tsx
 "use client";
 
-import { LiquidSkeleton } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidSkeleton } from "@justfrenzy/liquid-glass";
 
 export function LiquidSkeletonExample() {
   return (
@@ -38,7 +38,7 @@ The table includes the component-specific props and common control props. Requir
 
 ```tsx
 import type { ComponentProps } from "react";
-import { LiquidSkeleton } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidSkeleton } from "@justfrenzy/liquid-glass";
 type Props = ComponentProps<typeof LiquidSkeleton>;
 ```
 

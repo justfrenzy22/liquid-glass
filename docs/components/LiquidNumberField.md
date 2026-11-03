@@ -7,7 +7,7 @@ Use LiquidNumberField in a React client component. The example below uses the ex
 ```tsx
 "use client";
 
-import { LiquidNumberField } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidNumberField } from "@justfrenzy/liquid-glass";
 
 export function LiquidNumberFieldExample() {
   return (
@@ -32,8 +32,8 @@ The table includes the component-specific props and common control props. Requir
 | `onChange` | No | `(value: number) => void` | Handler that is called when the value changes. |
 | `onClick` | No | `MouseEventHandler<HTMLDivElement>` |  |
 | `name` | No | `string` | The name of the input element, used when submitting an HTML form. See [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefname). |
-| `value` | No | `number` | The current value (controlled). |
 | `isDisabled` | No | `boolean` | Whether the input is disabled. |
+| `value` | No | `number` | The current value (controlled). |
 | `minValue` | No | `number` | The smallest value allowed for the input. |
 | `maxValue` | No | `number` | The largest value allowed for the input. |
 | `isRequired` | No | `boolean` | Whether user input is required on the input before form submission. |
@@ -47,7 +47,7 @@ The table includes the component-specific props and common control props. Requir
 
 ```tsx
 import type { ComponentProps } from "react";
-import { LiquidNumberField } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidNumberField } from "@justfrenzy/liquid-glass";
 type Props = ComponentProps<typeof LiquidNumberField>;
 ```
 

@@ -7,7 +7,7 @@ A form container with HeroUI validation support. You supply fields and submissio
 ```tsx
 "use client";
 
-import { LiquidForm } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidForm } from "@justfrenzy/liquid-glass";
 
 export function LiquidFormExample() {
   return (
@@ -41,7 +41,7 @@ Use `event.preventDefault()` for client-side submission and read `new FormData(e
 
 ```tsx
 import type { ComponentProps } from "react";
-import { LiquidForm } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidForm } from "@justfrenzy/liquid-glass";
 type Props = ComponentProps<typeof LiquidForm>;
 ```
 

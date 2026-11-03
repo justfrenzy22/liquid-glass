@@ -1,4 +1,5 @@
 "use client";
+export * from "./components/unified-aliases.js";
 export { GlassEmptyState as LiquidEmptyState, type GlassEmptyStateProps as LiquidEmptyStateProps } from "./components/glass-empty-state.js";
 export * from "./components/nextui.js";
 export { toast, parseColor } from "@heroui/react";

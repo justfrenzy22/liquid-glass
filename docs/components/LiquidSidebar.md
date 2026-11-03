@@ -7,7 +7,7 @@ A vertical navigation area with optional controlled collapse, counts and footer 
 ```tsx
 "use client";
 
-import { LiquidSidebar } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidSidebar } from "@justfrenzy/liquid-glass";
 
 export function LiquidSidebarExample() {
   return (
@@ -41,11 +41,34 @@ The table includes the component-specific props and common control props. Requir
 
 For an interactive collapse control, keep `isCollapsed` in `useState` and pass its setter as `onCollapsedChange`. Items use ordinary links: `onNavigate` reports an ID but does not cancel navigation. Match `activeKey` to the current route. `appearance` accepts `"normal"`, `"glass"`, or `"colored"`.
 
+## Controlled collapse example
+
+```tsx
+"use client";
+
+import { useState } from "react";
+import { LiquidSidebar } from "@justfrenzy/liquid-glass";
+
+export function CollapsibleSidebar() {
+  const [collapsed, setCollapsed] = useState(false);
+  return (
+    <LiquidSidebar
+      heading="Workspace"
+      items={[{ id: "files", label: "Files", href: "/files" }]}
+      activeKey="files"
+      isCollapsed={collapsed}
+      onCollapsedChange={setCollapsed}
+      footer={<span>Your workspace</span>}
+    />
+  );
+}
+```
+
 ## TypeScript
 
 ```tsx
 import type { ComponentProps } from "react";
-import { LiquidSidebar } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidSidebar } from "@justfrenzy/liquid-glass";
 type Props = ComponentProps<typeof LiquidSidebar>;
 ```
 

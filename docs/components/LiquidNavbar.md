@@ -7,7 +7,7 @@ A navigation header with a brand, real links, active-item styling and an optiona
 ```tsx
 "use client";
 
-import { LiquidNavbar } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidNavbar } from "@justfrenzy/liquid-glass";
 
 export function LiquidNavbarExample() {
   return (
@@ -66,7 +66,7 @@ export function Navigation() {
 
 ```tsx
 import type { ComponentProps } from "react";
-import { LiquidNavbar } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidNavbar } from "@justfrenzy/liquid-glass";
 type Props = ComponentProps<typeof LiquidNavbar>;
 ```
 

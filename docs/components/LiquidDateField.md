@@ -7,7 +7,7 @@ Use LiquidDateField in a React client component. The example below uses the expo
 ```tsx
 "use client";
 
-import { LiquidDateField } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidDateField } from "@justfrenzy/liquid-glass";
 
 export function LiquidDateFieldExample() {
   return (
@@ -31,8 +31,8 @@ The table includes the component-specific props and common control props. Requir
 | `onChange` | No | `(value: MappedDateValue<T>) => void` | Handler that is called when the value changes. |
 | `onClick` | No | `MouseEventHandler<HTMLDivElement>` |  |
 | `name` | No | `string` | The name of the input element, used when submitting an HTML form. See [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefname). |
-| `value` | No | `T` | The current value (controlled). |
 | `isDisabled` | No | `boolean` | Whether the input is disabled. |
+| `value` | No | `T` | The current value (controlled). |
 | `minValue` | No | `DateValue` | The minimum allowed date that a user may select. |
 | `maxValue` | No | `DateValue` | The maximum allowed date that a user may select. |
 | `isRequired` | No | `boolean` | Whether user input is required on the input before form submission. |
@@ -45,7 +45,7 @@ The table includes the component-specific props and common control props. Requir
 
 ```tsx
 import type { ComponentProps } from "react";
-import { LiquidDateField } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidDateField } from "@justfrenzy/liquid-glass";
 type Props = ComponentProps<typeof LiquidDateField>;
 ```
 

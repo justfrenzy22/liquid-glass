@@ -7,7 +7,7 @@ Use LiquidColorSwatchPicker in a React client component. The example below uses 
 ```tsx
 "use client";
 
-import { LiquidColorSwatchPicker } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidColorSwatchPicker } from "@justfrenzy/liquid-glass";
 
 export function LiquidColorSwatchPickerExample() {
   return (
@@ -40,7 +40,7 @@ The table includes the component-specific props and common control props. Requir
 
 ```tsx
 import type { ComponentProps } from "react";
-import { LiquidColorSwatchPicker } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidColorSwatchPicker } from "@justfrenzy/liquid-glass";
 type Props = ComponentProps<typeof LiquidColorSwatchPicker>;
 ```
 

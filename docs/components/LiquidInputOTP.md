@@ -7,7 +7,7 @@ Use LiquidInputOTP in a React client component. The example below uses the expor
 ```tsx
 "use client";
 
-import { LiquidInputOTP } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidInputOTP } from "@justfrenzy/liquid-glass";
 
 export function LiquidInputOTPExample() {
   return (
@@ -34,13 +34,13 @@ The table includes the component-specific props and common control props. Requir
 | `onSubmit` | No | `SubmitEventHandler<HTMLInputElement>` |  |
 | `onClick` | No | `MouseEventHandler<HTMLInputElement>` |  |
 | `name` | No | `string` |  |
+| `isDisabled` | No | `boolean` |  |
 | `type` | No | `HTMLInputTypeAttribute` |  |
+| `value` | No | `string` |  |
+| `isInvalid` | No | `boolean` |  |
 | `checked` | No | `boolean` |  |
 | `max` | No | `string \| number` |  |
 | `min` | No | `string \| number` |  |
-| `value` | No | `string` |  |
-| `isDisabled` | No | `boolean` |  |
-| `isInvalid` | No | `boolean` |  |
 | `label` | Yes | `string` |  |
 | `glass` | No | `GlassConfig` |  |
 | `maxLength` | No | `number` |  |
@@ -50,7 +50,7 @@ The table includes the component-specific props and common control props. Requir
 
 ```tsx
 import type { ComponentProps } from "react";
-import { LiquidInputOTP } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidInputOTP } from "@justfrenzy/liquid-glass";
 type Props = ComponentProps<typeof LiquidInputOTP>;
 ```
 

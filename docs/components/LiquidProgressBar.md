@@ -7,7 +7,7 @@ Use LiquidProgressBar in a React client component. The example below uses the ex
 ```tsx
 "use client";
 
-import { LiquidProgressBar } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidProgressBar } from "@justfrenzy/liquid-glass";
 
 export function LiquidProgressBarExample() {
   return (
@@ -40,7 +40,7 @@ The table includes the component-specific props and common control props. Requir
 
 ```tsx
 import type { ComponentProps } from "react";
-import { LiquidProgressBar } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidProgressBar } from "@justfrenzy/liquid-glass";
 type Props = ComponentProps<typeof LiquidProgressBar>;
 ```
 

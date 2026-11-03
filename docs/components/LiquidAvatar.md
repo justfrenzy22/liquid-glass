@@ -7,7 +7,7 @@ Use LiquidAvatar in a React client component. The example below uses the exporte
 ```tsx
 "use client";
 
-import { LiquidAvatar } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidAvatar } from "@justfrenzy/liquid-glass";
 
 export function LiquidAvatarExample() {
   return (
@@ -41,7 +41,7 @@ The table includes the component-specific props and common control props. Requir
 
 ```tsx
 import type { ComponentProps } from "react";
-import { LiquidAvatar } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidAvatar } from "@justfrenzy/liquid-glass";
 type Props = ComponentProps<typeof LiquidAvatar>;
 ```
 

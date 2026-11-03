@@ -17,7 +17,7 @@ await writeFile(path.join(root, "src/styles.ts"), [
 ].join("\n"));
 await build({
   absWorkingDir: root,
-  entryPoints: { index: "src/index.ts", heroui: "src/heroui.ts", styles: "src/styles.ts" },
+  entryPoints: { index: "src/index.ts", heroui: "src/heroui.ts", native: "src/native.ts", styles: "src/styles.ts" },
   outdir: dist,
   bundle: true,
   splitting: true,
@@ -33,7 +33,7 @@ await build({
   logLevel: "info",
 });
 // Browser consumers get CSS automatically; Node SSR uses the CSS-free entries.
-for (const entry of ["index", "heroui"]) {
+for (const entry of ["index", "heroui", "native"]) {
   await writeFile(path.join(dist, `${entry}.browser.js`), `"use client";\nimport "./styles.css";\nexport * from "./${entry}.js";\n`);
 }
 execFileSync(process.execPath, [path.join(root, "node_modules/typescript/bin/tsc"), "-p", "tsconfig.build.json"], { cwd: root, stdio: "inherit" });

@@ -7,7 +7,7 @@ Use LiquidCheckboxGroup in a React client component. The example below uses the 
 ```tsx
 "use client";
 
-import { LiquidCheckboxGroup } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidCheckboxGroup } from "@justfrenzy/liquid-glass";
 
 export function LiquidCheckboxGroupExample() {
   return (
@@ -31,8 +31,8 @@ The table includes the component-specific props and common control props. Requir
 | `onChange` | No | `(value: string[]) => void` | Handler that is called when the value changes. |
 | `onClick` | No | `MouseEventHandler<HTMLDivElement>` |  |
 | `name` | No | `string` | The name of the input element, used when submitting an HTML form. See [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefname). |
-| `value` | No | `string[]` | The current value (controlled). |
 | `isDisabled` | No | `boolean` | Whether the input is disabled. |
+| `value` | No | `string[]` | The current value (controlled). |
 | `isRequired` | No | `boolean` | Whether user input is required on the input before form submission. |
 | `isInvalid` | No | `boolean` | Whether the input value is invalid. |
 | `label` | Yes | `string` |  |
@@ -45,7 +45,7 @@ The table includes the component-specific props and common control props. Requir
 
 ```tsx
 import type { ComponentProps } from "react";
-import { LiquidCheckboxGroup } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidCheckboxGroup } from "@justfrenzy/liquid-glass";
 type Props = ComponentProps<typeof LiquidCheckboxGroup>;
 ```
 

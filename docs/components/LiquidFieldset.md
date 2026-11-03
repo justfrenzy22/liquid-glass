@@ -7,7 +7,7 @@ Use LiquidFieldset in a React client component. The example below uses the expor
 ```tsx
 "use client";
 
-import { LiquidFieldset } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidFieldset } from "@justfrenzy/liquid-glass";
 
 export function LiquidFieldsetExample() {
   return (
@@ -43,7 +43,7 @@ The table includes the component-specific props and common control props. Requir
 
 ```tsx
 import type { ComponentProps } from "react";
-import { LiquidFieldset } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidFieldset } from "@justfrenzy/liquid-glass";
 type Props = ComponentProps<typeof LiquidFieldset>;
 ```
 

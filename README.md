@@ -18,7 +18,7 @@ Curious about the optics, Safari treatment and design tradeoffs? Read the [resea
 - Controls retain keyboard operation, disabled states and reduced-motion support. Text remains on a separate, sharp layer.
 - Compiled JavaScript, TypeScript declarations and CSS are included. No Next.js, Tailwind configuration, application aliases or remote visual assets are required.
 
-**Release:** `0.1.4`. Repository: `liquid-glass`. Package/import name: `@justfrenzy/liquid-glass`.
+**Release:** `0.2.0`. Repository: `liquid-glass`. Package/import name: `@justfrenzy/liquid-glass`.
 
 ## Install
 
@@ -44,20 +44,20 @@ The explicit `@justfrenzy/liquid-glass/styles.css` export remains available if y
 
 The CSS contains compiled CSS modules and a small reset scoped to library surfaces. Do not add a Tailwind build or HeroUI global theme just to use this library. HeroUI is a package dependency. React and the verified React Aria versions are shared peers, installed automatically by modern npm; this prevents multiple incompatible copies. If your app already uses newer React Aria versions, reconcile those exact peer requirements before upgrading.
 
-## Native React controls
+## One component collection
 
 ```tsx
 "use client";
 
 import { useState } from "react";
-import { GlassButton, GlassSlider, GlassRenderingProvider } from "@justfrenzy/liquid-glass";
+import { LiquidButton, LiquidSlider, GlassRenderingProvider } from "@justfrenzy/liquid-glass";
 
 export function Controls() {
   const [volume, setVolume] = useState(40);
   return (
     <GlassRenderingProvider mode="auto">
-      <GlassButton onClick={() => console.log("Clicked")}>Continue</GlassButton>
-      <GlassSlider label="Volume" value={volume} onValueChange={setVolume} />
+      <LiquidButton onPress={() => console.log("Clicked")}>Continue</LiquidButton>
+      <LiquidSlider label="Volume" value={volume} onChange={(value) => setVolume(Number(value))} />
     </GlassRenderingProvider>
   );
 }
@@ -79,7 +79,7 @@ export function EmptyFolder({ onUpload }: { onUpload: () => void }) {
     <GlassEmptyState
       title="No files yet"
       description="Upload your first file to get started."
-      actions={<GlassButton onClick={onUpload}>Upload a file</GlassButton>}
+      actions={<GlassButton onPress={onUpload}>Upload a file</GlassButton>}
     />
   );
 }
@@ -87,13 +87,13 @@ export function EmptyFolder({ onUpload }: { onUpload: () => void }) {
 
 The optional `icon` slot is decorative. The heading labels the region and the description is associated automatically. Pass `mode="compatible"` to force the Safari-style finish. It is also exported as `LiquidEmptyState` from `/heroui`; both names refer to the same component.
 
-## HeroUI controls
+## Buttons, switches and inputs
 
 ```tsx
 "use client";
 
 import { useState } from "react";
-import { LiquidButton, LiquidSwitch, LiquidInput } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidButton, LiquidSwitch, LiquidInput } from "@justfrenzy/liquid-glass";
 
 export function FormControls() {
   const [sync, setSync] = useState(true);
@@ -110,9 +110,9 @@ export function FormControls() {
 }
 ```
 
-HeroUI controls use `onPress`, `isDisabled` and their corresponding HeroUI value props. Native primitives use `onClick`, `disabled` and native input props. `GlassSlider` provides `onValueChange`; `LiquidSlider` uses `onChange` and `minValue`/`maxValue`.
+Use `onPress`, `isDisabled` and the value props shown in each component guide. Matching names such as `GlassButton`/`LiquidButton`, `GlassSwitch`/`LiquidSwitch`, `GlassNavbar`/`LiquidNavbar` and `GlassSidebar`/`LiquidSidebar` are aliases of the same component, with the same props and liquid design. All main components are available from the package root. Existing `/heroui` imports remain supported.
 
-The core entry does not import HeroUI JavaScript. The `/heroui` entry provides the extended controls. Original `LiquidNextUI*` exports are retained as compatibility aliases; new code can use the shorter `Liquid*` names.
+**Upgrading from 0.1.x?** Some root `Glass*` props have changed. Read the [0.2 migration guide](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/migration-0.2.md). The previous native APIs remain available explicitly from `/native`.
 
 ### Next.js
 
@@ -173,7 +173,7 @@ Detection checks CSS capabilities, navigator information, optional mobile client
 
 ## Component guides
 
-**[Browse all 90 component guides](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/components/README.md)** to find a component's import, copyable example, required props and usage notes.
+**[Browse all 91 component guides](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/components/README.md)** to find a component's import, copyable example, required props and usage notes.
 
 | Start here | Guide |
 | --- | --- |
@@ -186,9 +186,9 @@ Detection checks CSS capabilities, navigator information, optional mobile client
 
 ## Included components
 
-**Core:** GlassEmptyState, GlassSurface, GlassRenderingProvider, GlassButton, GlassIconButton, GlassInput, GlassSearch, GlassSwitch, GlassSlider, GlassCard, GlassPanel, GlassToolbar, GlassNavbar, GlassFileCard, GlassFolderCard, GlassUploadButton and GlassSearchBar. Also exported: useGlassEnvironment, glassDefaults, GlassConfig and environment-selection helpers.
+**Shared surfaces and aliases:** GlassEmptyState, GlassSurface, GlassRenderingProvider, GlassButton, GlassIconButton, GlassInput, GlassSearch, GlassSwitch, GlassSlider, GlassCard, GlassPanel, GlassToolbar, GlassNavbar, GlassSidebar, GlassFileCard, GlassFolderCard, GlassUploadButton and GlassSearchBar. Also exported: useGlassEnvironment, glassDefaults, GlassConfig and environment-selection helpers. Matching Glass/Liquid controls share the enhanced implementation; the original native controls are available from `/native`.
 
-The following names use the `Liquid` prefix in `/heroui`:
+The following names use the `Liquid` prefix and are available at the package root (and `/heroui` for compatibility):
 
 | Group | Components |
 | --- | --- |
@@ -224,7 +224,7 @@ Install the package into your existing React application and use the imports abo
 
 The release archive contains compiled ESM, TypeScript declarations, CSS, this README, component usage guides, the changelog and license notices. It excludes test fixtures, demo pages, development scripts, development dependency metadata and research media. React 19 is supplied by your application; npm installs the library's runtime dependencies and required peers.
 
-This is an early `0.1.x` library. Browser differences and the rendering limitations described above still apply; publishing a consumer package is not a claim that all components have completed usability or accessibility audits.
+This is an early `0.2.x` library. Browser differences and the rendering limitations described above still apply; publishing a consumer package is not a claim that all components have completed usability or accessibility audits.
 
 For source contributions and release checks, see [CONTRIBUTING.md](https://github.com/justfrenzy22/liquid-glass/blob/main/CONTRIBUTING.md). For changes in this release, see [CHANGELOG.md](CHANGELOG.md).
 

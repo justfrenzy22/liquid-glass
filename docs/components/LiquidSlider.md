@@ -7,7 +7,7 @@ Use LiquidSlider in a React client component. The example below uses the exporte
 ```tsx
 "use client";
 
-import { LiquidSlider } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidSlider } from "@justfrenzy/liquid-glass";
 
 export function LiquidSliderExample() {
   return (
@@ -31,8 +31,8 @@ The table includes the component-specific props and common control props. Requir
 | `aria-label` | No | `string` | Defines a string value that labels the current element. |
 | `onChange` | No | `(value: number \| number[]) => void` | Handler that is called when the value changes. |
 | `onClick` | No | `MouseEventHandler<HTMLDivElement>` |  |
-| `value` | No | `number \| number[]` | The current value (controlled). |
 | `isDisabled` | No | `boolean` | Whether the whole Slider is disabled. |
+| `value` | No | `number \| number[]` | The current value (controlled). |
 | `minValue` | No | `number` | The slider's minimum value. |
 | `maxValue` | No | `number` | The slider's maximum value. |
 | `label` | Yes | `string` |  |
@@ -44,7 +44,7 @@ The table includes the component-specific props and common control props. Requir
 
 ```tsx
 import type { ComponentProps } from "react";
-import { LiquidSlider } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidSlider } from "@justfrenzy/liquid-glass";
 type Props = ComponentProps<typeof LiquidSlider>;
 ```
 

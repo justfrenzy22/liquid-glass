@@ -12,7 +12,7 @@ const allowedRoot = new Set(["package.json", "README.md", "LICENSE", "THIRD_PART
 for (const entry of packedFiles) {
   const relative = entry.replace(/^package\//, "");
   const componentGuide = relative.startsWith("docs/components/") && relative.endsWith(".md");
-  if (!relative.startsWith("dist/") && !allowedRoot.has(relative) && !componentGuide && relative !== "docs/getting-started.md") throw new Error(`Unexpected release file: ${entry}`);
+  if (!relative.startsWith("dist/") && !allowedRoot.has(relative) && !componentGuide && !new Set(["docs/getting-started.md", "docs/migration-0.2.md", "docs/native.md"]).has(relative)) throw new Error(`Unexpected release file: ${entry}`);
 }
 const digest = createHash("sha256").update(await readFile(archive)).digest("hex").slice(0, 12);
 const consumer = path.join(tmpdir(), "liquid-glass-consumers", digest);
@@ -27,8 +27,10 @@ import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { GlassButton } from '@justfrenzy/liquid-glass';
+import { GlassButton, GlassSwitch, GlassNavbar, GlassSidebar, LiquidSwitch, LiquidNavbar, LiquidSidebar } from '@justfrenzy/liquid-glass';
+import { GlassSwitch as NativeSwitch } from '@justfrenzy/liquid-glass/native';
 import { LiquidButton } from '@justfrenzy/liquid-glass/heroui';
+assert.equal(GlassSwitch, LiquidSwitch); assert.equal(GlassNavbar, LiquidNavbar); assert.equal(GlassSidebar, LiquidSidebar); assert.notEqual(GlassSwitch, NativeSwitch);
 const require = createRequire(import.meta.url);
 const publishedManifest = require('@justfrenzy/liquid-glass/package.json');
 assert.equal(publishedManifest.scripts, undefined, 'consumer package must not include repository scripts');

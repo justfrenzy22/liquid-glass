@@ -7,7 +7,7 @@ An empty-content panel. Alias of GlassEmptyState with exactly the same props.
 ```tsx
 "use client";
 
-import { LiquidEmptyState } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidEmptyState } from "@justfrenzy/liquid-glass";
 
 export function LiquidEmptyStateExample() {
   return (
@@ -52,7 +52,7 @@ The table includes the component-specific props and common control props. Requir
 
 ```tsx
 import type { ComponentProps } from "react";
-import { LiquidEmptyState } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidEmptyState } from "@justfrenzy/liquid-glass";
 type Props = ComponentProps<typeof LiquidEmptyState>;
 ```
 

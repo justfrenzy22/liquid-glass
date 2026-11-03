@@ -7,7 +7,7 @@ Use LiquidAlert in a React client component. The example below uses the exported
 ```tsx
 "use client";
 
-import { LiquidAlert } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidAlert } from "@justfrenzy/liquid-glass";
 
 export function LiquidAlertExample() {
   return (
@@ -35,7 +35,7 @@ The table includes the component-specific props and common control props. Requir
 
 ```tsx
 import type { ComponentProps } from "react";
-import { LiquidAlert } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidAlert } from "@justfrenzy/liquid-glass";
 type Props = ComponentProps<typeof LiquidAlert>;
 ```
 

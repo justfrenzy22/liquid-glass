@@ -7,7 +7,7 @@ Use LiquidAccordion in a React client component. The example below uses the expo
 ```tsx
 "use client";
 
-import { LiquidAccordion } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidAccordion } from "@justfrenzy/liquid-glass";
 
 export function LiquidAccordionExample() {
   return (
@@ -36,7 +36,7 @@ The table includes the component-specific props and common control props. Requir
 
 ```tsx
 import type { ComponentProps } from "react";
-import { LiquidAccordion } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidAccordion } from "@justfrenzy/liquid-glass";
 type Props = ComponentProps<typeof LiquidAccordion>;
 ```
 

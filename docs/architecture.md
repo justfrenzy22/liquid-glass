@@ -1,6 +1,6 @@
 # Architecture and browser behavior
 
-`src/lib/` contains geometry, refraction, map generation, defaults and environment selection. `src/components/` contains native primitives, the rendering provider, CSS modules and HeroUI wrappers. The public entry points are `src/index.ts` and `src/heroui.ts`. Browser export conditions select generated wrappers that import `styles.css`; Node selects CSS-free entries for direct server rendering.
+`src/lib/` contains geometry, refraction, map generation, defaults and environment selection. `src/components/` contains native primitives, the rendering provider, CSS modules and HeroUI wrappers. The main entry `src/index.ts` exposes the Liquid collection. Matching Glass names are aliases of the enhanced components. `src/heroui.ts` remains a compatibility entry; `src/native.ts` explicitly preserves the previous native API. Browser export conditions select generated wrappers that import `styles.css`; Node selects CSS-free entries for direct server rendering.
 
 GlassSurface renders an absolutely positioned decoration layer and separate sharp content. Supported desktop Chromium uses local SVG backdrop filters and canvas-generated displacement/specular maps. A rounded-rectangle signed-distance field supplies normals; an analytic superellipse bevel and an angle-based Snell-law calculation approximate displacement. This is not a full physical renderer: it omits exit refraction, chromatic aberration, perspective and real environment reflections.
 

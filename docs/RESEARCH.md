@@ -2,7 +2,7 @@
 
 This document explains the questions, references and engineering decisions behind Liquid Glass. It is an implementation study, not a peer-reviewed paper, a controlled usability study or a claim of equivalence to Apple's materials.
 
-Scope: the `0.1.4` implementation. External references were reviewed on 3 November 2026. Browser behavior can change after this review.
+Scope: the `0.2.0` implementation. External references were reviewed on 3 November 2026. Browser behavior can change after this review.
 
 ## Research questions
 
@@ -34,7 +34,7 @@ Kube is credited as an influence. This research note does not reproduce upstream
 
 [`GlassSurface`](../src/components/glass-surface.tsx) puts the backdrop and highlights beneath a separate content layer. This lets the background bend while text stays sharp. It also lets controls share a visual material without sharing every interaction implementation.
 
-The core entry supplies native React controls. The `/heroui` entry combines the material with HeroUI components and custom interaction styling. HeroUI supplies component behavior and semantics; it is not the source of the refraction renderer. Using it does not by itself establish that every resulting composition is accessible.
+The main entry exposes the enhanced Liquid components, with matching Glass names as aliases. The `/native` entry preserves the earlier native React controls; `/heroui` remains compatible with earlier extended-component imports. HeroUI supplies component behavior and semantics; it is not the source of the refraction renderer. Using it does not by itself establish that every resulting composition is accessible.
 
 ### Approximate refraction on supported desktop Chromium
 

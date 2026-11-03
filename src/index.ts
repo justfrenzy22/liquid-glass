@@ -1,3 +1,11 @@
 "use client";
-export * from "./components/index.js";
+export * from "./heroui.js";
+export { GlassSurface, type GlassSurfaceProps } from "./components/glass-surface.js";
+export { GlassEmptyState, type GlassEmptyStateProps } from "./components/glass-empty-state.js";
+export { GlassRenderingProvider, useGlassEnvironment } from "./components/glass-rendering.js";
+export { GlassPanel } from "./components/glass-containers.js";
+export { GlassIconButton, type GlassIconButtonProps } from "./components/glass-button.js";
+export { GlassFileCard, GlassFolderCard, GlassUploadButton, GlassSearchBar, type GlassFileCardProps } from "./components/glass-drive.js";
+export { glassDefaults, type GlassConfig } from "./lib/types.js";
+export type { GlassEnvironment, GlassRenderMode, GlassRenderer } from "./lib/environment.js";
 export { detectGlassEnvironment, selectGlassRenderer } from "./lib/environment.js";

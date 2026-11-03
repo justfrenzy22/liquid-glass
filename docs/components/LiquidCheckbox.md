@@ -7,7 +7,7 @@ Use LiquidCheckbox in a React client component. The example below uses the expor
 ```tsx
 "use client";
 
-import { LiquidCheckbox } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidCheckbox } from "@justfrenzy/liquid-glass";
 
 export function LiquidCheckboxExample() {
   return (
@@ -30,9 +30,9 @@ The table includes the component-specific props and common control props. Requir
 | `onChange` | No | `(isSelected: boolean) => void` | Handler that is called when the element's selection state changes. |
 | `onClick` | No | `(e: MouseEvent<FocusableElement, MouseEvent>) => void` | **Not recommended – use `onPress` instead.** `onClick` is an alias for `onPress` provided for compatibility with other libraries. `onPress` provides additional event details for non-mouse interactions. |
 | `name` | No | `string` | The name of the checkbox, used when submitting an HTML form. |
-| `value` | No | `string` | The value of the input element, used when submitting an HTML form. See [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefvalue). |
 | `isDisabled` | No | `boolean` | Whether the input is disabled. |
 | `onPress` | No | `(e: PressEvent) => void` | Handler that is called when the press is released over the target. |
+| `value` | No | `string` | The value of the input element, used when submitting an HTML form. See [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefvalue). |
 | `defaultSelected` | No | `boolean` | Whether the element should be selected (uncontrolled). |
 | `isSelected` | No | `boolean` | Whether the element should be selected (controlled). |
 | `isRequired` | No | `boolean` | Whether user input is required on the input before form submission. |
@@ -46,7 +46,7 @@ The table includes the component-specific props and common control props. Requir
 
 ```tsx
 import type { ComponentProps } from "react";
-import { LiquidCheckbox } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidCheckbox } from "@justfrenzy/liquid-glass";
 type Props = ComponentProps<typeof LiquidCheckbox>;
 ```
 

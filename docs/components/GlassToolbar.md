@@ -1,6 +1,6 @@
 # GlassToolbar
 
-Use GlassToolbar in a React client component. The example below uses the exported library API.
+The same component as LiquidToolbar, with identical props and liquid design. This name is an alias, not a simpler visual variant.
 
 ## Example
 
@@ -24,26 +24,17 @@ The table includes the component-specific props and common control props. Requir
 
 | Prop | Required | Type | Notes |
 | --- | --- | --- | --- |
-| `defaultChecked` | No | `boolean` |  |
-| `defaultValue` | No | `string \| number \| readonly string[]` |  |
-| `className` | No | `string` |  |
-| `style` | No | `CSSProperties` |  |
+| `className` | No | `ClassNameOrFunction<ToolbarRenderProps>` | The CSS [className](https://developer.mozilla.org/en-US/docs/Web/API/Element/className) for the element. A function may be provided to compute the class based on component state. |
 | `aria-label` | No | `string` | Defines a string value that labels the current element. |
-| `children` | No | `ReactNode` |  |
-| `onChange` | No | `ChangeEventHandler<HTMLDivElement, Element>` |  |
-| `onReset` | No | `ReactEventHandler<HTMLDivElement>` |  |
-| `onSubmit` | No | `SubmitEventHandler<HTMLDivElement>` |  |
+| `children` | No | `ChildrenOrFunction<ToolbarRenderProps>` | The children of the component. A function may be provided to alter the children based on component state. |
+| `style` | No | `StyleOrFunction<ToolbarRenderProps>` | The inline [style](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style) for the element. A function may be provided to compute the style based on component state. |
 | `onClick` | No | `MouseEventHandler<HTMLDivElement>` |  |
-| `blur` | No | `number` | CSS pixels, clamped to 0–30. |
-| `opacity` | No | `number` | White tint alpha, 0–1. |
-| `radius` | No | `number` |  |
-| `thickness` | No | `number` | Optical travel distance in CSS pixels, 0–120. |
-| `refraction` | No | `number` | Optical strength, 0–1; zero disables displacement. |
-| `specularIntensity` | No | `number` |  |
-| `saturation` | No | `number` | Saturation multiplier, 0–2. |
-| `displacementStrength` | No | `number` | Additional displacement multiplier, 0–2. |
-| `mode` | No | `"auto" \| "compatible" \| "fallback"` | Auto selects desktop Chromium refraction or compatible CSS glass. Compatible forces the Safari/mobile finish; fallback keeps basic blur. |
+| `glass` | No | `GlassConfig` |  |
 
+
+## Shared design
+
+See [LiquidToolbar](LiquidToolbar.md) for the main usage guide. Import either name from the package root; they render exactly the same component. Choose normal, glass or colored appearance through props where supported, not by switching prefixes. For the previous native API, explicitly import from `@justfrenzy/liquid-glass/native`.
 
 ## TypeScript
 

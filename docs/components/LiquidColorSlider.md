@@ -7,7 +7,7 @@ Use LiquidColorSlider in a React client component. The example below uses the ex
 ```tsx
 "use client";
 
-import { LiquidColorSlider } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidColorSlider } from "@justfrenzy/liquid-glass";
 
 export function LiquidColorSliderExample() {
   return (
@@ -30,8 +30,8 @@ The table includes the component-specific props and common control props. Requir
 | `onChange` | No | `(value: Color) => void` | Handler that is called when the value changes, as the user drags. |
 | `onClick` | No | `MouseEventHandler<HTMLDivElement>` |  |
 | `name` | No | `string` | The name of the input element, used when submitting an HTML form. See [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefname). |
-| `value` | No | `string \| Color` | The current value (controlled). |
 | `isDisabled` | No | `boolean` | Whether the whole Slider is disabled. |
+| `value` | No | `string \| Color` | The current value (controlled). |
 | `channel` | Yes | `"saturation" \| "blue" \| "hue" \| "brightness" \| "lightness" \| "red" \| "green" \| "alpha"` |  |
 | `label` | Yes | `string` |  |
 | `glass` | No | `GlassConfig` |  |
@@ -41,7 +41,7 @@ The table includes the component-specific props and common control props. Requir
 
 ```tsx
 import type { ComponentProps } from "react";
-import { LiquidColorSlider } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidColorSlider } from "@justfrenzy/liquid-glass";
 type Props = ComponentProps<typeof LiquidColorSlider>;
 ```
 

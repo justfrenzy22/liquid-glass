@@ -7,7 +7,7 @@ Use LiquidColorArea in a React client component. The example below uses the expo
 ```tsx
 "use client";
 
-import { LiquidColorArea } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidColorArea } from "@justfrenzy/liquid-glass";
 
 export function LiquidColorAreaExample() {
   return (
@@ -29,8 +29,8 @@ The table includes the component-specific props and common control props. Requir
 | `aria-label` | No | `string` | Defines a string value that labels the current element. |
 | `onChange` | No | `(value: Color) => void` | Handler that is called when the value changes, as the user drags. |
 | `onClick` | No | `MouseEventHandler<HTMLDivElement>` |  |
-| `value` | No | `string \| Color` | The current value (controlled). |
 | `isDisabled` | No | `boolean` | Whether the ColorArea is disabled. |
+| `value` | No | `string \| Color` | The current value (controlled). |
 | `label` | Yes | `string` |  |
 | `glass` | No | `GlassConfig` |  |
 
@@ -39,7 +39,7 @@ The table includes the component-specific props and common control props. Requir
 
 ```tsx
 import type { ComponentProps } from "react";
-import { LiquidColorArea } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidColorArea } from "@justfrenzy/liquid-glass";
 type Props = ComponentProps<typeof LiquidColorArea>;
 ```
 

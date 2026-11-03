@@ -1,6 +1,6 @@
 # GlassSlider
 
-Use GlassSlider in a React client component. The example below uses the exported library API.
+The same component as LiquidSlider, with identical props and liquid design. This name is an alias, not a simpler visual variant.
 
 ## Example
 
@@ -11,7 +11,7 @@ import { GlassSlider } from "@justfrenzy/liquid-glass";
 
 export function GlassSliderExample() {
   return (
-    <GlassSlider label="Volume" defaultValue={40} onValueChange={(value) => console.log(value)} />
+    <GlassSlider label="Volume" defaultValue={40} onChange={(value) => console.log(value)} />
   );
 }
 ```
@@ -24,27 +24,25 @@ The table includes the component-specific props and common control props. Requir
 
 | Prop | Required | Type | Notes |
 | --- | --- | --- | --- |
-| `style` | No | `CSSProperties` |  |
-| `step` | No | `string \| number` |  |
-| `defaultChecked` | No | `boolean` |  |
-| `defaultValue` | No | `string \| number \| readonly string[]` |  |
-| `className` | No | `string` |  |
+| `style` | No | `StyleOrFunction<SliderRenderProps>` | The inline [style](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style) for the element. A function may be provided to compute the style based on component state. |
+| `step` | No | `number` | The slider's step value. |
+| `defaultValue` | No | `number \| number[]` | The default value (uncontrolled). |
+| `className` | No | `ClassNameOrFunction<SliderRenderProps>` | The CSS [className](https://developer.mozilla.org/en-US/docs/Web/API/Element/className) for the element. A function may be provided to compute the class based on component state. |
 | `aria-label` | No | `string` | Defines a string value that labels the current element. |
-| `onChange` | No | `ChangeEventHandler<HTMLInputElement, HTMLInputElement>` |  |
-| `onReset` | No | `ReactEventHandler<HTMLInputElement>` |  |
-| `onSubmit` | No | `SubmitEventHandler<HTMLInputElement>` |  |
-| `onClick` | No | `MouseEventHandler<HTMLInputElement>` |  |
-| `name` | No | `string` |  |
-| `checked` | No | `boolean` |  |
-| `disabled` | No | `boolean` |  |
-| `max` | No | `string \| number` |  |
-| `min` | No | `string \| number` |  |
-| `value` | No | `string \| number \| readonly string[]` |  |
+| `onChange` | No | `(value: number \| number[]) => void` | Handler that is called when the value changes. |
+| `onClick` | No | `MouseEventHandler<HTMLDivElement>` |  |
+| `isDisabled` | No | `boolean` | Whether the whole Slider is disabled. |
+| `value` | No | `number \| number[]` | The current value (controlled). |
+| `minValue` | No | `number` | The slider's minimum value. |
+| `maxValue` | No | `number` | The slider's maximum value. |
 | `label` | Yes | `string` |  |
 | `glass` | No | `GlassConfig` |  |
-| `forceActive` | No | `boolean` | Keeps the thumb lifted for inspecting the refraction at rest. |
-| `onValueChange` | No | `(value: number) => void` |  |
+| `forceActive` | No | `boolean` |  |
 
+
+## Shared design
+
+See [LiquidSlider](LiquidSlider.md) for the main usage guide. Import either name from the package root; they render exactly the same component. Choose normal, glass or colored appearance through props where supported, not by switching prefixes. For the previous native API, explicitly import from `@justfrenzy/liquid-glass/native`.
 
 ## TypeScript
 

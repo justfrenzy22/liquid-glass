@@ -1,6 +1,6 @@
 {
   "name": "@justfrenzy/liquid-glass",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "React liquid glass components with desktop refraction, reflective Safari/mobile rendering, and optional HeroUI controls.",
   "type": "module",
   "license": "MIT",
@@ -39,7 +39,14 @@
       "default": "./dist/heroui.browser.js"
     },
     "./styles.css": "./dist/styles.css",
-    "./package.json": "./package.json"
+    "./package.json": "./package.json",
+    "./native": {
+      "types": "./dist/types/native.d.ts",
+      "browser": "./dist/native.browser.js",
+      "node": "./dist/native.js",
+      "import": "./dist/native.browser.js",
+      "default": "./dist/native.browser.js"
+    }
   },
   "types": "./dist/types/index.d.ts",
   "module": "./dist/index.browser.js",
@@ -50,7 +57,9 @@
     "THIRD_PARTY_NOTICES.md",
     "CHANGELOG.md",
     "docs/components",
-    "docs/getting-started.md"
+    "docs/getting-started.md",
+    "docs/migration-0.2.md",
+    "docs/native.md"
   ],
   "sideEffects": [
     "**/*.css",

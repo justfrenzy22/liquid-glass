@@ -5,13 +5,24 @@ import React from "react";
 import { renderToString } from "react-dom/server";
 import * as core from "../dist/index.js";
 import * as controls from "../dist/heroui.js";
+import * as native from "../dist/native.js";
 
-test("the built package server-renders native primitives without browser globals", () => {
+test("the unified package server-renders without browser globals", () => {
   const html = renderToString(React.createElement(core.GlassButton, null, "Upload"));
   assert.match(html, /<button/);
   assert.match(html, /Upload/);
   assert.match(html, /data-glass-mode="fallback"/);
 });
+test("root and heroui imports share unified designs while native remains explicit", () => {
+  for (const [alias, canonical] of Object.entries({ GlassButton: "LiquidButton", GlassSwitch: "LiquidSwitch", GlassSlider: "LiquidSlider", GlassInput: "LiquidInput", GlassCard: "LiquidCard", GlassToolbar: "LiquidToolbar", GlassSearch: "LiquidSearchField", GlassNavbar: "LiquidNavbar", GlassSidebar: "LiquidSidebar" })) {
+    assert.equal(core[alias], core[canonical], alias);
+    assert.equal(core[canonical], controls[canonical], canonical);
+  }
+  assert.notEqual(core.GlassSwitch, native.GlassSwitch);
+  assert.notEqual(core.GlassNavbar, native.GlassNavbar);
+  assert.match(renderToString(React.createElement(native.GlassSwitch, { label: "Native", defaultChecked: true })), /checked/);
+});
+
 test("public friendly aliases and legacy names expose the same HeroUI wrappers", () => {
   assert.equal(controls.LiquidButton, controls.LiquidNextUIButton);
   assert.equal(controls.LiquidSidebar, controls.LiquidNextUISidebar);

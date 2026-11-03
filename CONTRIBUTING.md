@@ -37,12 +37,12 @@ The prop reference is derived from the TypeScript API. `docs:check` compiles com
 
 Update the changelog and version, then run the checks above. `pack:local` builds the library and stages a separate manifest without repository scripts or development dependencies. `verify:package` checks the archive allowlist and installs it into a clean consumer. Publish that verified archive rather than the repository directory.
 
-For version `0.1.4`:
+For version `0.2.0`:
 
 ```sh
 npm login --registry=https://registry.npmjs.org
 npm whoami
-npm publish .artifacts/justfrenzy-liquid-glass-0.1.4.tgz --access public --registry=https://registry.npmjs.org
+npm publish .artifacts/justfrenzy-liquid-glass-0.2.0.tgz --access public --registry=https://registry.npmjs.org
 ```
 
 Complete npm's security challenge in your browser. Publishing requires an account authorized for the `justfrenzy` scope. Never commit credentials. Once published, a version cannot be replaced with different contents.

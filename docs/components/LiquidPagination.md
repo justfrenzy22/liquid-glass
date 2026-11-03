@@ -7,7 +7,7 @@ Use LiquidPagination in a React client component. The example below uses the exp
 ```tsx
 "use client";
 
-import { LiquidPagination } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidPagination } from "@justfrenzy/liquid-glass";
 
 export function LiquidPaginationExample() {
   return (
@@ -39,7 +39,7 @@ The example demonstrates the callback shape. In a working pagination control, st
 
 ```tsx
 import type { ComponentProps } from "react";
-import { LiquidPagination } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidPagination } from "@justfrenzy/liquid-glass";
 type Props = ComponentProps<typeof LiquidPagination>;
 ```
 

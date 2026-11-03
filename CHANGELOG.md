@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.0
+
+- Expose the full Liquid component collection from the main package entry.
+- Make matching Glass Button, Switch, Slider, Input, Search, Card, Toolbar, Navbar and Sidebar names aliases of the same enhanced designs and props.
+- Preserve previous native APIs under `/native`. Existing `/heroui` imports remain supported.
+- Update overlapping guides and add migration/native API documentation.
+
+Breaking change: root Glass aliases now use the corresponding Liquid props. Use `/native` to retain the previous native event and value APIs.
+
 ## 0.1.4
 
 - Add a Markdown guide for every public component, with examples and prop references, plus React/Next.js setup, theme and troubleshooting instructions.

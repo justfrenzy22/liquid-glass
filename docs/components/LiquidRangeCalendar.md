@@ -7,7 +7,7 @@ Use LiquidRangeCalendar in a React client component. The example below uses the 
 ```tsx
 "use client";
 
-import { LiquidRangeCalendar } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidRangeCalendar } from "@justfrenzy/liquid-glass";
 
 export function LiquidRangeCalendarExample() {
   return (
@@ -30,8 +30,8 @@ The table includes the component-specific props and common control props. Requir
 | `aria-label` | No | `string` | Defines a string value that labels the current element. |
 | `onChange` | No | `(value: RangeValue<MappedDateValue<T>>) => void` | Handler that is called when the value changes. |
 | `onClick` | No | `MouseEventHandler<HTMLDivElement>` |  |
-| `value` | No | `RangeValue<T>` | The current value (controlled). |
 | `isDisabled` | No | `boolean` | Whether the calendar is disabled. |
+| `value` | No | `RangeValue<T>` | The current value (controlled). |
 | `minValue` | No | `DateValue` | The minimum allowed date that a user may select. |
 | `maxValue` | No | `DateValue` | The maximum allowed date that a user may select. |
 | `isInvalid` | No | `boolean` | Whether the current selection is invalid according to application logic. |
@@ -43,7 +43,7 @@ The table includes the component-specific props and common control props. Requir
 
 ```tsx
 import type { ComponentProps } from "react";
-import { LiquidRangeCalendar } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidRangeCalendar } from "@justfrenzy/liquid-glass";
 type Props = ComponentProps<typeof LiquidRangeCalendar>;
 ```
 

@@ -7,7 +7,7 @@ Use LiquidCalendar in a React client component. The example below uses the expor
 ```tsx
 "use client";
 
-import { LiquidCalendar } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidCalendar } from "@justfrenzy/liquid-glass";
 
 export function LiquidCalendarExample() {
   return (
@@ -30,9 +30,9 @@ The table includes the component-specific props and common control props. Requir
 | `aria-label` | No | `string` | Defines a string value that labels the current element. |
 | `onChange` | No | `(value: MappedDateValue<T>) => void` | Handler that is called when the value changes. |
 | `onClick` | No | `MouseEventHandler<HTMLDivElement>` |  |
-| `value` | No | `T` | The current value (controlled). |
 | `selectionMode` | No | `"single"` | Whether single or multiple selection is enabled. |
 | `isDisabled` | No | `boolean` | Whether the calendar is disabled. |
+| `value` | No | `T` | The current value (controlled). |
 | `minValue` | No | `DateValue` | The minimum allowed date that a user may select. |
 | `maxValue` | No | `DateValue` | The maximum allowed date that a user may select. |
 | `isInvalid` | No | `boolean` | Whether the current selection is invalid according to application logic. |
@@ -44,7 +44,7 @@ The table includes the component-specific props and common control props. Requir
 
 ```tsx
 import type { ComponentProps } from "react";
-import { LiquidCalendar } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidCalendar } from "@justfrenzy/liquid-glass";
 type Props = ComponentProps<typeof LiquidCalendar>;
 ```
 

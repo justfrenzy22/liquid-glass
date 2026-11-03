@@ -7,7 +7,7 @@ Use LiquidDrawer in a React client component. The example below uses the exporte
 ```tsx
 "use client";
 
-import { LiquidDrawer } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidDrawer } from "@justfrenzy/liquid-glass";
 
 export function LiquidDrawerExample() {
   return (
@@ -35,7 +35,7 @@ The table includes the component-specific props and common control props. Requir
 
 ```tsx
 import type { ComponentProps } from "react";
-import { LiquidDrawer } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidDrawer } from "@justfrenzy/liquid-glass";
 type Props = ComponentProps<typeof LiquidDrawer>;
 ```
 

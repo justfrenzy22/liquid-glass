@@ -7,7 +7,7 @@ Use LiquidToggleButton in a React client component. The example below uses the e
 ```tsx
 "use client";
 
-import { LiquidToggleButton } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidToggleButton } from "@justfrenzy/liquid-glass";
 
 export function LiquidToggleButtonExample() {
   return (
@@ -41,7 +41,7 @@ The table includes the component-specific props and common control props. Requir
 
 ```tsx
 import type { ComponentProps } from "react";
-import { LiquidToggleButton } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidToggleButton } from "@justfrenzy/liquid-glass";
 type Props = ComponentProps<typeof LiquidToggleButton>;
 ```
 

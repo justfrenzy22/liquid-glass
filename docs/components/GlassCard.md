@@ -1,6 +1,6 @@
 # GlassCard
 
-Use GlassCard in a React client component. The example below uses the exported library API.
+The same component as LiquidCard, with identical props and liquid design. This name is an alias, not a simpler visual variant.
 
 ## Example
 
@@ -11,7 +11,7 @@ import { GlassCard } from "@justfrenzy/liquid-glass";
 
 export function GlassCardExample() {
   return (
-    <GlassCard><h2>Project</h2><p>Project details.</p></GlassCard>
+    <GlassCard title="Project" description="Project details."><p>Your content</p></GlassCard>
   );
 }
 ```
@@ -24,26 +24,17 @@ The table includes the component-specific props and common control props. Requir
 
 | Prop | Required | Type | Notes |
 | --- | --- | --- | --- |
-| `defaultChecked` | No | `boolean` |  |
-| `defaultValue` | No | `string \| number \| readonly string[]` |  |
-| `className` | No | `string` |  |
-| `style` | No | `CSSProperties` |  |
-| `aria-label` | No | `string` | Defines a string value that labels the current element. |
+| `title` | Yes | `string` |  |
+| `description` | No | `string` |  |
 | `children` | No | `ReactNode` |  |
-| `onChange` | No | `ChangeEventHandler<HTMLDivElement, Element>` |  |
-| `onReset` | No | `ReactEventHandler<HTMLDivElement>` |  |
-| `onSubmit` | No | `SubmitEventHandler<HTMLDivElement>` |  |
-| `onClick` | No | `MouseEventHandler<HTMLDivElement>` |  |
-| `blur` | No | `number` | CSS pixels, clamped to 0–30. |
-| `opacity` | No | `number` | White tint alpha, 0–1. |
-| `radius` | No | `number` |  |
-| `thickness` | No | `number` | Optical travel distance in CSS pixels, 0–120. |
-| `refraction` | No | `number` | Optical strength, 0–1; zero disables displacement. |
-| `specularIntensity` | No | `number` |  |
-| `saturation` | No | `number` | Saturation multiplier, 0–2. |
-| `displacementStrength` | No | `number` | Additional displacement multiplier, 0–2. |
-| `mode` | No | `"auto" \| "compatible" \| "fallback"` | Auto selects desktop Chromium refraction or compatible CSS glass. Compatible forces the Safari/mobile finish; fallback keeps basic blur. |
+| `footer` | No | `ReactNode` |  |
+| `glass` | No | `GlassConfig` |  |
+| `appearance` | No | `"glass" \| "solid"` |  |
 
+
+## Shared design
+
+See [LiquidCard](LiquidCard.md) for the main usage guide. Import either name from the package root; they render exactly the same component. Choose normal, glass or colored appearance through props where supported, not by switching prefixes. For the previous native API, explicitly import from `@justfrenzy/liquid-glass/native`.
 
 ## TypeScript
 

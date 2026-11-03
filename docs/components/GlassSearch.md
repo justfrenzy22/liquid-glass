@@ -1,6 +1,6 @@
 # GlassSearch
 
-Use GlassSearch in a React client component. The example below uses the exported library API.
+The same component as LiquidSearchField, with identical props and liquid design. This name is an alias, not a simpler visual variant.
 
 ## Example
 
@@ -11,7 +11,7 @@ import { GlassSearch } from "@justfrenzy/liquid-glass";
 
 export function GlassSearchExample() {
   return (
-    <GlassSearch aria-label="Search files" placeholder="Search files" />
+    <GlassSearch label="Find a file" placeholder="Search files" />
   );
 }
 ```
@@ -24,26 +24,28 @@ The table includes the component-specific props and common control props. Requir
 
 | Prop | Required | Type | Notes |
 | --- | --- | --- | --- |
-| `checked` | No | `boolean` |  |
-| `disabled` | No | `boolean` |  |
-| `max` | No | `string \| number` |  |
-| `min` | No | `string \| number` |  |
-| `name` | No | `string` |  |
-| `step` | No | `string \| number` |  |
-| `type` | No | `HTMLInputTypeAttribute` |  |
-| `value` | No | `string \| number \| readonly string[]` |  |
-| `onChange` | No | `ChangeEventHandler<HTMLInputElement, HTMLInputElement>` |  |
-| `defaultChecked` | No | `boolean` |  |
-| `defaultValue` | No | `string \| number \| readonly string[]` |  |
-| `className` | No | `string` |  |
-| `style` | No | `CSSProperties` |  |
+| `style` | No | `StyleOrFunction<SearchFieldRenderProps>` | The inline [style](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style) for the element. A function may be provided to compute the style based on component state. |
+| `defaultValue` | No | `string` | The default value (uncontrolled). |
+| `className` | No | `ClassNameOrFunction<SearchFieldRenderProps>` | The CSS [className](https://developer.mozilla.org/en-US/docs/Web/API/Element/className) for the element. A function may be provided to compute the class based on component state. |
 | `aria-label` | No | `string` | Defines a string value that labels the current element. |
-| `children` | No | `ReactNode` |  |
-| `onReset` | No | `ReactEventHandler<HTMLInputElement>` |  |
-| `onSubmit` | No | `SubmitEventHandler<HTMLInputElement>` |  |
-| `onClick` | No | `MouseEventHandler<HTMLInputElement>` |  |
+| `onChange` | No | `(value: string) => void` | Handler that is called when the value changes. |
+| `onSubmit` | No | `(value: string) => void` | Handler that is called when the SearchField is submitted. |
+| `onClick` | No | `MouseEventHandler<HTMLDivElement>` |  |
+| `name` | No | `string` | The name of the input element, used when submitting an HTML form. See [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefname). |
+| `isDisabled` | No | `boolean` | Whether the input is disabled. |
+| `type` | No | `"search" \| "text" \| (string & {}) \| "tel" \| "url" \| "email" \| "password"` | The type of input to render. See [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdeftype). |
+| `value` | No | `string` | The current value (controlled). |
+| `isRequired` | No | `boolean` | Whether user input is required on the input before form submission. |
+| `isInvalid` | No | `boolean` | Whether the input value is invalid. |
+| `label` | Yes | `string` |  |
+| `description` | No | `string` |  |
 | `glass` | No | `GlassConfig` |  |
+| `placeholder` | No | `string` |  |
 
+
+## Shared design
+
+See [LiquidSearchField](LiquidSearchField.md) for the main usage guide. Import either name from the package root; they render exactly the same component. Choose normal, glass or colored appearance through props where supported, not by switching prefixes. For the previous native API, explicitly import from `@justfrenzy/liquid-glass/native`.
 
 ## TypeScript
 

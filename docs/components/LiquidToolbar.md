@@ -7,7 +7,7 @@ Use LiquidToolbar in a React client component. The example below uses the export
 ```tsx
 "use client";
 
-import { LiquidToolbar } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidToolbar } from "@justfrenzy/liquid-glass";
 
 export function LiquidToolbarExample() {
   return (
@@ -36,7 +36,7 @@ The table includes the component-specific props and common control props. Requir
 
 ```tsx
 import type { ComponentProps } from "react";
-import { LiquidToolbar } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidToolbar } from "@justfrenzy/liquid-glass";
 type Props = ComponentProps<typeof LiquidToolbar>;
 ```
 

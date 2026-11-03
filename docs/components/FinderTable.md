@@ -7,7 +7,7 @@ A table with solid, alternating-row styling. Uses the same data shape as LiquidT
 ```tsx
 "use client";
 
-import { FinderTable } from "@justfrenzy/liquid-glass/heroui";
+import { FinderTable } from "@justfrenzy/liquid-glass";
 
 export function FinderTableExample() {
   return (
@@ -42,7 +42,7 @@ The table includes the component-specific props and common control props. Requir
 
 ```tsx
 import type { ComponentProps } from "react";
-import { FinderTable } from "@justfrenzy/liquid-glass/heroui";
+import { FinderTable } from "@justfrenzy/liquid-glass";
 type Props = ComponentProps<typeof FinderTable>;
 ```
 

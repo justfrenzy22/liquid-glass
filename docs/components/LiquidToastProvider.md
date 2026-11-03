@@ -7,7 +7,7 @@ Mount once near the application root to display notifications created with the t
 ```tsx
 "use client";
 
-import { LiquidToastProvider } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidToastProvider } from "@justfrenzy/liquid-glass";
 
 export function LiquidToastProviderExample() {
   return (
@@ -39,7 +39,7 @@ Import `toast` from `/heroui` and call `toast.success("Saved")` from an event ha
 
 ```tsx
 import type { ComponentProps } from "react";
-import { LiquidToastProvider } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidToastProvider } from "@justfrenzy/liquid-glass";
 type Props = ComponentProps<typeof LiquidToastProvider>;
 ```
 

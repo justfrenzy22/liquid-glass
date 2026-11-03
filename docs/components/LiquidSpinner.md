@@ -7,7 +7,7 @@ Use LiquidSpinner in a React client component. The example below uses the export
 ```tsx
 "use client";
 
-import { LiquidSpinner } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidSpinner } from "@justfrenzy/liquid-glass";
 
 export function LiquidSpinnerExample() {
   return (
@@ -38,7 +38,7 @@ The table includes the component-specific props and common control props. Requir
 
 ```tsx
 import type { ComponentProps } from "react";
-import { LiquidSpinner } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidSpinner } from "@justfrenzy/liquid-glass";
 type Props = ComponentProps<typeof LiquidSpinner>;
 ```
 

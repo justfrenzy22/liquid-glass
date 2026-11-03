@@ -7,7 +7,7 @@ Use LiquidTimeField in a React client component. The example below uses the expo
 ```tsx
 "use client";
 
-import { LiquidTimeField } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidTimeField } from "@justfrenzy/liquid-glass";
 
 export function LiquidTimeFieldExample() {
   return (
@@ -31,8 +31,8 @@ The table includes the component-specific props and common control props. Requir
 | `onChange` | No | `(value: Time) => void` | Handler that is called when the value changes. |
 | `onClick` | No | `MouseEventHandler<HTMLDivElement>` |  |
 | `name` | No | `string` | The name of the input element, used when submitting an HTML form. See [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefname). |
-| `value` | No | `Time` | The current value (controlled). |
 | `isDisabled` | No | `boolean` | Whether the input is disabled. |
+| `value` | No | `Time` | The current value (controlled). |
 | `minValue` | No | `TimeValue` | The minimum allowed time that a user may select. |
 | `maxValue` | No | `TimeValue` | The maximum allowed time that a user may select. |
 | `isRequired` | No | `boolean` | Whether user input is required on the input before form submission. |
@@ -45,7 +45,7 @@ The table includes the component-specific props and common control props. Requir
 
 ```tsx
 import type { ComponentProps } from "react";
-import { LiquidTimeField } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidTimeField } from "@justfrenzy/liquid-glass";
 type Props = ComponentProps<typeof LiquidTimeField>;
 ```
 

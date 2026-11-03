@@ -13,7 +13,7 @@ Use React 19 and React DOM 19. Browser component imports load the library CSS au
 ```tsx
 "use client";
 
-import { LiquidButton } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidButton } from "@justfrenzy/liquid-glass";
 
 export function SaveButton() {
   return (
@@ -30,14 +30,11 @@ export function SaveButton() {
 
 Replace the logging with your own action. `appearance="normal"` gives a calm button, `"glass"` a clear glass button and `"colored"` a tinted glass button. See [LiquidButton](components/LiquidButton.md).
 
-## Core or HeroUI?
+## One collection, one main import
 
-| Import | Intended use | Activation / state |
-| --- | --- | --- |
-| `@justfrenzy/liquid-glass` | Native controls and glass layout primitives | `onClick`, `disabled`, native input events; `GlassSlider` uses `onValueChange` |
-| `@justfrenzy/liquid-glass/heroui` | Extended controls backed by HeroUI | `onPress`, `isDisabled`, component-specific value callbacks |
+Import main components from `@justfrenzy/liquid-glass`. `LiquidNavbar` and `GlassNavbar`, `LiquidSidebar` and `GlassSidebar`, and the matching Button, Switch, Slider, Input, Search, Card and Toolbar names now refer to the same liquid designs with the same props. Prefer `Liquid*` names for new code.
 
-Do not assume callbacks take the same argument: `LiquidInput.onChange` receives a string, while `GlassInput.onChange` receives a native React input event. You can import from both entries in one application.
+Use `onPress` and `isDisabled`. Input callbacks receive a string; switch callbacks receive a boolean. `/heroui` remains supported for existing imports. To deliberately retain the old native implementations and DOM event props, use `/native`. See the [0.2 migration guide](migration-0.2.md).
 
 ## Next.js
 
@@ -51,7 +48,7 @@ The `styles.css` export remains available for a build that needs explicit styles
 "use client";
 
 import { useState } from "react";
-import { LiquidInput } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidInput } from "@justfrenzy/liquid-glass";
 
 export function ProjectName() {
   const [name, setName] = useState("");
@@ -71,7 +68,7 @@ export function ProjectName() {
 ```tsx
 "use client";
 
-import { LiquidNavbar } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidNavbar } from "@justfrenzy/liquid-glass";
 
 export function Navigation() {
   return (
@@ -108,10 +105,10 @@ Supported desktop Chromium uses the refraction renderer. Safari and mobile use s
 
 - Import the actual React component and render it as `<LiquidButton>Save</LiquidButton>`; installing the package alone does not insert UI into your page.
 - For version 0.1.3 or earlier, explicitly import `@justfrenzy/liquid-glass/styles.css`. Version 0.1.4 adds automatic styles.
-- Use `/heroui` for `LiquidButton`, `LiquidNavbar` and the other extended components. Core `Glass*` components come from the package root.
-- Use `onPress` for `LiquidButton`, and `onClick` for `GlassButton`.
+- Import `LiquidButton`, `LiquidNavbar`, `LiquidSidebar` and the other main components from the package root. `/heroui` is a compatibility path.
+- Use `onPress` for both `LiquidButton` and its `GlassButton` alias. Only `/native` retains the previous native `onClick`/`disabled` API.
 - Put native input options for `LiquidInput` inside `inputProps`.
 - When passing a controlled value, update it in the corresponding callback; a fixed value makes the control appear stuck.
 - Forms, upload buttons and navigation components do not create your backend, file uploads or routes.
 
-[Browse all 90 component guides](components/README.md)
+[Browse all 91 component guides](components/README.md)

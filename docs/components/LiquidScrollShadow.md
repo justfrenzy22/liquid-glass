@@ -7,7 +7,7 @@ Use LiquidScrollShadow in a React client component. The example below uses the e
 ```tsx
 "use client";
 
-import { LiquidScrollShadow } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidScrollShadow } from "@justfrenzy/liquid-glass";
 
 export function LiquidScrollShadowExample() {
   return (
@@ -40,7 +40,7 @@ The table includes the component-specific props and common control props. Requir
 
 ```tsx
 import type { ComponentProps } from "react";
-import { LiquidScrollShadow } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidScrollShadow } from "@justfrenzy/liquid-glass";
 type Props = ComponentProps<typeof LiquidScrollShadow>;
 ```
 
