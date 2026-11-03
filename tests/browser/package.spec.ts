@@ -1,5 +1,7 @@
 import { expect, test } from "@playwright/test";
 test("the standalone package keeps styles, state, overlays and navigation working", async ({ page }, testInfo) => {
+  // This full-page scenario scrolls through multiple controls in mobile WebKit on shared CI runners.
+  test.setTimeout(60_000);
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
   await page.goto("/");
