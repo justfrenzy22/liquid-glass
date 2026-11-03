@@ -1,0 +1,3 @@
+/* Namespaced defaults keep the compiled components independent of host tokens. */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme) theme(static) prefix(liquid);

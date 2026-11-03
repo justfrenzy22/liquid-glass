@@ -9,6 +9,8 @@ The MIT license here covers this repository's independently authored source. It 
 | React Aria, React Aria Components, React Stately | Accessible interactions and state | Apache-2.0; Adobe |
 | `@internationalized/date` | Calendar-aware dates | Apache-2.0; Adobe |
 | `input-otp` | OTP behavior through HeroUI | MIT; upstream contributors |
+| Tailwind CSS and its PostCSS plugin | Utility authoring and generated CSS | MIT; Tailwind Labs contributors |
+| clsx and tailwind-merge | Conditional class composition and utility conflict resolution | MIT; upstream contributors |
 | esbuild, TypeScript, Vite, Playwright | Development/build/test tooling | Upstream licenses apply; tooling is not bundled into the consumer library |
 
 Dependencies are installed by npm and retain their license files and notices. JavaScript builds externalize them rather than copying their implementations into the library bundle.

@@ -1,0 +1,9 @@
+@import "./tokens.css";
+
+/* Optional Tailwind 4 theme aliases for components authored by the consumer. */
+@theme inline {
+  --color-glass-panel: var(--lg-solid-background);
+  --color-glass-muted: var(--lg-muted);
+  --color-glass-accent: var(--lg-accent-text);
+  --radius-glass: 24px;
+}

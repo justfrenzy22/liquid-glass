@@ -5,10 +5,10 @@ import path from "node:path";
 const directory = ".artifacts/docs-check";
 mkdirSync(directory, { recursive: true });
 const files = [];
-const guides = [...readdirSync("docs/components").filter(name => name.endsWith(".md")).map(name => `docs/components/${name}`), "docs/getting-started.md", "docs/migration-0.2.md", "docs/native.md", ...readdirSync("docs/recipes").filter(name => name.endsWith(".md")).map(name => `docs/recipes/${name}`)];
+const guides = [...readdirSync("docs/components").filter(name => name.endsWith(".md")).map(name => `docs/components/${name}`), "docs/getting-started.md", "docs/migration-0.2.md", "docs/native.md", "docs/tailwind.md", ...readdirSync("docs/recipes").filter(name => name.endsWith(".md")).map(name => `docs/recipes/${name}`)];
 for (const guide of guides) {
   const name = path.basename(guide);
-  const text = readFileSync(guide, "utf8");
+  const text = readFileSync(guide, "utf8").replaceAll("\r\n", "\n");
   let index = 0;
   for (const match of text.matchAll(/```tsx\n([\s\S]*?)```/g)) {
     if (!match[1].includes("export function")) continue;

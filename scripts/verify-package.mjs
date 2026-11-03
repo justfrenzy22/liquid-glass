@@ -12,7 +12,7 @@ const allowedRoot = new Set(["package.json", "README.md", "LICENSE", "THIRD_PART
 for (const entry of packedFiles) {
   const relative = entry.replace(/^package\//, "");
   const componentGuide = relative.startsWith("docs/components/") && relative.endsWith(".md");
-  if (!relative.startsWith("dist/") && !allowedRoot.has(relative) && !componentGuide && !new Set(["docs/getting-started.md", "docs/migration-0.2.md", "docs/native.md"]).has(relative)) throw new Error(`Unexpected release file: ${entry}`);
+  if (!relative.startsWith("dist/") && !allowedRoot.has(relative) && !componentGuide && !new Set(["docs/getting-started.md", "docs/migration-0.2.md", "docs/native.md", "docs/tailwind.md"]).has(relative)) throw new Error(`Unexpected release file: ${entry}`);
 }
 const digest = createHash("sha256").update(await readFile(archive)).digest("hex").slice(0, 12);
 const consumer = path.join(tmpdir(), "liquid-glass-consumers", digest);
@@ -35,6 +35,9 @@ const require = createRequire(import.meta.url);
 const publishedManifest = require('@justfrenzy/liquid-glass/package.json');
 assert.equal(publishedManifest.scripts, undefined, 'consumer package must not include repository scripts');
 assert.equal(publishedManifest.devDependencies, undefined, 'consumer package must not include development dependency metadata');
+assert.equal(publishedManifest.peerDependencies.tailwindcss, '^4.0.0');
+assert.match(require('tailwindcss/package.json').version, /^4[.]/);
+assert.ok(readFileSync(new URL(import.meta.resolve('@justfrenzy/liquid-glass/tailwind.css')), 'utf8').includes('@theme inline'));
 const libraryRequire = createRequire(import.meta.resolve('@justfrenzy/liquid-glass/package.json'));
 const heroRequire = createRequire(libraryRequire.resolve('@heroui/react'));
 for (const name of ['react', 'react-aria-components', 'react-aria', 'react-stately']) {

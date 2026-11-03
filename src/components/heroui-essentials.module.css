@@ -1,18 +1,13 @@
+@reference "../tailwind-reference.css";
 .checkboxContent {
-  display: flex;
-  align-items: center;
-  gap: 18px;
+  @apply liquid:flex liquid:items-center liquid:gap-[18px];
   cursor: pointer;
-  min-height: 48px;
+  @apply liquid:min-h-[48px];
   font-size: 15px;
-  font-weight: 600;
+  @apply liquid:font-semibold;
 }
 .checkControl {
-  position: relative;
-  display: block;
-  width: 30px;
-  height: 30px;
-  border-radius: 10px;
+  @apply liquid:relative liquid:block liquid:w-[30px] liquid:h-[30px] liquid:rounded-[10px];
   background: #8b95a740;
   transition: background 220ms;
 }
@@ -20,21 +15,17 @@
   background: #0377f7;
 }
 .checkLens {
-  width: 30px;
-  height: 30px;
+  @apply liquid:w-[30px] liquid:h-[30px];
   transition: transform 200ms;
 }
 .checkLens[data-active="true"] {
   transform: scale(1.18);
 }
 .checkMark {
-  display: flex;
-  height: 30px;
-  align-items: center;
-  justify-content: center;
+  @apply liquid:flex liquid:h-[30px] liquid:items-center liquid:justify-center;
   color: white;
   font-size: 20px;
-  font-weight: 700;
+  @apply liquid:font-bold;
 }
 .checkboxContent[data-focus-visible="true"] .checkControl {
   outline: 1px solid #536078;
@@ -44,14 +35,12 @@
   opacity: 0.45;
 }
 .tabs {
-  width: 100%;
-  max-width: 360px;
+  @apply liquid:w-full liquid:max-w-[360px];
 }
 .tabStrip {
-  position: relative;
-  padding: 6px;
+  @apply liquid:relative liquid:p-[6px];
   touch-action: pan-y;
-  user-select: none;
+  @apply liquid:select-none;
   cursor: grab;
 }
 .tabStrip[data-dragging="true"] {
@@ -65,20 +54,14 @@
   transform: translateX(calc(var(--tab-index) * 100%)) scale(1.06);
 }
 .tabList {
-  position: relative;
-  display: grid;
+  @apply liquid:relative liquid:grid;
   grid-template-columns: repeat(var(--tab-count), 1fr);
 }
 .tab {
-  min-height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px;
-  border-radius: 22px;
+  @apply liquid:min-h-[44px] liquid:flex liquid:items-center liquid:justify-center liquid:p-[8px] liquid:rounded-[22px];
   cursor: pointer;
   font-size: 13px;
-  font-weight: 600;
+  @apply liquid:font-semibold;
   outline: none;
 }
 .tab[data-focus-visible="true"] {
@@ -89,14 +72,11 @@
   cursor: not-allowed;
 }
 .tabLens {
-  position: absolute;
-  top: 6px;
-  left: 6px;
-  height: 44px;
+  @apply liquid:absolute liquid:top-[6px] liquid:left-[6px] liquid:h-[44px];
   width: calc((100% - 12px) / var(--tab-count));
   transform: translateX(calc(var(--tab-index) * 100%));
   transition: transform 400ms cubic-bezier(0.22, 0.9, 0.28, 1.08);
-  pointer-events: none;
+  @apply liquid:pointer-events-none;
 }
 .tabPanel {
   padding: 20px 8px 0;
@@ -109,22 +89,18 @@
   text-underline-offset: 4px;
 }
 .select {
-  width: 300px;
-  max-width: 100%;
+  @apply liquid:w-[300px] liquid:max-w-full;
 }
 .label {
-  display: block;
-  margin-bottom: 12px;
+  @apply liquid:block liquid:mb-[12px];
   font-size: 14px;
-  font-weight: 600;
+  @apply liquid:font-semibold;
 }
 .selectTrigger {
-  display: block;
-  width: 100%;
+  @apply liquid:block liquid:w-full;
   background: transparent;
   border: 0;
-  padding: 0;
-  border-radius: 26px;
+  @apply liquid:p-0 liquid:rounded-[26px];
   cursor: pointer;
   outline: none;
   transition: transform 200ms;
@@ -144,18 +120,15 @@
   cursor: not-allowed;
 }
 .triggerContent {
-  min-height: 52px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @apply liquid:min-h-[52px] liquid:flex liquid:justify-between liquid:items-center;
   padding: 0 20px;
-  gap: 12px;
+  @apply liquid:gap-[12px];
   font-size: 15px;
 }
 .popover {
   width: var(--trigger-width);
   max-width: calc(100vw - 32px);
-  border-radius: 22px;
+  @apply liquid:rounded-[22px];
   outline: none;
   z-index: 50;
 }
@@ -163,17 +136,11 @@
   color: var(--lg-foreground, inherit);
 }
 .list {
-  padding: 8px;
+  @apply liquid:p-[8px];
   outline: none;
 }
 .listItem {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  min-height: 44px;
-  border-radius: 16px;
-  padding: 10px 12px;
+  @apply liquid:flex liquid:justify-between liquid:items-center liquid:gap-[12px] liquid:min-h-[44px] liquid:rounded-[16px] liquid:p-[10px_12px];
   outline: none;
   cursor: pointer;
   font-size: 14px;
@@ -184,38 +151,34 @@
   box-shadow: inset 0 0 0 1px #ffffffaa;
 }
 .itemIndicator {
-  width: 16px;
-  height: 16px;
+  @apply liquid:w-[16px] liquid:h-[16px];
   color: #0377f7;
 }
 .itemIndicator svg {
-  width: 100%;
-  height: 100%;
+  @apply liquid:w-full liquid:h-full;
 }
 .cardSurface {
-  width: 100%;
-  max-width: 350px;
+  @apply liquid:w-full liquid:max-w-[350px];
 }
 .card {
-  padding: 24px;
+  @apply liquid:p-[24px];
 }
 .solidCard {
-  width: 100%;
-  max-width: 350px;
+  @apply liquid:w-full liquid:max-w-[350px];
   border: 1px solid #dce2eb;
-  border-radius: 24px;
+  @apply liquid:rounded-[24px];
   background: var(--lg-solid-background);
   color: var(--lg-foreground, inherit);
   box-shadow: 0 2px 6px #18223605;
 }
 .cardTitle {
   font-size: 19px;
-  font-weight: 600;
+  @apply liquid:font-semibold;
 }
 .cardDescription {
   font-size: 13px;
   line-height: 1.5;
-  margin-top: 6px;
+  @apply liquid:mt-[6px];
   color: var(--lg-muted);
 }
 .cardContent {
@@ -224,17 +187,12 @@
   line-height: 1.5;
 }
 .cardFooter {
-  display: flex;
-  gap: 12px;
+  @apply liquid:flex liquid:gap-[12px];
 }
 .modalBackdrop {
-  position: fixed;
-  inset: 0;
+  @apply liquid:fixed liquid:inset-0;
   z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
+  @apply liquid:flex liquid:items-center liquid:justify-center liquid:p-[24px];
   background: #18223624;
   overflow-y: auto;
 }
@@ -242,31 +200,26 @@
   width: min(480px, 100%);
   max-height: calc(100dvh - 48px);
   overflow-y: auto;
-  border-radius: 32px;
+  @apply liquid:rounded-[32px];
 }
 .dialog {
   outline: none;
 }
 .dialogContent {
-  padding: 28px;
+  @apply liquid:p-[28px];
   color: var(--lg-foreground, inherit);
 }
 .dialogHeader {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-  justify-content: space-between;
+  @apply liquid:flex liquid:gap-[16px] liquid:items-center liquid:justify-between;
 }
 .dialogTitle {
   font-size: 24px;
   line-height: 1.2;
-  font-weight: 600;
+  @apply liquid:font-semibold;
 }
 .close {
   font-size: 24px;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
+  @apply liquid:w-[36px] liquid:h-[36px] liquid:rounded-[50%];
   background: rgb(var(--lg-neutral-rgb) / 0.502);
   cursor: pointer;
 }
@@ -276,23 +229,19 @@
   font-size: 15px;
 }
 .dialogFooter {
-  display: flex;
-  justify-content: flex-end;
+  @apply liquid:flex liquid:justify-end;
 }
 .done {
-  padding: 0;
+  @apply liquid:p-0;
   background: transparent;
-  border-radius: 24px;
+  @apply liquid:rounded-[24px];
   cursor: pointer;
 }
 .done span {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 48px;
+  @apply liquid:flex liquid:items-center liquid:justify-center liquid:h-[48px];
   padding: 0 28px;
   font-size: 14px;
-  font-weight: 600;
+  @apply liquid:font-semibold;
 }
 .close:focus-visible,
 .done:focus-visible {

@@ -26,12 +26,15 @@ import type { GlassConfig } from "../lib/types.js";
 import { GlassSurface } from "./glass-surface.js";
 import styles from "./heroui-controls.module.css";
 import { useGlassDrag } from "./use-glass-drag.js";
+import { cn } from "../lib/cn.js";
 
 export type LiquidNextUIButtonProps = Omit<ButtonProps, "children"> & {
   children: ReactNode;
   glass?: GlassConfig;
   appearance?: "normal" | "glass" | "colored";
   glassColor?: string;
+  /** Tailwind classes for the root button, glass surface and label/content. */
+  classNames?: { root?: string; surface?: string; content?: string };
 };
 
 export function LiquidNextUIButton({
@@ -39,6 +42,7 @@ export function LiquidNextUIButton({
   glass,
   appearance = "glass",
   glassColor = "#0878ed",
+  classNames,
   className = "",
   ...props
 }: LiquidNextUIButtonProps) {
@@ -47,10 +51,10 @@ export function LiquidNextUIButton({
       {...props}
       data-liquid-glass=""
       data-button-appearance={appearance}
-      className={`${styles.button} ${className}`}
+      className={typeof className === "function" ? state => cn(styles.button, classNames?.root, className(state)) : cn(styles.button, classNames?.root, className)}
     >
       {appearance === "normal" ? (
-        <span className={styles.buttonContent}>{children}</span>
+        <span className={cn(styles.buttonContent, classNames?.content)}>{children}</span>
       ) : (
         <GlassSurface
           radius={28}
@@ -59,11 +63,11 @@ export function LiquidNextUIButton({
           thickness={80}
           refraction={1}
           {...glass}
-          className={styles.buttonSurface}
+          className={cn(styles.buttonSurface, classNames?.surface)}
           data-colored={appearance === "colored"}
           style={{ "--button-tint": glassColor } as CSSProperties}
         >
-          <span className={styles.buttonContent}>{children}</span>
+          <span className={cn(styles.buttonContent, classNames?.content)}>{children}</span>
         </GlassSurface>
       )}
     </Button>

@@ -102,6 +102,11 @@ test("empty states associate their heading and description without hiding action
   assert.doesNotMatch(minimal, /aria-describedby=/);
   assert.equal(controls.LiquidEmptyState, core.GlassEmptyState);
 });
+test("Tailwind class merging preserves user overrides", () => {
+  assert.equal(core.cn("p-2 w-40", false, { "font-bold": true }, "p-6"), "w-40 font-bold p-6");
+  assert.equal(core.cn("hover:bg-blue-500", "hover:bg-red-500"), "hover:bg-red-500");
+});
+
 test("browser entries load CSS while Node entries preserve CSS-free SSR", async () => {
   const files = (await readdir(new URL("../dist/", import.meta.url))).filter((name) => name.endsWith(".js"));
   for (const file of files) {
@@ -117,5 +122,7 @@ test("browser entries load CSS while Node entries preserve CSS-free SSR", async 
   const css = await readFile(new URL("../dist/styles.css", import.meta.url), "utf8");
   assert.match(css, /backdrop-filter/);
   assert.match(css, /reflectionTop/);
-  assert.doesNotMatch(css, /@apply|@tailwind/);
+  assert.match(css, /@layer components/);
+  assert.match(css, /--liquid-font-weight-semibold/);
+  assert.doesNotMatch(css, /@apply|@tailwind|@reference/);
 });

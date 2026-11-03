@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.0
+
+- Author layout, spacing and typography in all 14 component style modules with Tailwind CSS 4, while retaining custom optical CSS.
+- Require Tailwind CSS 4 as a peer dependency. Continue shipping automatic, precompiled styles without Preflight.
+- Place defaults in cascade layers so application Tailwind utilities can override them. Namespace internal Tailwind tokens.
+- Add Button, Navbar and Sidebar `classNames` slots and export `cn()` for composing custom components.
+- Export optional `tailwind.css` theme utilities and `tokens.css`; document installation, customization and dependency checks.
+
 ## 0.2.3
 
 - Add Sidebar `header`, `actions` and custom `children` slots alongside the existing footer.

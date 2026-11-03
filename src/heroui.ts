@@ -1,4 +1,6 @@
 "use client";
+export { cn } from "./lib/cn.js";
+export type { LiquidNavbarClassNames, LiquidSidebarClassNames } from "./components/heroui-navigation.js";
 export * from "./components/unified-aliases.js";
 export { GlassEmptyState as LiquidEmptyState, type GlassEmptyStateProps as LiquidEmptyStateProps } from "./components/glass-empty-state.js";
 export * from "./components/nextui.js";

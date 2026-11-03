@@ -37,6 +37,7 @@ The table includes the component-specific props and common control props. Requir
 | `children` | No | `ReactNode` | Custom body content below the optional navigation links. |
 | `footer` | No | `ReactNode` | Bottom content, outside the scrollable body. |
 | `style` | No | `CSSProperties` | Root sizing and styling, such as width and height. |
+| `classNames` | No | `Partial<Record<"body" \| "footer" \| "header" \| "heading" \| "navigation" \| "content" \| "surface" \| "item" \| "actions" \| "container" \| "headingRow" \| "collapseButton", string>>` | Tailwind classes for individual sidebar slots. |
 | `isCollapsed` | No | `boolean` |  |
 | `onCollapsedChange` | No | `(collapsed: boolean) => void` |  |
 
@@ -82,6 +83,10 @@ Use `label="Project navigation"` for a screen-reader name without adding visible
 Expanded order: optional heading/collapse row, `header`, `actions`, navigation `items`, custom `children`, then `footer`. Omitted slots do not leave empty placeholder rows. Set root `style` or `className` for sizing; for example `style={{ width: 260, height: "100dvh" }}`. The body scrolls inside a fixed-height sidebar while top content, actions and footer stay in place. On narrow screens the default width becomes 100%; an explicit inline width overrides that.
 
 See the complete [custom sidebar composition guide](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/recipes/sidebar-composition.md) for skeletons above a Create Folder action and fully custom content.
+
+## Tailwind customization
+
+Use `className` for root utilities and `classNames` for component parts. See the [Tailwind guide](../tailwind.md) for slot names, setup commands and complete custom component examples. Utilities override default component styles; inline `style` still takes precedence.
 
 ## TypeScript
 

@@ -1,7 +1,7 @@
+@reference "../tailwind-reference.css";
 .surfaceBody {
   color: inherit;
-  border-radius: 22px;
-  min-width: 0;
+  @apply liquid:rounded-[22px] liquid:min-w-0;
 }
 .solid {
   background: var(--lg-solid-background);
@@ -12,16 +12,12 @@
   background: linear-gradient(135deg, #48a5ffd9, #0878edcf 65%, #0861d1e6);
 }
 .field {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  width: 100%;
-  min-width: 0;
+  @apply liquid:flex liquid:flex-col liquid:gap-[12px] liquid:w-full liquid:min-w-0;
   color: var(--lg-foreground, inherit);
   font-size: 14px;
 }
 .field > label {
-  font-weight: 600;
+  @apply liquid:font-semibold;
 }
 .help {
   color: var(--lg-muted);
@@ -34,31 +30,23 @@
   line-height: 1.6;
 }
 .actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-  padding: 6px;
-  align-items: center;
+  @apply liquid:flex liquid:flex-wrap liquid:gap-[4px] liquid:p-[6px] liquid:items-center;
 }
 .action,
 .close,
 .tagRemove {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
+  @apply liquid:inline-flex liquid:items-center liquid:justify-center liquid:gap-[8px];
   color: inherit;
   border: 0;
   background: transparent;
   cursor: pointer;
-  border-radius: 16px;
+  @apply liquid:rounded-[16px];
   transition:
     transform 180ms,
     background 180ms;
 }
 .action {
-  padding: 10px 16px;
-  min-height: 44px;
+  @apply liquid:p-[10px_16px] liquid:min-h-[44px];
   font-size: 13px;
 }
 .action[data-hovered="true"],
@@ -87,63 +75,49 @@
   outline-offset: 3px;
 }
 .closeWrap {
-  display: inline-flex;
+  @apply liquid:inline-flex;
 }
 .close {
-  width: 44px;
-  height: 44px;
+  @apply liquid:w-[44px] liquid:h-[44px];
   font-size: 24px;
 }
 .meter {
-  width: 100%;
+  @apply liquid:w-full;
   font-size: 13px;
-  display: grid;
-  gap: 14px;
+  @apply liquid:grid liquid:gap-[14px];
 }
 .between {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
+  @apply liquid:flex liquid:justify-between liquid:items-center liquid:gap-[12px];
 }
 .meterTrack {
-  height: 14px;
-  border-radius: 22px;
-  overflow: hidden;
+  @apply liquid:h-[14px] liquid:rounded-[22px] liquid:overflow-hidden;
   background: #53607812;
 }
 .meterFill {
-  height: 100%;
+  @apply liquid:h-full;
   border-radius: inherit;
   background: linear-gradient(90deg, #4ca7ffbf, #0878eddd);
   box-shadow: inset 0 1px 2px #ffffffa0;
   transition: width 180ms;
 }
 .skeleton {
-  display: block;
-  min-height: 16px;
-  border-radius: 9px;
+  @apply liquid:block liquid:min-h-[16px] liquid:rounded-[9px];
   background: linear-gradient(100deg, #dce4ee, #eef2f7 45%, #dce4ee 80%);
   background-size: 220% 100%;
   animation: shimmer 2.4s ease-in-out infinite;
 }
 .spinner {
-  display: inline-flex;
-  width: 28px;
-  height: 28px;
+  @apply liquid:inline-flex liquid:w-[28px] liquid:h-[28px];
   color: #0878ed;
 }
 .spinner svg {
-  width: 100%;
-  height: 100%;
+  @apply liquid:w-full liquid:h-full;
   animation: spin 1s linear infinite;
 }
 .scroll {
-  max-height: 200px;
-  overflow: auto;
+  @apply liquid:max-h-[200px] liquid:overflow-auto;
   overscroll-behavior: contain;
-  border-radius: 12px;
-  padding: 8px 12px;
+  @apply liquid:rounded-[12px] liquid:p-[8px_12px];
   scrollbar-width: thin;
 }
 .scroll[data-bottom-scroll="true"] {
@@ -162,25 +136,20 @@
 }
 .separator {
   border: 0;
-  height: 1px;
-  width: 100%;
+  @apply liquid:h-[1px] liquid:w-full;
   background: #8796ac44;
   margin: 10px 0;
 }
 .separator[aria-orientation="vertical"] {
-  width: 1px;
-  height: 28px;
+  @apply liquid:w-[1px] liquid:h-[28px];
   margin: 0 8px;
 }
 .kbd {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 6px 10px;
+  @apply liquid:inline-flex liquid:items-center liquid:gap-[4px] liquid:p-[6px_10px];
   background: var(--lg-solid-background);
   border: 1px solid #d4deeb;
   border-bottom-width: 3px;
-  border-radius: 8px;
+  @apply liquid:rounded-[8px];
   font:
     12px var(--liquid-glass-font-mono, ui-monospace),
     monospace;
@@ -189,7 +158,7 @@
 .link {
   color: var(--lg-accent-text);
   text-underline-offset: 4px;
-  border-radius: 4px;
+  @apply liquid:rounded-[4px];
   cursor: pointer;
 }
 .link[data-hovered="true"] {
@@ -212,124 +181,97 @@
   font-size: 28px;
   line-height: 1.2;
   letter-spacing: -0.035em;
-  font-weight: 600;
+  @apply liquid:font-semibold;
   color: var(--lg-foreground, inherit);
 }
 .typography[data-type="h3"] {
   font-size: 21px;
   line-height: 1.3;
-  font-weight: 600;
+  @apply liquid:font-semibold;
   color: var(--lg-foreground, inherit);
 }
 .typography[data-type="body-sm"] {
   font-size: 12px;
 }
 .typography[data-type="code"] {
-  padding: 3px 7px;
-  border-radius: 6px;
+  @apply liquid:p-[3px_7px] liquid:rounded-[6px];
   background: var(--lg-solid-background);
   font-family: monospace;
   font-size: 12px;
 }
 .tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  @apply liquid:flex liquid:flex-wrap liquid:gap-[10px];
 }
 .tag {
-  display: inline-flex;
-  border-radius: 22px;
+  @apply liquid:inline-flex liquid:rounded-[22px];
   outline: none;
 }
 .tagInner {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 8px 6px 14px;
+  @apply liquid:flex liquid:items-center liquid:gap-[8px] liquid:p-[6px_8px_6px_14px];
   font-size: 13px;
-  min-height: 42px;
+  @apply liquid:min-h-[42px];
 }
 .tagRemove {
-  width: 28px;
-  height: 28px;
+  @apply liquid:w-[28px] liquid:h-[28px];
   font-size: 18px;
 }
 .tag[data-selected="true"] {
   box-shadow: 0 0 0 2px #497fad;
 }
 .padded {
-  padding: 24px;
+  @apply liquid:p-[24px];
 }
 .backdrop {
-  position: fixed;
-  inset: 0;
+  @apply liquid:fixed liquid:inset-0;
   z-index: 100;
   background: #14213b36;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
+  @apply liquid:flex liquid:items-center liquid:justify-center liquid:p-[16px];
 }
 .overlayContainer {
   width: min(440px, 100%);
   max-height: calc(100dvh - 32px);
-  overflow: auto;
-  border-radius: 28px;
+  @apply liquid:overflow-auto liquid:rounded-[28px];
 }
 .overlayDialog {
   outline: none;
-  width: 100%;
+  @apply liquid:w-full;
 }
 .overlayBody {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  padding: 28px;
+  @apply liquid:flex liquid:flex-col liquid:gap-[24px] liquid:p-[28px];
   font-size: 14px;
   line-height: 1.7;
 }
 .overlayHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+  @apply liquid:flex liquid:items-center liquid:justify-between liquid:gap-[16px];
 }
 .overlayHeader h2 {
   font-size: 22px;
-  font-weight: 600;
+  @apply liquid:font-semibold;
   line-height: 1.3;
   letter-spacing: -0.025em;
 }
 .drawer {
-  position: fixed;
-  right: 16px;
-  top: 16px;
-  bottom: 16px;
+  @apply liquid:fixed liquid:right-[16px] liquid:top-[16px] liquid:bottom-[16px];
   width: min(380px, calc(100vw - 32px));
-  overflow: auto;
+  @apply liquid:overflow-auto;
   outline: none;
-  border-radius: 24px;
+  @apply liquid:rounded-[24px];
   animation: enterDrawer 220ms ease-out;
 }
 .drawer > .overlayDialog > [data-glass-mode] {
   min-height: calc(100dvh - 32px);
 }
 .disclosure {
-  width: 100%;
+  @apply liquid:w-full;
 }
 .disclosureTrigger {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 18px 20px;
+  @apply liquid:w-full liquid:flex liquid:items-center liquid:justify-between liquid:gap-[12px] liquid:p-[18px_20px];
   background: transparent;
   color: var(--lg-foreground, inherit);
-  border-radius: 22px;
+  @apply liquid:rounded-[22px];
   cursor: pointer;
   font-size: 14px;
-  text-align: left;
+  @apply liquid:text-left;
 }
 .disclosureTrigger[data-hovered="true"] {
   background: rgb(var(--lg-neutral-rgb) / 0.251);
@@ -339,8 +281,7 @@
   outline-offset: 2px;
 }
 .disclosureTrigger svg {
-  width: 16px;
-  height: 16px;
+  @apply liquid:w-[16px] liquid:h-[16px];
   transition: transform 180ms;
 }
 .disclosureTrigger svg[data-expanded="true"] {
@@ -353,55 +294,47 @@
   line-height: 1.7;
 }
 .disclosureGroup {
-  display: grid;
-  gap: 12px;
-  width: 100%;
+  @apply liquid:grid liquid:gap-[12px] liquid:w-full;
 }
 .inputRow {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 14px;
-  min-height: 52px;
+  @apply liquid:flex liquid:items-center liquid:gap-[8px] liquid:p-[8px_14px] liquid:min-h-[52px];
   outline: none;
-  border-radius: 22px;
+  @apply liquid:rounded-[22px];
 }
 .inputRow:focus-within {
   box-shadow: 0 0 0 2px #497fad55;
 }
 .inputRow > input {
-  width: 100%;
-  min-width: 0;
+  @apply liquid:w-full liquid:min-w-0;
   background: transparent;
   border: 0;
   outline: none;
   font-size: 16px;
   color: var(--lg-foreground, inherit);
-  padding: 4px;
+  @apply liquid:p-[4px];
 }
 .prefix {
   font-size: 13px;
   color: var(--lg-muted);
-  flex-shrink: 0;
+  @apply liquid:shrink-0;
 }
 .popover {
   background: transparent;
   border: 0;
   outline: none;
-  padding: 0;
+  @apply liquid:p-0;
   box-shadow: none;
   max-width: calc(100vw - 24px);
   z-index: 110;
-  border-radius: 22px;
+  @apply liquid:rounded-[22px];
 }
 .list {
-  padding: 8px;
+  @apply liquid:p-[8px];
   outline: none;
-  min-width: 250px;
+  @apply liquid:min-w-[250px];
 }
 .listItem {
-  padding: 12px;
-  border-radius: 12px;
+  @apply liquid:p-[12px] liquid:rounded-[12px];
   font-size: 13px;
   cursor: pointer;
   outline: none;
@@ -414,72 +347,54 @@
   padding: 12px 12px 0;
 }
 .search input {
-  width: 100%;
-  padding: 10px 12px;
-  border-radius: 12px;
+  @apply liquid:w-full liquid:p-[10px_12px] liquid:rounded-[12px];
   background: rgb(var(--lg-neutral-rgb) / 0.439);
   outline: none;
   font-size: 16px;
   border: 1px solid #c8d5e7;
 }
 .selectTrigger {
-  width: 100%;
-  min-height: 52px;
-  padding: 10px 16px;
+  @apply liquid:w-full liquid:min-h-[52px] liquid:p-[10px_16px];
   background: transparent;
-  border-radius: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  @apply liquid:rounded-[22px] liquid:flex liquid:items-center liquid:justify-between;
   cursor: pointer;
   font-size: 14px;
 }
 .selectTrigger button {
-  padding: 6px;
+  @apply liquid:p-[6px];
   background: transparent;
   cursor: pointer;
 }
 .selectTrigger svg {
-  width: 16px;
-  height: 16px;
+  @apply liquid:w-[16px] liquid:h-[16px];
 }
 .fieldset {
-  min-width: 0;
-  width: 100%;
+  @apply liquid:min-w-0 liquid:w-full;
   border: 1px solid #c7d4e4;
-  border-radius: 18px;
-  padding: 18px;
+  @apply liquid:rounded-[18px] liquid:p-[18px];
 }
 .legend {
   padding: 0 8px;
   font-size: 13px;
-  font-weight: 600;
+  @apply liquid:font-semibold;
 }
 .fieldsetFields {
-  display: grid;
-  gap: 16px;
+  @apply liquid:grid liquid:gap-[16px];
 }
 .otp {
-  display: flex;
-  justify-content: center;
-  width: 100%;
+  @apply liquid:flex liquid:justify-center liquid:w-full;
 }
 .otpGroup {
-  display: flex;
-  gap: 6px;
-  width: 100%;
+  @apply liquid:flex liquid:gap-[6px] liquid:w-full;
 }
 .otpSlot {
-  display: grid;
+  @apply liquid:grid;
   place-items: center;
-  flex: 1;
-  min-width: 0;
-  height: 48px;
-  border-radius: 12px;
+  @apply liquid:flex-1 liquid:min-w-0 liquid:h-[48px] liquid:rounded-[12px];
   border: 1px solid #ffffffb0;
   background: rgb(var(--lg-neutral-rgb) / 0.251);
   font-size: 20px;
-  position: relative;
+  @apply liquid:relative;
 }
 .otpSlot[data-active="true"] {
   outline: 2px solid #497fad;
@@ -487,28 +402,20 @@
   background: rgb(var(--lg-neutral-rgb) / 0.502);
 }
 .otpSlot [data-slot="input-otp-caret"] {
-  position: absolute;
+  @apply liquid:absolute;
   left: 50%;
-  width: 1px;
-  height: 20px;
+  @apply liquid:w-[1px] liquid:h-[20px];
   background: currentColor;
 }
 .rangeRow {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 4px;
-  padding: 8px 12px;
-  min-height: 54px;
+  @apply liquid:flex liquid:flex-wrap liquid:items-center liquid:gap-[4px] liquid:p-[8px_12px] liquid:min-h-[54px];
 }
 .dateInput {
-  display: flex;
-  align-items: center;
+  @apply liquid:flex liquid:items-center;
   font-size: 14px;
 }
 .segment {
-  padding: 3px 2px;
-  border-radius: 4px;
+  @apply liquid:p-[3px_2px] liquid:rounded-[4px];
 }
 .segment[data-focused="true"] {
   background: #0878ed20;

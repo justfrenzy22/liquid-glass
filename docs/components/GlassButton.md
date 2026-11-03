@@ -37,6 +37,7 @@ The table includes the component-specific props and common control props. Requir
 | `glass` | No | `GlassConfig` |  |
 | `appearance` | No | `"glass" \| "normal" \| "colored"` |  |
 | `glassColor` | No | `string` |  |
+| `classNames` | No | `{ root?: string; surface?: string; content?: string; }` | Tailwind classes for the root button, glass surface and label/content. |
 
 
 ## Shared design
@@ -52,6 +53,10 @@ See [LiquidButton](LiquidButton.md) for the main usage guide. Import either name
 ```
 
 Use `isDisabled` to disable the button. Use `onPress` for mouse, touch and keyboard activation. A button defaults to an ordinary action; set `type="submit"` inside a form when it should submit. Only the optional `/native` entry retains `onClick` and `disabled` as its native button API. A button does not perform navigation, save data or submit an API request unless you provide that behavior.
+
+## Tailwind customization
+
+Use `className` for root utilities and `classNames` for component parts. See the [Tailwind guide](../tailwind.md) for slot names, setup commands and complete custom component examples. Utilities override default component styles; inline `style` still takes precedence.
 
 ## TypeScript
 

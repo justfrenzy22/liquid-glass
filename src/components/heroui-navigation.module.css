@@ -1,59 +1,60 @@
-.root { min-width: 0; color: var(--lg-foreground, inherit); }
-.solid { background: var(--lg-solid-background); border: 1px solid #dce3ed; border-radius: 24px; }
-.surface { width: 100%; }
+@reference "../tailwind-reference.css";
+.root { @apply liquid:min-w-0; color: var(--lg-foreground, inherit); }
+.solid { background: var(--lg-solid-background); border: 1px solid #dce3ed; @apply liquid:rounded-[24px]; }
+.surface { @apply liquid:w-full; }
 .root[data-appearance="colored"] .surface {
   background: linear-gradient(135deg, #4da6ffb3, #0878edc9 65%, #0965d9d9);
   color: white;
 }
-.navbar { display: flex; align-items: center; gap: 20px; padding: 12px 16px; flex-wrap: wrap; }
-.brand { display: flex; align-items: center; gap: 10px; min-width: 0; max-width: 100%; min-height: 44px; font-size: 16px; font-weight: 650; color: inherit; text-decoration: none; border-radius: 8px; }
+.navbar { @apply liquid:flex liquid:items-center liquid:gap-[20px] liquid:p-[12px_16px] liquid:flex-wrap; }
+.brand { @apply liquid:flex liquid:items-center liquid:gap-[10px] liquid:min-w-0 liquid:max-w-full liquid:min-h-[44px]; font-size: 16px; font-weight: 650; color: inherit; text-decoration: none; @apply liquid:rounded-[8px]; }
 .brand:where(a):focus-visible { outline: 2px solid #497fad; outline-offset: 3px; }
-.brandIcon { display: inline-grid; place-items: center; width: var(--lg-brand-icon-size, 24px); height: var(--lg-brand-icon-size, 24px); flex-shrink: 0; }
-.brandIcon > :where(svg, img) { display: block; width: 100%; height: 100%; object-fit: contain; }
-.brandText { min-width: 0; overflow-wrap: anywhere; }
-.topItems { display: flex; flex-wrap: wrap; gap: 4px; margin-inline: auto; }
-.item { display: flex; align-items: center; gap: 10px; padding: 10px 14px; min-height: 44px; border-radius: 14px; font-size: 13px; text-decoration: none; color: inherit; transition: transform 180ms, background 180ms; }
-.item[aria-current="page"] { background: var(--lg-selection-background); box-shadow: inset 0 1px 0 #ffffff80; font-weight: 600; }
+.brandIcon { display: inline-grid; place-items: center; width: var(--lg-brand-icon-size, 24px); height: var(--lg-brand-icon-size, 24px); @apply liquid:shrink-0; }
+.brandIcon > :where(svg, img) { @apply liquid:block liquid:w-full liquid:h-full liquid:object-contain; }
+.brandText { @apply liquid:min-w-0 liquid:wrap-anywhere; }
+.topItems { @apply liquid:flex liquid:flex-wrap liquid:gap-[4px] liquid:mx-auto; }
+.item { @apply liquid:flex liquid:items-center liquid:gap-[10px] liquid:p-[10px_14px] liquid:min-h-[44px] liquid:rounded-[14px]; font-size: 13px; text-decoration: none; color: inherit; transition: transform 180ms, background 180ms; }
+.item[aria-current="page"] { background: var(--lg-selection-background); box-shadow: inset 0 1px 0 #ffffff80; @apply liquid:font-semibold; }
 .item:hover { background: rgb(var(--lg-neutral-rgb) / 0.451); transform: translateY(-2px); }
 .item:active { transform: scale(.97); }
 .item:focus-visible, .collapse[data-focus-visible="true"] { outline: 2px solid #497fad; outline-offset: 3px; }
 .root[data-appearance="colored"] .item[aria-current="page"] { background: rgb(var(--lg-neutral-rgb) / 0.220); }
 .root[data-appearance="colored"] .item:hover { background: rgb(var(--lg-neutral-rgb) / 0.290); }
 .root[data-appearance="colored"] .item:focus-visible { outline-color: white; }
-.icon { display: grid; place-items: center; flex: 0 0 20px; width: 20px; height: 20px; }
-.icon svg { width: 20px; height: 20px; }
-.count { margin-left: auto; padding: 2px 6px; border-radius: 6px; background: #53607812; font-size: 11px; font-variant-numeric: tabular-nums; }
-.actions { display: flex; align-items: center; gap: 8px; }
-.sidebar { display: flex; flex-direction: column; width: 220px; min-height: 380px; transition: width 220ms; flex-shrink: 0; }
-.sidebar > .surface, .sidebar > .solid { display: flex; flex-direction: column; flex: 1; min-height: 0; }
-.sidebar > .surface > [data-slot="glass-content"] { display: flex; flex-direction: column; flex: 1; min-height: 0; }
-.sideContent { display: flex; flex-direction: column; gap: 12px; padding: 12px; min-height: 0; flex: 1; }
-.sideSlot { display: grid; gap: 8px; min-width: 0; }
-.sideBody { display: flex; flex-direction: column; gap: 12px; min-width: 0; min-height: 0; overflow: auto; flex: 1; }
-.sideHeading { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 2px 4px 0; }
-.sideHeading[data-heading="false"] { justify-content: flex-end; }
-.heading { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
-.collapse { border: 0; background: transparent; color: inherit; border-radius: 10px; width: 36px; height: 36px; display: grid; place-items: center; cursor: pointer; flex-shrink: 0; transition: background 180ms, transform 180ms; }
+.icon { @apply liquid:grid; place-items: center; flex: 0 0 20px; @apply liquid:w-[20px] liquid:h-[20px]; }
+.icon svg { @apply liquid:w-[20px] liquid:h-[20px]; }
+.count { @apply liquid:ml-auto liquid:p-[2px_6px] liquid:rounded-[6px]; background: #53607812; font-size: 11px; font-variant-numeric: tabular-nums; }
+.actions { @apply liquid:flex liquid:items-center liquid:gap-[8px]; }
+.sidebar { @apply liquid:flex liquid:flex-col liquid:w-[220px] liquid:min-h-[380px]; transition: width 220ms; @apply liquid:shrink-0; }
+.sidebar > .surface, .sidebar > .solid { @apply liquid:flex liquid:flex-col liquid:flex-1 liquid:min-h-0; }
+.sidebar > .surface > [data-slot="glass-content"] { @apply liquid:flex liquid:flex-col liquid:flex-1 liquid:min-h-0; }
+.sideContent { @apply liquid:flex liquid:flex-col liquid:gap-[12px] liquid:p-[12px] liquid:min-h-0 liquid:flex-1; }
+.sideSlot { @apply liquid:grid liquid:gap-[8px] liquid:min-w-0; }
+.sideBody { @apply liquid:flex liquid:flex-col liquid:gap-[12px] liquid:min-w-0 liquid:min-h-0 liquid:overflow-auto liquid:flex-1; }
+.sideHeading { @apply liquid:flex liquid:items-center liquid:justify-between liquid:gap-[8px]; padding: 2px 4px 0; }
+.sideHeading[data-heading="false"] { @apply liquid:justify-end; }
+.heading { font-size: 11px; @apply liquid:font-semibold; letter-spacing: .08em; text-transform: uppercase; }
+.collapse { border: 0; background: transparent; color: inherit; @apply liquid:rounded-[10px] liquid:w-[36px] liquid:h-[36px] liquid:grid; place-items: center; cursor: pointer; @apply liquid:shrink-0; transition: background 180ms, transform 180ms; }
 .collapse[data-hovered="true"] { background: rgb(var(--lg-neutral-rgb) / 0.451); transform: scale(1.06); }
 .collapse[data-pressed="true"] { transform: scale(.94); }
-.sideItems { display: grid; gap: 6px; }
-.sideFooter { margin-top: auto; padding: 8px 4px; font-size: 12px; line-height: 1.7; }
-.sidebar[data-collapsed="true"] { width: 76px; }
+.sideItems { @apply liquid:grid liquid:gap-[6px]; }
+.sideFooter { @apply liquid:mt-auto liquid:p-[8px_4px]; font-size: 12px; line-height: 1.7; }
+.sidebar[data-collapsed="true"] { @apply liquid:w-[76px]; }
 .sidebar[data-collapsed="true"] .heading,
 .sidebar[data-collapsed="true"] .itemLabel,
-.sidebar[data-collapsed="true"] .count { display: none; }
-.sidebar[data-collapsed="true"] .sideHeading { padding-inline: 0; justify-content: center; }
-.sidebar[data-collapsed="true"] .item { padding: 10px; justify-content: center; }
+.sidebar[data-collapsed="true"] .count { @apply liquid:hidden; }
+.sidebar[data-collapsed="true"] .sideHeading { @apply liquid:px-0 liquid:justify-center; }
+.sidebar[data-collapsed="true"] .item { @apply liquid:p-[10px] liquid:justify-center; }
 @media (max-width: 600px) {
-  .navbar { gap: 12px; }
-  .topItems { order: 3; width: 100%; }
-  .actions { margin-left: auto; }
-  .sidebar, .sidebar[data-collapsed="true"] { width: 100%; min-height: 0; }
-  .sideContent { min-height: 0; }
+  .navbar { @apply liquid:gap-[12px]; }
+  .topItems { order: 3; @apply liquid:w-full; }
+  .actions { @apply liquid:ml-auto; }
+  .sidebar, .sidebar[data-collapsed="true"] { @apply liquid:w-full liquid:min-h-0; }
+  .sideContent { @apply liquid:min-h-0; }
   .sideItems { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .sidebar[data-collapsed="true"] .sideHeading { justify-content: flex-end; }
-  .sidebar[data-collapsed="true"] .sideItems { display: flex; flex-wrap: wrap; }
-  .sideFooter { padding-top: 18px; }
+  .sidebar[data-collapsed="true"] .sideHeading { @apply liquid:justify-end; }
+  .sidebar[data-collapsed="true"] .sideItems { @apply liquid:flex liquid:flex-wrap; }
+  .sideFooter { @apply liquid:pt-[18px]; }
 }
 @media (prefers-reduced-motion: reduce) {
   .item, .sidebar, .collapse { transition: none; }

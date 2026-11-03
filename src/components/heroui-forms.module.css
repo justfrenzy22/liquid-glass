@@ -1,14 +1,11 @@
+@reference "../tailwind-reference.css";
 .field {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
-  min-width: 0;
+  @apply liquid:flex liquid:flex-col liquid:gap-[10px] liquid:w-full liquid:min-w-0;
   color: var(--lg-foreground, inherit);
 }
 .label {
   font-size: 14px;
-  font-weight: 600;
+  @apply liquid:font-semibold;
 }
 .help {
   font-size: 12px;
@@ -20,7 +17,7 @@
   color: var(--lg-danger);
 }
 .surface {
-  width: 100%;
+  @apply liquid:w-full;
   transition: transform 220ms ease;
   transform-origin: center;
 }
@@ -28,49 +25,39 @@
   transform: scale(1.025);
 }
 .field .group {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 52px;
-  padding: 4px 12px;
+  @apply liquid:flex liquid:items-center liquid:gap-[8px] liquid:min-h-[52px] liquid:p-[4px_12px];
   border: 0;
-  border-radius: 22px;
+  @apply liquid:rounded-[22px];
   background: transparent;
   box-shadow: none;
   outline: none;
 }
 .field .input,
 .field .textarea {
-  width: 100%;
-  min-width: 0;
+  @apply liquid:w-full liquid:min-w-0;
   font-size: 16px;
   color: var(--lg-foreground, inherit);
   background: transparent;
   border: 0;
   box-shadow: none;
   outline: none;
-  border-radius: 0;
+  @apply liquid:rounded-none;
 }
 .field .input {
-  flex: 1;
+  @apply liquid:flex-1;
   padding: 10px 0;
 }
 .field .textarea {
-  display: block;
-  padding: 16px;
-  min-height: 128px;
+  @apply liquid:block liquid:p-[16px] liquid:min-h-[128px];
   resize: vertical;
 }
 .field .number {
-  text-align: center;
+  @apply liquid:text-center;
   font-variant-numeric: tabular-nums;
 }
 .field .step,
 .field .clear {
-  flex-shrink: 0;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
+  @apply liquid:shrink-0 liquid:w-[44px] liquid:h-[44px] liquid:rounded-[50%];
   background: rgb(var(--lg-neutral-rgb) / 0.251);
   color: var(--lg-foreground, inherit);
   cursor: pointer;
@@ -79,14 +66,13 @@
   font-size: 22px;
 }
 .field .step {
-  display: grid;
+  @apply liquid:grid;
   place-items: center;
-  padding: 0;
+  @apply liquid:p-0;
   line-height: 1;
 }
 .field[data-empty] .clear {
-  visibility: hidden;
-  pointer-events: none;
+  @apply liquid:invisible liquid:pointer-events-none;
 }
 .field .step[data-disabled] {
   opacity: 0.4;
@@ -113,44 +99,29 @@
   outline-offset: 3px;
 }
 .choices {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
+  @apply liquid:flex liquid:flex-col liquid:gap-[18px];
   padding: 6px 0;
 }
 .radioContent {
-  display: flex;
-  align-items: center;
-  gap: 14px;
+  @apply liquid:flex liquid:items-center liquid:gap-[14px];
   cursor: pointer;
   font-size: 14px;
 }
 .radio .radioControl {
-  display: block;
-  width: 24px;
-  height: 24px;
-  flex-shrink: 0;
+  @apply liquid:block liquid:w-[24px] liquid:h-[24px] liquid:shrink-0;
   border: 0;
   background: transparent;
   box-shadow: none;
 }
 .radioLens {
-  width: 24px;
-  height: 24px;
+  @apply liquid:w-[24px] liquid:h-[24px];
   transition: transform 180ms;
 }
 .radioLens[data-active="true"] {
   transform: scale(1.15);
 }
 .dot {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  display: block;
-  width: 12px;
-  height: 12px;
-  margin: 0;
-  border-radius: 50%;
+  @apply liquid:absolute liquid:top-[12px] liquid:left-[12px] liquid:block liquid:w-[12px] liquid:h-[12px] liquid:m-0 liquid:rounded-[50%];
   background: #0878f9;
   transform: translate(-50%, -50%) scale(0);
   transition: transform 180ms;

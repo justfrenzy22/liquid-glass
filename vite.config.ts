@@ -1,6 +1,8 @@
 import { defineConfig } from "vite";
+import tailwindcss from "@tailwindcss/postcss";
 export default defineConfig({
   root: "tests/fixtures/consumer",
+  css: { postcss: { plugins: [tailwindcss()] } },
   build: {
     outDir: "../../../.artifacts/consumer-build", emptyOutDir: true,
     rolldownOptions: {

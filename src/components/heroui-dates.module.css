@@ -1,43 +1,34 @@
+@reference "../tailwind-reference.css";
 .field {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
+  @apply liquid:flex liquid:flex-col liquid:gap-[10px] liquid:w-full;
   font-size: 14px;
   color: var(--lg-foreground, inherit);
 }
 .field > label {
-  font-weight: 600;
+  @apply liquid:font-semibold;
 }
 .lens {
-  width: 100%;
+  @apply liquid:w-full;
   transition: transform 180ms;
 }
 .lens:focus-within {
   transform: scale(1.02);
 }
 .field .group {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 6px 12px;
-  min-height: 52px;
+  @apply liquid:flex liquid:items-center liquid:justify-between liquid:p-[6px_12px] liquid:min-h-[52px];
   background: transparent;
   border: 0;
   box-shadow: none;
-  border-radius: 22px;
+  @apply liquid:rounded-[22px];
   outline: none;
 }
 .field .input {
-  display: flex;
-  align-items: center;
-  min-width: 0;
+  @apply liquid:flex liquid:items-center liquid:min-w-0;
   font-size: 16px;
-  padding: 4px;
+  @apply liquid:p-[4px];
 }
 .field .segment {
-  border-radius: 5px;
-  padding: 3px 2px;
+  @apply liquid:rounded-[5px] liquid:p-[3px_2px];
   color: var(--lg-foreground, inherit);
 }
 .field .segment[data-focused] {
@@ -46,56 +37,48 @@
 }
 .field .trigger,
 .calendar .nav {
-  display: grid;
+  @apply liquid:grid;
   place-items: center;
-  width: 36px;
-  height: 36px;
-  padding: 0;
+  @apply liquid:w-[36px] liquid:h-[36px] liquid:p-0;
   background: rgb(var(--lg-neutral-rgb) / 0.333);
-  border-radius: 50%;
+  @apply liquid:rounded-[50%];
   color: var(--lg-foreground, inherit);
   cursor: pointer;
 }
 .panel {
-  padding: 18px;
+  @apply liquid:p-[18px];
   width: fit-content;
-  max-width: 100%;
+  @apply liquid:max-w-full;
 }
 .panel .calendar {
-  width: 280px;
-  max-width: 100%;
+  @apply liquid:w-[280px] liquid:max-w-full;
   background: transparent;
-  padding: 0;
+  @apply liquid:p-0;
   color: var(--lg-foreground, inherit);
 }
 .calendar .header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding-bottom: 16px;
+  @apply liquid:flex liquid:items-center liquid:justify-between liquid:gap-[12px] liquid:pb-[16px];
 }
 .header > [data-slot$="heading"] {
-  text-align: center;
+  @apply liquid:text-center;
   font-size: 14px;
-  font-weight: 600;
+  @apply liquid:font-semibold;
 }
 .calendar .cell {
-  display: grid;
+  @apply liquid:grid;
   place-items: center;
-  width: 100%;
+  @apply liquid:w-full;
   aspect-ratio: 1;
   font-size: 13px;
   cursor: pointer;
   color: var(--lg-foreground, inherit);
-  border-radius: 50%;
+  @apply liquid:rounded-[50%];
   background: transparent;
 }
 .calendar [role="grid"] {
-  display: grid;
+  @apply liquid:grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
-  gap: 4px;
-  width: 100%;
+  @apply liquid:gap-[4px] liquid:w-full;
 }
 .calendar thead,
 .calendar tbody,
@@ -104,13 +87,12 @@
 }
 .calendar th {
   font-size: 10px;
-  font-weight: 500;
-  text-align: center;
+  @apply liquid:font-medium liquid:text-center;
   color: var(--lg-muted);
   padding: 0 0 8px;
 }
 .calendar td {
-  min-width: 0;
+  @apply liquid:min-w-0;
 }
 .calendar .cell[data-disabled="true"] {
   cursor: default;
@@ -121,7 +103,7 @@
   box-shadow:
     inset 0 0 0 1px #ffffffc0,
     0 2px 8px #18223612;
-  font-weight: 700;
+  @apply liquid:font-bold;
 }
 .calendar .cell[data-selection-start],
 .calendar .cell[data-selection-end] {
@@ -148,12 +130,12 @@
   font-size: 12px;
 }
 .popover {
-  padding: 0;
+  @apply liquid:p-0;
   background: transparent;
   border: 0;
   box-shadow: none;
   max-width: calc(100vw - 24px);
-  border-radius: 24px;
+  @apply liquid:rounded-[24px];
 }
 @media (prefers-reduced-motion: reduce) {
   .lens {

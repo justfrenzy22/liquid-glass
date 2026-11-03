@@ -34,6 +34,7 @@ The table includes the component-specific props and common control props. Requir
 | `brand` | Yes | `ReactNode` | Brand content: text, styled JSX, an image, SVG or your own link. |
 | `brandIcon` | No | `ReactNode` | Optional decorative icon placed alongside the brand content. |
 | `brandHref` | No | `string` | Turn the whole brand into a link. Omit when brand already contains a link. |
+| `classNames` | No | `Partial<Record<"navigation" \| "content" \| "surface" \| "brand" \| "brandIcon" \| "brandContent" \| "item" \| "actions", string>>` | Tailwind classes for individual navbar parts. |
 | `actions` | No | `ReactNode` |  |
 
 
@@ -121,6 +122,10 @@ For an image wordmark, use `brand={<img src="/wordmark.svg" alt="CodeDrive" styl
 ## Custom links
 
 For your own router Link component or anchor, put the complete link in `brand` and omit `brandHref` to avoid nested links. Existing `brand={<a href="/">My app</a>}` usage remains supported. Use the brand slots `data-slot="navbar-brand"`, `navbar-brand-icon` and `navbar-brand-content` for targeted application CSS.
+
+## Tailwind customization
+
+Use `className` for root utilities and `classNames` for component parts. See the [Tailwind guide](../tailwind.md) for slot names, setup commands and complete custom component examples. Utilities override default component styles; inline `style` still takes precedence.
 
 ## TypeScript
 

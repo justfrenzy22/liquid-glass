@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createRoot } from "react-dom/client";
-import { GlassRenderingProvider, GlassEmptyState, GlassNavbar, GlassSidebar, GlassSwitch, useGlassEnvironment, type GlassRenderMode } from "@justfrenzy/liquid-glass";
+import { cn, GlassRenderingProvider, GlassEmptyState, GlassNavbar, GlassSidebar, GlassSwitch, useGlassEnvironment, type GlassRenderMode } from "@justfrenzy/liquid-glass";
 import { LiquidButton, LiquidSwitch, LiquidInput, LiquidTabs, LiquidNavbar, LiquidSidebar, LiquidModal, LiquidColorPicker, LiquidSkeleton, FinderTable } from "@justfrenzy/liquid-glass/heroui";
 import { GlassButton, GlassSlider, GlassCard } from "@justfrenzy/liquid-glass/native";
 import "./consumer.css";
@@ -21,14 +21,15 @@ function ConsumerFixture() {
     <div className="settings"><label>Rendering <select aria-label="Rendering" value={mode} onChange={(event) => setMode(event.target.value as GlassRenderMode)}><option value="auto">Automatic</option><option value="compatible">Safari / mobile glass</option><option value="fallback">Basic blur</option></select></label>
       <output aria-label="Environment">{environment ? `${environment.browser} · ${environment.device}` : "Detecting…"}</output>
     </div>
+    <div data-tailwind-example className="bg-glass-panel rounded-glass p-4">Custom Tailwind panel</div>
     <div className="scene">
       <GlassNavbar brand={<span><strong>Liquid</strong> Glass</span>} brandHref="#brand-home" brandIcon={<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 7h7l2 3h9v10H3z" /></svg>} items={items.slice(0, 2)} activeKey={active} onNavigate={setActive} />
-      <div className="workspace"><GlassSidebar header={<LiquidSkeleton style={{ width: 120, height: 24 }} />} actions={<LiquidButton appearance="normal" onPress={() => setClicks(value => value + 1)}>Sidebar action</LiquidButton>} style={{ height: 440 }} items={items} activeKey={active} onNavigate={setActive} isCollapsed={collapsed} onCollapsedChange={setCollapsed} footer="Your space to create."><div style={{ minHeight: 480 }}>Sidebar custom content</div></GlassSidebar>
+      <div className="workspace"><GlassSidebar className="w-[232px] max-sm:w-full" classNames={{ header: "gap-5", actions: "p-2" }} header={<LiquidSkeleton style={{ width: 120, height: 24 }} />} actions={<LiquidButton appearance="normal" onPress={() => setClicks(value => value + 1)}>Sidebar action</LiquidButton>} style={{ height: 440 }} items={items} activeKey={active} onNavigate={setActive} isCollapsed={collapsed} onCollapsedChange={setCollapsed} footer="Your space to create."><div style={{ minHeight: 480 }}>Sidebar custom content</div></GlassSidebar>
         <div className="examples">
           <section><h2>Button finishes</h2><div className="stack">
             <LiquidButton appearance="normal" onPress={() => setClicks(clicks + 1)}>Normal</LiquidButton>
             <LiquidButton onPress={() => setClicks(clicks + 1)}>Clear glass</LiquidButton>
-            <LiquidButton appearance="colored" onPress={() => setClicks(clicks + 1)}>Blue glass</LiquidButton>
+            <LiquidButton className={cn("font-medium", "font-bold")} classNames={{ content: "px-8" }} appearance="colored" onPress={() => setClicks(clicks + 1)}>Blue glass</LiquidButton>
             <output aria-label="Button presses">{clicks} presses</output>
           </div></section>
           <section><GlassEmptyState title="No files yet" description="Upload a file to get started." actions={<GlassButton onClick={() => setClicks(clicks + 1)}>Upload first file</GlassButton>} /></section>

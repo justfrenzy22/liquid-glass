@@ -1,9 +1,10 @@
+@reference "../tailwind-reference.css";
 .surface { padding: clamp(24px, 5vw, 48px); }
-.layout { display: flex; flex-direction: column; align-items: center; gap: 12px; min-width: 0; text-align: center; }
-.icon { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 18px; background: rgb(255 255 255 / 45%); color: var(--lg-foreground, inherit); font-size: 28px; }
-.title { margin: 0; color: inherit; font-size: 20px; line-height: 1.3; font-weight: 600; overflow-wrap: anywhere; }
-.description { max-width: 42ch; color: inherit; line-height: 1.6; overflow-wrap: anywhere; }
-.actions { display: flex; justify-content: center; flex-wrap: wrap; align-items: center; gap: 12px; max-width: 100%; margin-top: 8px; }
+.layout { @apply liquid:flex liquid:flex-col liquid:items-center liquid:gap-[12px] liquid:min-w-0 liquid:text-center; }
+.icon { @apply liquid:grid; place-items: center; @apply liquid:w-[56px] liquid:h-[56px] liquid:rounded-[18px]; background: rgb(255 255 255 / 45%); color: var(--lg-foreground, inherit); font-size: 28px; }
+.title { @apply liquid:m-0; color: inherit; font-size: 20px; line-height: 1.3; @apply liquid:font-semibold liquid:wrap-anywhere; }
+.description { max-width: 42ch; color: inherit; line-height: 1.6; @apply liquid:wrap-anywhere; }
+.actions { @apply liquid:flex liquid:justify-center liquid:flex-wrap liquid:items-center liquid:gap-[12px] liquid:max-w-full liquid:mt-[8px]; }
 @media (forced-colors: active) {
   .icon { background: Canvas; color: CanvasText; border: 1px solid CanvasText; }
 }

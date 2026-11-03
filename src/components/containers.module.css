@@ -1,11 +1,12 @@
-.card { padding: 24px; }
-.panel { padding: 32px; }
-.toolbar { padding: 12px; }
-.toolbarContent { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
-.navbar { padding: 16px; }
-.navContent { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; }
-.fileIcon { margin-bottom: 20px; width: 40px; height: 48px; display: grid; place-items: center; border: 1px solid #a1a1aa66; border-radius: 8px; background: rgb(var(--lg-neutral-rgb) / 0.600); font-size: 12px; font-weight: 700; }
-.folderIcon { margin-bottom: 20px; width: 48px; height: 48px; }
-.title { overflow-wrap: anywhere; font-weight: 600; }
-.details { margin-top: 4px; color: var(--lg-muted); font-size: 14px; }
-.actions { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
+@reference "../tailwind-reference.css";
+.card { @apply liquid:p-[24px]; }
+.panel { @apply liquid:p-[32px]; }
+.toolbar { @apply liquid:p-[12px]; }
+.toolbarContent { @apply liquid:flex liquid:flex-wrap liquid:items-center liquid:gap-[12px]; }
+.navbar { @apply liquid:p-[16px]; }
+.navContent { @apply liquid:flex liquid:flex-wrap liquid:items-center liquid:gap-[24px]; }
+.fileIcon { @apply liquid:mb-[20px] liquid:w-[40px] liquid:h-[48px] liquid:grid; place-items: center; border: 1px solid #a1a1aa66; @apply liquid:rounded-[8px]; background: rgb(var(--lg-neutral-rgb) / 0.600); font-size: 12px; @apply liquid:font-bold; }
+.folderIcon { @apply liquid:mb-[20px] liquid:w-[48px] liquid:h-[48px]; }
+.title { @apply liquid:wrap-anywhere liquid:font-semibold; }
+.details { @apply liquid:mt-[4px]; color: var(--lg-muted); font-size: 14px; }
+.actions { @apply liquid:mt-[16px] liquid:flex liquid:flex-wrap liquid:gap-[8px]; }

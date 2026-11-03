@@ -6,7 +6,7 @@
 npm install @justfrenzy/liquid-glass
 ```
 
-Use React 19 and React DOM 19. Browser component imports load the library CSS automatically in version 0.1.4 and newer. You do not run a separate library server or copy component source files into your app.
+Use React 19, React DOM 19 and Tailwind CSS 4. Tailwind is a required peer from 0.3.0; modern npm installs missing peers. Check with `npm ls tailwindcss`. See [Tailwind setup and customization](tailwind.md) to compile your own utility classes and create reusable components. Browser component imports load the library CSS automatically in version 0.1.4 and newer. You do not run a separate library server or copy component source files into your app.
 
 ## Your first button
 

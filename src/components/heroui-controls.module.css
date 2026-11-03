@@ -1,10 +1,10 @@
+@reference "../tailwind-reference.css";
 .button {
-  display: inline-flex;
-  padding: 0;
+  @apply liquid:inline-flex liquid:p-0 liquid:font-semibold;
   border: 0;
   background: transparent;
   color: var(--lg-foreground, inherit);
-  border-radius: 28px;
+  @apply liquid:rounded-[28px];
   cursor: pointer;
   outline-offset: 5px;
   transition: transform 180ms;
@@ -23,10 +23,10 @@
   outline: 2px solid #0377f7;
 }
 .buttonSurface {
-  min-width: 160px;
+  @apply liquid:min-w-[160px];
 }
 .button[data-button-appearance="normal"] {
-  min-width: 160px;
+  @apply liquid:min-w-[160px];
   background: var(--lg-solid-background);
   border: 1px solid #d5deeb;
   box-shadow: 0 2px 4px #18223608;
@@ -50,58 +50,46 @@
   }
 }
 .buttonContent {
-  height: 56px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @apply liquid:h-[56px] liquid:flex liquid:items-center liquid:justify-center;
   padding: 0 24px;
-  gap: 10px;
-  font-weight: 600;
+  @apply liquid:gap-[10px];
 }
 .slider {
-  display: grid;
+  @apply liquid:grid;
   grid-template-columns: 1fr auto;
-  gap: 24px 12px;
-  width: 330px;
-  max-width: 100%;
-  padding: 12px 27px 30px;
+  @apply liquid:gap-[24px_12px] liquid:w-[330px] liquid:max-w-full liquid:p-[12px_27px_30px];
 }
 .label,
 .output {
   font-size: 14px;
-  font-weight: 600;
+  @apply liquid:font-semibold;
 }
 .output {
   font-variant-numeric: tabular-nums;
 }
 .track {
-  position: relative;
+  @apply liquid:relative;
   grid-column: 1 / -1;
-  height: 14px;
-  border-radius: 999px;
+  @apply liquid:h-[14px] liquid:rounded-[999px];
   background: #8991a847;
   touch-action: none;
 }
 .fill {
-  position: absolute;
-  height: 100%;
+  @apply liquid:absolute liquid:h-full;
   border-radius: inherit;
   background: #0377f7;
-  pointer-events: none;
+  @apply liquid:pointer-events-none;
 }
 .thumb {
-  position: absolute;
+  @apply liquid:absolute;
   top: 50%;
-  width: 54px;
-  height: 36px;
+  @apply liquid:w-[54px] liquid:h-[36px];
   background: transparent;
   border: 0;
-  border-radius: 999px;
+  @apply liquid:rounded-[999px];
   cursor: grab;
   outline-offset: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @apply liquid:flex liquid:items-center liquid:justify-center;
 }
 .thumb::after {
   content: none;
@@ -113,11 +101,7 @@
   outline: 2px solid #0377f7;
 }
 .lens {
-  position: absolute;
-  width: 90px;
-  height: 60px;
-  flex-shrink: 0;
-  pointer-events: none;
+  @apply liquid:absolute liquid:w-[90px] liquid:h-[60px] liquid:shrink-0 liquid:pointer-events-none;
   transform: scale(0.6);
   transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
@@ -138,43 +122,29 @@
 }
 
 .switchContent {
-  display: flex;
-  align-items: center;
-  gap: 40px;
+  @apply liquid:flex liquid:items-center liquid:gap-[40px];
   cursor: pointer;
   font-size: 15px;
-  font-weight: 600;
-  min-height: 68px;
+  @apply liquid:font-semibold liquid:min-h-[68px];
 }
 .switchTrack {
-  position: relative;
-  display: block;
-  width: 88px;
-  height: 14px;
+  @apply liquid:relative liquid:block liquid:w-[88px] liquid:h-[14px];
   touch-action: pan-y;
-  user-select: none;
+  @apply liquid:select-none;
   cursor: grab;
   background: #8991a847;
-  border-radius: 999px;
+  @apply liquid:rounded-[999px];
   transition: background 220ms;
 }
 .switchThumb {
-  position: absolute;
+  @apply liquid:absolute;
   top: 50%;
-  left: 0;
-  width: 54px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @apply liquid:left-0 liquid:w-[54px] liquid:h-[36px] liquid:flex liquid:items-center liquid:justify-center;
   transform: translate(calc(-18px + var(--switch-progress) * 70px), -50%);
   transition: transform 440ms cubic-bezier(0.22, 0.9, 0.28, 1.12);
 }
 .switchLens {
-  position: absolute;
-  width: 90px;
-  height: 60px;
-  pointer-events: none;
+  @apply liquid:absolute liquid:w-[90px] liquid:h-[60px] liquid:pointer-events-none;
   transform: scale(0.6);
   transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
@@ -207,22 +177,19 @@
     0 0 0 4px #536078;
 }
 .field {
-  width: 300px;
-  max-width: 100%;
+  @apply liquid:w-[300px] liquid:max-w-full;
   transition: width 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .field[data-active="true"] {
-  width: 330px;
+  @apply liquid:w-[330px];
 }
 .fieldLabel {
-  display: block;
-  margin-bottom: 12px;
+  @apply liquid:block liquid:mb-[12px];
   font-size: 14px;
-  font-weight: 600;
+  @apply liquid:font-semibold;
 }
 .input {
-  width: 100%;
-  height: 52px;
+  @apply liquid:w-full liquid:h-[52px];
   padding: 0 20px;
   border: 0;
   background: transparent;
@@ -231,7 +198,7 @@
   transition: height 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .field[data-active="true"] .input {
-  height: 60px;
+  @apply liquid:h-[60px];
 }
 .input::placeholder {
   color: var(--lg-muted);

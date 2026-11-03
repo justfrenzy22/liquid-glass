@@ -27,6 +27,12 @@ test("the standalone package keeps styles, state, overlays and navigation workin
   const actions = sidebar.locator('[data-slot="sidebar-actions"]');
   const body = sidebar.locator('[data-slot="sidebar-body"]');
   const footer = sidebar.locator('[data-slot="sidebar-footer"]');
+  await expect(top).toHaveCSS("gap", "20px");
+  await expect(actions).toHaveCSS("padding", "8px");
+  if ((page.viewportSize()?.width ?? 0) >= 640) await expect(sidebar).toHaveCSS("width", "232px");
+  const customized = page.getByRole("button", { name: "Blue glass", exact: true });
+  await expect(customized).toHaveCSS("font-weight", "700");
+  await expect(customized.locator(".px-8")).toHaveCSS("padding-left", "32px");
   expect((await top.boundingBox())!.y).toBeLessThan((await actions.boundingBox())!.y);
   expect((await actions.boundingBox())!.y).toBeLessThan((await body.boundingBox())!.y);
   const sideBounds = (await sidebar.boundingBox())!;
@@ -89,6 +95,7 @@ test("automatic styles inherit host text and respect system and explicit themes"
     await expect(input).toHaveCSS("color", scenario.text);
     await expect(normal).toHaveCSS("color", scenario.text);
     await expect(normal).toHaveCSS("background-color", scenario.background);
+    await expect(page.locator("[data-tailwind-example]")).toHaveCSS("background-color", scenario.background);
     await expect(page.getByRole("button", { name: "Native button" })).toHaveCSS("color", scenario.text);
     const blue = page.getByRole("button", { name: "Blue glass", exact: true });
     await expect(blue.locator("[data-colored]")).toHaveCSS("color", "rgb(255, 255, 255)");

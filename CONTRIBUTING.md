@@ -48,3 +48,7 @@ npm publish .artifacts/justfrenzy-liquid-glass-0.2.0.tgz --access public --regis
 Complete npm's security challenge in your browser. Publishing requires an account authorized for the `justfrenzy` scope. Never commit credentials. Once published, a version cannot be replaced with different contents.
 
 Commit the source changes, push them and tag the release. Attach the same archive to the corresponding GitHub release. For future releases, update the version in the commands and archive filename.
+
+## Styling components
+
+Use Tailwind 4 through `@apply liquid:...` in CSS modules, with `@reference "../tailwind-reference.css";`. Preserve precise pixel geometry where optics depend on it. Keep reflections, displacement and interaction-specific effects in custom CSS. The build compiles modules into the components cascade layer and ships namespaced theme variables without Preflight. Check utility overrides in the browser consumer fixture. See [Tailwind customization](docs/tailwind.md).

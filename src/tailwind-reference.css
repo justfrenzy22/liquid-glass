@@ -1,0 +1,2 @@
+/* Authoring context for CSS modules. @reference does not emit Preflight. */
+@import "tailwindcss" prefix(liquid) source(none);

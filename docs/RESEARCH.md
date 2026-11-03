@@ -93,3 +93,7 @@ Actual captured examples are in the [README](../README.md#see-it-move). The orig
 - Revisit browser-selection heuristics as implementations change, while retaining explicit rendering overrides.
 
 For now, the supported conclusion is narrow: the library implements two different glass treatments and passes the documented checks. Broad accessibility, usability and performance claims remain open questions.
+
+## Tailwind authoring in 0.3.0
+
+Layout utilities are now authored with Tailwind CSS 4 in the existing CSS modules and compiled before publication. Optical gradients, SVG displacement, browser fallbacks and drag effects remain custom CSS. Namespaced Tailwind theme variables isolate internal defaults, while cascade layers let application utilities override component layout. A required Tailwind 4 peer declares compatibility; it does not configure a consumer application compiler. See [setup and customization](tailwind.md) for reproducible commands and examples.

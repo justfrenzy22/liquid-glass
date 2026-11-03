@@ -1,5 +1,6 @@
+@reference "../tailwind-reference.css";
 .surface {
-  position: relative;
+  @apply liquid:relative;
   border-radius: var(--glass-radius);
   color: var(--lg-foreground, inherit);
   box-shadow:
@@ -7,10 +8,9 @@
     0 1px 3px #18181b12;
 }
 .backdrop {
-  position: absolute;
-  inset: 0;
+  @apply liquid:absolute liquid:inset-0;
   border-radius: inherit;
-  pointer-events: none;
+  @apply liquid:pointer-events-none;
   background: rgb(var(--lg-glass-rgb) / var(--glass-opacity));
   border: 1px solid #ffffff99;
   -webkit-backdrop-filter: blur(var(--glass-blur))
@@ -22,8 +22,7 @@
 }
 .backdrop::after {
   content: "";
-  position: absolute;
-  inset: 0;
+  @apply liquid:absolute liquid:inset-0;
   border-radius: inherit;
   background: linear-gradient(135deg, #ffffff80, transparent 45%, #ffffff25);
   opacity: var(--glass-specular);
@@ -45,9 +44,7 @@
 }
 .surface[data-glass-mode="compatible"] > .backdrop::before {
   content: "";
-  position: absolute;
-  inset: 0;
-  padding: 4px;
+  @apply liquid:absolute liquid:inset-0 liquid:p-[4px];
   border-radius: inherit;
   background:
     radial-gradient(ellipse at 6% 8%, #fff 0%, #ffffffd9 12%, transparent 42%),
@@ -84,11 +81,9 @@
     );
 }
 .reflections {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
+  @apply liquid:absolute liquid:inset-0 liquid:overflow-hidden;
   border-radius: inherit;
-  pointer-events: none;
+  @apply liquid:pointer-events-none;
   opacity: calc(var(--glass-specular) * 1.7);
   background:
     radial-gradient(ellipse 5px 34% at 1px 38%, #fffffff0, transparent 100%),
@@ -100,21 +95,18 @@
 }
 .reflectionTop,
 .reflectionBottom {
-  position: absolute;
-  display: block;
-  pointer-events: none;
+  @apply liquid:absolute liquid:block liquid:pointer-events-none;
   transform: translateX(calc((var(--glass-light-x, 25%) - 25%) * 0.16));
   transition:
     transform 160ms ease-out,
     opacity 160ms ease-out;
 }
 .reflectionTop {
-  top: 3px;
+  @apply liquid:top-[3px];
   left: 7%;
   width: 66%;
   height: 16%;
-  min-height: 3px;
-  max-height: 12px;
+  @apply liquid:min-h-[3px] liquid:max-h-[12px];
   border-radius: 80% 30% 100% 35% / 90% 60% 100% 70%;
   background: linear-gradient(
     170deg,
@@ -127,11 +119,10 @@
 }
 .reflectionBottom {
   right: 7%;
-  bottom: 3px;
+  @apply liquid:bottom-[3px];
   width: 54%;
   height: 11%;
-  min-height: 2px;
-  max-height: 9px;
+  @apply liquid:min-h-[2px] liquid:max-h-[9px];
   border-radius: 100% 35% 70% 30% / 100% 70% 90% 60%;
   background: linear-gradient(
     350deg,
@@ -145,26 +136,17 @@
   opacity: calc(var(--glass-specular) * 2.2);
 }
 .content {
-  position: relative;
+  @apply liquid:relative;
   border-radius: inherit;
 }
 .definitions {
-  position: absolute;
-  width: 0;
-  height: 0;
-  pointer-events: none;
+  @apply liquid:absolute liquid:w-0 liquid:h-0 liquid:pointer-events-none;
 }
 .button {
-  width: 100%;
-  min-height: 44px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 10px 18px;
+  @apply liquid:w-full liquid:min-h-[44px] liquid:inline-flex liquid:items-center liquid:justify-center liquid:gap-[8px] liquid:p-[10px_18px];
   border-radius: inherit;
   cursor: pointer;
-  font-weight: 600;
+  @apply liquid:font-semibold;
   transition:
     background 160ms,
     transform 160ms;
@@ -188,15 +170,12 @@
   outline-offset: 4px;
 }
 .icon {
-  width: 44px;
-  padding: 10px;
+  @apply liquid:w-[44px] liquid:p-[10px];
 }
 .input {
-  width: 100%;
-  min-width: 0;
-  min-height: 44px;
+  @apply liquid:w-full liquid:min-w-0 liquid:min-h-[44px];
   border-radius: inherit;
-  padding: 12px 16px;
+  @apply liquid:p-[12px_16px];
   background: transparent;
 }
 .input::placeholder {
@@ -206,48 +185,32 @@
   cursor: not-allowed;
 }
 .search {
-  display: flex;
-  align-items: center;
-  padding-left: 16px;
-  gap: 4px;
+  @apply liquid:flex liquid:items-center liquid:pl-[16px] liquid:gap-[4px];
 }
 .search .input {
-  flex: 1;
+  @apply liquid:flex-1;
 }
 .switch {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
+  @apply liquid:inline-flex liquid:items-center liquid:gap-[12px];
   cursor: pointer;
 }
 .track {
-  display: block;
-  position: relative;
-  width: 52px;
-  height: 32px;
-  border-radius: 999px;
+  @apply liquid:block liquid:relative liquid:w-[52px] liquid:h-[32px] liquid:rounded-[999px];
   background: #71717a55;
-  flex-shrink: 0;
+  @apply liquid:shrink-0;
 }
 .checkbox {
   appearance: none;
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  @apply liquid:absolute liquid:inset-0 liquid:w-full liquid:h-full;
   border-radius: inherit;
   cursor: inherit;
   z-index: 2;
 }
 .thumb {
-  position: absolute;
-  width: 24px;
-  height: 24px;
-  top: 4px;
-  left: 4px;
+  @apply liquid:absolute liquid:w-[24px] liquid:h-[24px] liquid:top-[4px] liquid:left-[4px];
   background: #fafafa;
   border: 1px solid #ffffff;
-  border-radius: 50%;
+  @apply liquid:rounded-[50%];
   box-shadow: 0 2px 6px #0003;
   transition: transform 160ms;
 }
@@ -258,21 +221,20 @@
   background: #27272a;
 }
 .range {
-  width: 100%;
+  @apply liquid:w-full;
   accent-color: #3f3f46;
   cursor: pointer;
-  height: 32px;
+  @apply liquid:h-[32px];
 }
 .range:disabled {
   cursor: not-allowed;
   opacity: 0.45;
 }
 .spinner {
-  width: 16px;
-  height: 16px;
+  @apply liquid:w-[16px] liquid:h-[16px];
   border: 2px solid #71717a50;
   border-top-color: currentColor;
-  border-radius: 50%;
+  @apply liquid:rounded-[50%];
   animation: spin 0.8s linear infinite;
 }
 @keyframes spin {
@@ -308,7 +270,7 @@
 }
 @media (forced-colors: active) {
   .reflections {
-    display: none;
+    @apply liquid:hidden;
   }
   .backdrop {
     background: Canvas;
@@ -318,7 +280,7 @@
   }
   .backdrop::before,
   .backdrop::after {
-    display: none;
+    @apply liquid:hidden;
   }
   .surface {
     color: CanvasText;

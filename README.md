@@ -16,15 +16,19 @@ Curious about the optics, Safari treatment and design tradeoffs? Read the [resea
 - Safari, iPhone, iPad, Firefox and other mobile browsers use native blur, curved reflections and beveled highlights.
 - Normal buttons, solid cards and alternating-row tables provide calmer alternatives.
 - Controls retain keyboard operation, disabled states and reduced-motion support. Text remains on a separate, sharp layer.
-- Compiled JavaScript, TypeScript declarations and CSS are included. No Next.js, Tailwind configuration, application aliases or remote visual assets are required.
+- Compiled JavaScript, TypeScript declarations and CSS are included. Styles load automatically. Tailwind CSS 4 powers layout authoring; no library source scanning, Next.js or remote assets are required.
 
-**Release:** `0.2.3`. Repository: `liquid-glass`. Package/import name: `@justfrenzy/liquid-glass`.
+**Release:** `0.3.0`. Repository: `liquid-glass`. Package/import name: `@justfrenzy/liquid-glass`.
+
+## Tailwind customization
+
+Use `className` for utility overrides and `classNames` to target Button, Navbar and Sidebar parts. The exported `cn()` helper merges classes when creating your own components. Read the [Tailwind setup and customization guide](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/tailwind.md) for commands, theme utilities and complete examples.
 
 ## Install
 
 Need working examples? Start with the [setup guide](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/getting-started.md), [Button](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/components/LiquidButton.md), [Navbar](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/components/LiquidNavbar.md), or [all component guides](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/components/README.md).
 
-Requires React 19 and React DOM 19, with an ESM-aware bundler such as Vite or Next.js.
+Requires React 19, React DOM 19 and Tailwind CSS 4 (declared peers), with an ESM-aware bundler such as Vite or Next.js.
 
 ```sh
 npm install @justfrenzy/liquid-glass
@@ -42,7 +46,7 @@ Styles load automatically when your frontend imports a component from the core o
 
 The explicit `@justfrenzy/liquid-glass/styles.css` export remains available if your build requires manual stylesheet placement. Plain Node.js server rendering uses a CSS-free entry; browser bundlers use the entry that loads styles.
 
-The CSS contains compiled CSS modules and a small reset scoped to library surfaces. Do not add a Tailwind build or HeroUI global theme just to use this library. HeroUI is a package dependency. React and the verified React Aria versions are shared peers, installed automatically by modern npm; this prevents multiple incompatible copies. If your app already uses newer React Aria versions, reconcile those exact peer requirements before upgrading.
+The CSS contains precompiled Tailwind-backed CSS modules and a small reset scoped to library surfaces. Component defaults work without compiling library source. Configure Tailwind in your own app to use custom utility classes; no HeroUI global theme is needed. HeroUI is a package dependency. React and the verified React Aria versions are shared peers, installed automatically by modern npm; this prevents multiple incompatible copies. If your app already uses newer React Aria versions, reconcile those exact peer requirements before upgrading.
 
 ## One component collection
 
