@@ -181,6 +181,7 @@ Detection checks CSS capabilities, navigator information, optional mobile client
 | Buttons and appearance options | [Button](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/components/LiquidButton.md) |
 | Navigation links and active routes | [Navbar](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/components/LiquidNavbar.md) |
 | Collapsible navigation | [Sidebar](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/components/LiquidSidebar.md) |
+| Sidebar button, modal and form | [New Folder recipe](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/recipes/sidebar-new-folder.md) |
 | Text fields and controlled values | [Input](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/components/LiquidInput.md) |
 | Data, row selection and appearance | [Table](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/components/LiquidTable.md) |
 

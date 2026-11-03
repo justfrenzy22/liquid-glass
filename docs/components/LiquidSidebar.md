@@ -64,6 +64,10 @@ export function CollapsibleSidebar() {
 }
 ```
 
+## Put components inside the sidebar
+
+The `footer` prop accepts React content, including buttons, skeletons and a modal with a form. The `items` array is navigation data, not arbitrary component children. The footer is hidden when collapsed. See the complete [sidebar New Folder modal recipe](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/recipes/sidebar-new-folder.md) for an example with a working form and local folder state. `LiquidModal` renders its own trigger button, so place the modal itself in the footer.
+
 ## TypeScript
 
 ```tsx

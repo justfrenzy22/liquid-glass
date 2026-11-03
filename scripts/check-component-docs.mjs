@@ -5,7 +5,7 @@ import path from "node:path";
 const directory = ".artifacts/docs-check";
 mkdirSync(directory, { recursive: true });
 const files = [];
-const guides = [...readdirSync("docs/components").filter(name => name.endsWith(".md")).map(name => `docs/components/${name}`), "docs/getting-started.md", "docs/migration-0.2.md", "docs/native.md"];
+const guides = [...readdirSync("docs/components").filter(name => name.endsWith(".md")).map(name => `docs/components/${name}`), "docs/getting-started.md", "docs/migration-0.2.md", "docs/native.md", "docs/recipes/sidebar-new-folder.md"];
 for (const guide of guides) {
   const name = path.basename(guide);
   const text = readFileSync(guide, "utf8");
