@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.2
+
+- Remove the README navigation strip and obsolete local-demo link.
+- Repair corrupted punctuation in the README. Component APIs and runtime behavior are unchanged.
+
 ## 0.1.1
 
 - Release the components as a consumer-only package with compiled ESM, CSS and TypeScript declarations.

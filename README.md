@@ -8,8 +8,6 @@ A React and TypeScript component library for reflective glass interfaces, combin
 
 ![Liquid Glass React components: normal, clear and blue buttons, refractive slider, switch, search field and draggable tabs](https://raw.githubusercontent.com/justfrenzy22/liquid-glass/main/docs/media/preview-desktop.png)
 
-**[Install](#install) Â· [Components](#included-components) Â· [See it move](#see-it-move) Â· [Try locally](#clone-and-develop)**
-
 Curious about the optics, Safari treatment and design tradeoffs? Read the [research notes](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/RESEARCH.md) for sources, implementation decisions, reproducible checks and open questions.
 
 - Desktop Chromium can refract the backdrop through SVG displacement maps.
@@ -18,7 +16,7 @@ Curious about the optics, Safari treatment and design tradeoffs? Read the [resea
 - Controls retain keyboard operation, disabled states and reduced-motion support. Text remains on a separate, sharp layer.
 - Compiled JavaScript, TypeScript declarations and CSS are included. No Next.js, Tailwind configuration, application aliases or remote visual assets are required.
 
-**Release:** `0.1.1`. Repository: `liquid-glass`. Package/import name: `@justfrenzy/liquid-glass`.
+**Release:** `0.1.2`. Repository: `liquid-glass`. Package/import name: `@justfrenzy/liquid-glass`.
 
 ## Install
 
@@ -109,11 +107,11 @@ Recorded from the library components in Chromium. Pressing expands the thumb; dr
 
 The compatible renderer uses simulated reflections and native blur. These captures use Playwright WebKit, including an iPhone-emulated viewport; they are not photographs of physical Apple devices.
 
-**Compatible glass â€” WebKit desktop**
+**Compatible glass - WebKit desktop**
 
 ![WebKit-compatible glass with curved highlights on buttons, slider, search field and tabs](https://raw.githubusercontent.com/justfrenzy22/liquid-glass/main/docs/media/preview-safari.png)
 
-**Mobile layout â€” iPhone emulation**
+**Mobile layout - iPhone emulation**
 
 <img src="https://raw.githubusercontent.com/justfrenzy22/liquid-glass/main/docs/media/preview-mobile.png" alt="The same actual components in the mobile layout, using compatible reflective glass" width="320" />
 
@@ -127,7 +125,7 @@ The compatible renderer uses simulated reflections and native blur. These captur
 | `compatible` | Forces native blur, simulated curved reflections, corner glints and a deeper beveled rim. |
 | `fallback` | Basic blur and tint without the stronger reflection layers. |
 
-Use `<GlassRenderingProvider mode="compatible">â€¦</GlassRenderingProvider>` to set a default, including for portal overlays. Individual controls accept `glass={{ mode: "compatible" }}`; GlassSurface takes `mode` directly. An explicit per-control mode overrides the provider.
+Use `<GlassRenderingProvider mode="compatible">...</GlassRenderingProvider>` to set a default, including for portal overlays. Individual controls accept `glass={{ mode: "compatible" }}`; GlassSurface takes `mode` directly. An explicit per-control mode overrides the provider.
 
 Detection checks CSS capabilities, navigator information, optional mobile client hints and likely iPadOS desktop UAs. It is a best-effort rendering hint, not guaranteed hardware identification. Responsive layout uses CSS. Safari reflections are simulated and do not bend arbitrary live background content like the Chromium shader. Nested translucent containers can reduce visible effects; real-device review is still useful.
 
