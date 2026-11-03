@@ -53,16 +53,25 @@ function Items({ items, activeKey, onNavigate, compact = false }: NavigationProp
   ));
 }
 
-export function LiquidNextUINavbar({ brand, actions, items, activeKey, onNavigate,
+export function LiquidNextUINavbar({ brand, brandIcon, brandHref, actions, items, activeKey, onNavigate,
   appearance = "glass", glass, className = "", label = "Main navigation" }: NavigationProps & {
+    /** Brand content: text, styled JSX, an image, SVG or your own link. */
     brand: ReactNode;
+    /** Optional decorative icon placed alongside the brand content. */
+    brandIcon?: ReactNode;
+    /** Turn the whole brand into a link. Omit when brand already contains a link. */
+    brandHref?: string;
     actions?: ReactNode;
   }) {
+  const Brand = brandHref != null ? "a" : "div";
   return (
     <header className={`${styles.root} ${className}`} data-appearance={appearance}>
       <Surface appearance={appearance} glass={glass}>
         <div className={styles.navbar}>
-          <div className={styles.brand}>{brand}</div>
+          <Brand className={styles.brand} href={brandHref} data-slot="navbar-brand">
+            {brandIcon != null && <span className={styles.brandIcon} data-slot="navbar-brand-icon" aria-hidden="true">{brandIcon}</span>}
+            <span className={styles.brandText} data-slot="navbar-brand-content">{brand}</span>
+          </Brand>
           <nav aria-label={label} className={styles.topItems}>
             <Items items={items} activeKey={activeKey} onNavigate={onNavigate} />
           </nav>

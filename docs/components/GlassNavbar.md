@@ -31,7 +31,9 @@ The table includes the component-specific props and common control props. Requir
 | `glass` | No | `GlassConfig` |  |
 | `className` | No | `string` |  |
 | `label` | No | `string` |  |
-| `brand` | Yes | `ReactNode` |  |
+| `brand` | Yes | `ReactNode` | Brand content: text, styled JSX, an image, SVG or your own link. |
+| `brandIcon` | No | `ReactNode` | Optional decorative icon placed alongside the brand content. |
+| `brandHref` | No | `string` | Turn the whole brand into a link. Omit when brand already contains a link. |
 | `actions` | No | `ReactNode` |  |
 
 
@@ -65,6 +67,64 @@ export function Navigation() {
   );
 }
 ```
+
+## Icon, SVG and styled brand text
+
+`brand` accepts any React content, not just a string. For an icon next to text, use `brandIcon`; the navbar handles spacing and alignment. `brandHref` turns the entire brand into one link. The icon is decorative because the visible brand supplies its accessible name.
+
+```tsx
+"use client";
+
+import { GlassNavbar } from "@justfrenzy/liquid-glass";
+
+export function BrandedNavbar() {
+  return (
+    <GlassNavbar
+      brand={<span><strong>Code</strong><span style={{ fontWeight: 400 }}>Drive</span></span>}
+      brandIcon={
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8}>
+          <path d="M3 7h7l2 3h9v10H3z" />
+        </svg>
+      }
+      brandHref="/"
+      items={[{ id: "files", label: "Files", href: "/files" }]}
+      activeKey="files"
+    />
+  );
+}
+```
+
+The icon defaults to 24px. Override `--lg-brand-icon-size` in your app CSS for a different size. Imported React icon components or an image with empty `alt` can also be supplied to `brandIcon`. Text and `currentColor` icons inherit your application theme.
+
+## Image logo or icon-only brand
+
+Pass the whole logo as `brand` when you do not want accompanying text. Give it an accessible name; do not put a meaningful icon-only logo in the decorative `brandIcon` slot.
+
+```tsx
+"use client";
+
+import { GlassNavbar } from "@justfrenzy/liquid-glass";
+
+export function IconOnlyNavbar() {
+  return (
+    <GlassNavbar
+      brand={
+        <svg role="img" aria-label="CodeDrive home" width={28} height={28} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8}>
+          <path d="M3 7h7l2 3h9v10H3z" />
+        </svg>
+      }
+      brandHref="/"
+      items={[{ id: "files", label: "Files", href: "/files" }]}
+    />
+  );
+}
+```
+
+For an image wordmark, use `brand={<img src="/wordmark.svg" alt="CodeDrive" style={{ height: 28, width: "auto", maxWidth: "100%" }} />}` and supply your own asset. A Next.js Image component can be passed as JSX too.
+
+## Custom links
+
+For your own router Link component or anchor, put the complete link in `brand` and omit `brandHref` to avoid nested links. Existing `brand={<a href="/">My app</a>}` usage remains supported. Use the brand slots `data-slot="navbar-brand"`, `navbar-brand-icon` and `navbar-brand-content` for targeted application CSS.
 
 ## TypeScript
 

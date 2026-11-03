@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.2
+
+- Add `brandIcon` and `brandHref` to the navbar for an automatically aligned icon/text brand and optional brand link.
+- Preserve custom JSX, SVG, images and styled text through the existing `brand` prop.
+- Document all brand options for LiquidNavbar and its GlassNavbar alias, including accessible icon-only brands and custom links.
+
 ## 0.2.1
 
 - Hide the sidebar heading by default. Set `heading` explicitly to show one.

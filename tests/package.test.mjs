@@ -31,6 +31,21 @@ test("public friendly aliases and legacy names expose the same HeroUI wrappers",
   assert.match(html, /Normal/);
   assert.doesNotMatch(html, /data-glass-mode/);
 });
+test("navbar brands accept styled content and an optional decorative icon and link", () => {
+  const html = renderToString(React.createElement(core.LiquidNavbar, {
+    brand: React.createElement("span", null, React.createElement("strong", null, "Code"), "Drive"),
+    brandIcon: React.createElement("svg", { viewBox: "0 0 24 24" }),
+    brandHref: "/",
+    items: [],
+  }));
+  assert.match(html, /<a[^>]+href="\/"[^>]+data-slot="navbar-brand"/);
+  assert.match(html, /data-slot="navbar-brand-icon" aria-hidden="true"/);
+  assert.match(html, /<strong>Code<\/strong>Drive/);
+  const plain = renderToString(React.createElement(core.GlassNavbar, { brand: "CodeDrive", items: [] }));
+  assert.doesNotMatch(plain, /navbar-brand-icon/);
+  assert.match(plain, /<div[^>]+data-slot="navbar-brand"/);
+});
+
 test("sidebars omit headings and empty title rows unless requested", () => {
   const items = [{ id: "files", label: "Files", href: "/files" }];
   for (const heading of [undefined, "", "   "]) {

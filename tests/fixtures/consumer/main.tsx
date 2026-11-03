@@ -22,7 +22,7 @@ function ConsumerFixture() {
       <output aria-label="Environment">{environment ? `${environment.browser} · ${environment.device}` : "Detecting…"}</output>
     </div>
     <div className="scene">
-      <GlassNavbar brand="Liquid Glass" items={items.slice(0, 2)} activeKey={active} onNavigate={setActive} />
+      <GlassNavbar brand={<span><strong>Liquid</strong> Glass</span>} brandHref="#brand-home" brandIcon={<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 7h7l2 3h9v10H3z" /></svg>} items={items.slice(0, 2)} activeKey={active} onNavigate={setActive} />
       <div className="workspace"><GlassSidebar items={items} activeKey={active} onNavigate={setActive} isCollapsed={collapsed} onCollapsedChange={setCollapsed} footer="Your space to create." />
         <div className="examples">
           <section><h2>Button finishes</h2><div className="stack">

@@ -6,7 +6,11 @@
   color: white;
 }
 .navbar { display: flex; align-items: center; gap: 20px; padding: 12px 16px; flex-wrap: wrap; }
-.brand { display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 650; white-space: nowrap; }
+.brand { display: flex; align-items: center; gap: 10px; min-width: 0; max-width: 100%; min-height: 44px; font-size: 16px; font-weight: 650; color: inherit; text-decoration: none; border-radius: 8px; }
+.brand:where(a):focus-visible { outline: 2px solid #497fad; outline-offset: 3px; }
+.brandIcon { display: inline-grid; place-items: center; width: var(--lg-brand-icon-size, 24px); height: var(--lg-brand-icon-size, 24px); flex-shrink: 0; }
+.brandIcon > :where(svg, img) { display: block; width: 100%; height: 100%; object-fit: contain; }
+.brandText { min-width: 0; overflow-wrap: anywhere; }
 .topItems { display: flex; flex-wrap: wrap; gap: 4px; margin-inline: auto; }
 .item { display: flex; align-items: center; gap: 10px; padding: 10px 14px; min-height: 44px; border-radius: 14px; font-size: 13px; text-decoration: none; color: inherit; transition: transform 180ms, background 180ms; }
 .item[aria-current="page"] { background: var(--lg-selection-background); box-shadow: inset 0 1px 0 #ffffff80; font-weight: 600; }

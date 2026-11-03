@@ -4,6 +4,18 @@ test("the standalone package keeps styles, state, overlays and navigation workin
   page.on("pageerror", (error) => errors.push(error.message));
   await page.goto("/");
   await expect(page.getByLabel("Environment")).not.toHaveText("Detecting…");
+  const brand = page.getByRole("link", { name: "Liquid Glass", exact: true });
+  await expect(brand).toHaveAttribute("href", "#brand-home");
+  await expect(brand.locator('[data-slot="navbar-brand-icon"]')).toHaveAttribute("aria-hidden", "true");
+  await expect(brand.locator("svg")).toHaveCSS("width", "24px");
+  const weights = await brand.evaluate(element => ({
+    brand: Number(getComputedStyle(element).fontWeight),
+    strong: Number(getComputedStyle(element.querySelector("strong")!).fontWeight),
+  }));
+  expect(weights.strong).toBeGreaterThan(weights.brand);
+  await brand.focus();
+  await page.keyboard.press("Enter");
+  await expect(page).toHaveURL(/#brand-home$/);
   await page.getByRole("button", { name: "Blue glass", exact: true }).click();
   await expect(page.getByLabel("Button presses")).toHaveText("1 presses");
   const emptyState = page.getByRole("region", { name: "No files yet" });

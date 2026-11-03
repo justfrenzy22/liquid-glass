@@ -18,7 +18,7 @@ Curious about the optics, Safari treatment and design tradeoffs? Read the [resea
 - Controls retain keyboard operation, disabled states and reduced-motion support. Text remains on a separate, sharp layer.
 - Compiled JavaScript, TypeScript declarations and CSS are included. No Next.js, Tailwind configuration, application aliases or remote visual assets are required.
 
-**Release:** `0.2.1`. Repository: `liquid-glass`. Package/import name: `@justfrenzy/liquid-glass`.
+**Release:** `0.2.2`. Repository: `liquid-glass`. Package/import name: `@justfrenzy/liquid-glass`.
 
 ## Install
 
@@ -119,6 +119,8 @@ Use `onPress`, `isDisabled` and the value props shown in each component guide. M
 Component imports load the styles in the client bundle. Put callbacks and interactive state in a component marked `"use client"`. Generated entry points and shared chunks retain that directive; SSR starts with readable basic glass before client detection enhances it. The compiled archive does not require `transpilePackages`.
 
 Navbar and Sidebar use ordinary links, so no Next.js router is required. Use `onNavigate` or your application's router integration for SPA navigation.
+
+Navbar `brand` accepts text, JSX, SVG or an image. Use `brandIcon` for an automatically aligned decorative icon beside the brand, and `brandHref` to make the whole brand a link. Styled text such as `brand={<span><strong>Code</strong>Drive</span>}` also works. See the [Navbar brand examples](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/components/LiquidNavbar.md#icon-svg-and-styled-brand-text).
 
 ## See it move
 
