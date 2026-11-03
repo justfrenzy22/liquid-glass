@@ -8,6 +8,8 @@ A React and TypeScript component library for reflective glass interfaces, combin
 
 ![Liquid Glass React components: normal, clear and blue buttons, refractive slider, switch, search field and draggable tabs](https://raw.githubusercontent.com/justfrenzy22/liquid-glass/main/docs/media/preview-desktop.png)
 
+**[Install](#install) | [Components](#included-components) | [See it move](#see-it-move)**
+
 Curious about the optics, Safari treatment and design tradeoffs? Read the [research notes](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/RESEARCH.md) for sources, implementation decisions, reproducible checks and open questions.
 
 - Desktop Chromium can refract the backdrop through SVG displacement maps.
@@ -16,7 +18,7 @@ Curious about the optics, Safari treatment and design tradeoffs? Read the [resea
 - Controls retain keyboard operation, disabled states and reduced-motion support. Text remains on a separate, sharp layer.
 - Compiled JavaScript, TypeScript declarations and CSS are included. No Next.js, Tailwind configuration, application aliases or remote visual assets are required.
 
-**Release:** `0.1.2`. Repository: `liquid-glass`. Package/import name: `@justfrenzy/liquid-glass`.
+**Release:** `0.1.3`. Repository: `liquid-glass`. Package/import name: `@justfrenzy/liquid-glass`.
 
 ## Install
 

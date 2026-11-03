@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.3
+
+- Restore the useful README navigation links with plain ASCII separators.
+- Keep the obsolete local-demo link removed. Component APIs and runtime behavior are unchanged.
+
 ## 0.1.2
 
 - Remove the README navigation strip and obsolete local-demo link.
