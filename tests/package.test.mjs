@@ -26,6 +26,24 @@ test("browser selection handles iPad desktop UAs and capability fallbacks", () =
   assert.equal(core.selectGlassRenderer("auto", ipad), "compatible");
   assert.equal(core.selectGlassRenderer("auto", { ...ipad, backdropBlur: false }), "fallback");
 });
+
+test("empty states associate their heading and description without hiding actions", () => {
+  const html = renderToString(React.createElement(core.GlassEmptyState, {
+    title: "No files yet",
+    description: "Upload a file to get started.",
+    actions: React.createElement("button", null, "Upload a file"),
+  }));
+  const headingId = html.match(/<h2[^>]*id="([^"]+)"/)?.[1];
+  const descriptionId = html.match(/<div[^>]*id="([^"]+-description)"/)?.[1];
+  assert.ok(headingId);
+  assert.ok(descriptionId);
+  assert.ok(html.includes(`aria-labelledby="${headingId}"`));
+  assert.ok(html.includes(`aria-describedby="${descriptionId}"`));
+  assert.match(html, /<button>Upload a file<\/button>/);
+  const minimal = renderToString(React.createElement(core.GlassEmptyState, { title: "No results" }));
+  assert.doesNotMatch(minimal, /aria-describedby=/);
+  assert.equal(controls.LiquidEmptyState, core.GlassEmptyState);
+});
 test("published bundles preserve client boundaries and have no app or CSS-module imports", async () => {
   const files = (await readdir(new URL("../dist/", import.meta.url))).filter((name) => name.endsWith(".js"));
   for (const file of files) {

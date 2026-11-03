@@ -75,7 +75,7 @@ npm run pack:local
 npm run verify:package
 ```
 
-`check` builds the package, checks types, runs four package/SSR/environment tests and builds the browser consumer fixture. Browser tests run one consumer scenario in each of Chromium, desktop WebKit and iPhone-emulated WebKit. They check selected interactions, overlay dismissal, styling, rendering-mode overrides and horizontal overflow. The archive check installs the packed library into a separate consumer and verifies exports, server rendering, CSS and shared React/Aria resolution.
+`check` builds the package, checks types, runs package/SSR/environment tests and builds the browser consumer fixture. Browser tests run one consumer scenario in each of Chromium, desktop WebKit and iPhone-emulated WebKit. They check selected interactions, overlay dismissal, styling, rendering-mode overrides and horizontal overflow. The archive check installs the packed library into a separate consumer and verifies exports, server rendering, CSS and shared React/Aria resolution.
 
 See [`tests/`](../tests/) for the actual assertions. Passing them does not establish coverage of every exported component, every drag gesture or every accessibility requirement. WebKit emulation is not a physical iPhone or the Safari application.
 

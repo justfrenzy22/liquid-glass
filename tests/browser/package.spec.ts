@@ -6,6 +6,10 @@ test("the standalone package keeps styles, state, overlays and navigation workin
   await expect(page.getByLabel("Environment")).not.toHaveText("Detecting…");
   await page.getByRole("button", { name: "Blue glass", exact: true }).click();
   await expect(page.getByLabel("Button presses")).toHaveText("1 presses");
+  const emptyState = page.getByRole("region", { name: "No files yet" });
+  await expect(emptyState).toHaveAccessibleDescription("Upload a file to get started.");
+  await emptyState.getByRole("button", { name: "Upload first file" }).click();
+  await expect(page.getByLabel("Button presses")).toHaveText("2 presses");
   await page.getByRole("searchbox", { name: "Find a file" }).fill("design");
   await expect(page.getByLabel("Search result")).toHaveText("design");
   const slider = page.getByRole("slider", { name: "Glass slider" });

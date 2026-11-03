@@ -1,4 +1,5 @@
 export { GlassSurface, type GlassSurfaceProps } from "./glass-surface.js";
+export { GlassEmptyState, type GlassEmptyStateProps } from "./glass-empty-state.js";
 export { GlassRenderingProvider, useGlassEnvironment } from "./glass-rendering.js";
 export type {
   GlassEnvironment,

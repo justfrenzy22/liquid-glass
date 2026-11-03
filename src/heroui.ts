@@ -1,4 +1,5 @@
 "use client";
+export { GlassEmptyState as LiquidEmptyState, type GlassEmptyStateProps as LiquidEmptyStateProps } from "./components/glass-empty-state.js";
 export * from "./components/nextui.js";
 export { toast, parseColor } from "@heroui/react";
 export { NextUICard as SolidCard, NextUITable as FinderTable, NextUIForm as LiquidForm } from "./components/nextui.js";

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createRoot } from "react-dom/client";
-import { GlassRenderingProvider, GlassButton, GlassCard, GlassSlider, useGlassEnvironment, type GlassRenderMode } from "@justfrenzy/liquid-glass";
+import { GlassRenderingProvider, GlassEmptyState, GlassButton, GlassCard, GlassSlider, useGlassEnvironment, type GlassRenderMode } from "@justfrenzy/liquid-glass";
 import { LiquidButton, LiquidSwitch, LiquidInput, LiquidTabs, LiquidNavbar, LiquidSidebar, LiquidModal, LiquidColorPicker, FinderTable } from "@justfrenzy/liquid-glass/heroui";
 import "@justfrenzy/liquid-glass/styles.css";
 import "./consumer.css";
@@ -31,6 +31,7 @@ function ConsumerFixture() {
             <LiquidButton appearance="colored" onPress={() => setClicks(clicks + 1)}>Blue glass</LiquidButton>
             <output aria-label="Button presses">{clicks} presses</output>
           </div></section>
+          <section><GlassEmptyState title="No files yet" description="Upload a file to get started." actions={<GlassButton onClick={() => setClicks(clicks + 1)}>Upload first file</GlassButton>} /></section>
           <section><h2>Native primitives</h2><div className="stack"><GlassSlider label="Glass slider" value={slider} onValueChange={setSlider} /><GlassButton onClick={() => setClicks(clicks + 1)}>Native button</GlassButton></div></section>
           <section><h2>HeroUI interactions</h2><div className="stack"><LiquidSwitch label="Automatic sync" isSelected={sync} onChange={setSync} /><LiquidInput label="Find a file" value={query} onChange={setQuery} inputProps={{ type: "search", placeholder: "Search…" }} /><output aria-label="Search result">{query || "Your files are ready."}</output></div></section>
           <section><h2>Draggable tabs</h2><LiquidTabs label="File views" selectedKey={tab} onSelectionChange={setTab} items={[

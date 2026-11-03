@@ -2,6 +2,7 @@ import "./base.css";
 import "./components/liquid-glass.module.css";
 import "./components/optical-controls.module.css";
 import "./components/containers.module.css";
+import "./components/empty-state.module.css";
 import "./components/heroui-additions.module.css";
 import "./components/heroui-colors.module.css";
 import "./components/heroui-controls.module.css";

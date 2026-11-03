@@ -65,6 +65,28 @@ export function Controls() {
 
 The provider is optional; the default mode is `auto`. Place glass over a picture, gradient, pattern or other visible content to see the optical effect.
 
+## Empty states
+
+Use `GlassEmptyState` for empty folders, no search results or first-use screens. Supply your own action and application behavior:
+
+```tsx
+"use client";
+
+import { GlassEmptyState, GlassButton } from "@justfrenzy/liquid-glass";
+
+export function EmptyFolder({ onUpload }: { onUpload: () => void }) {
+  return (
+    <GlassEmptyState
+      title="No files yet"
+      description="Upload your first file to get started."
+      actions={<GlassButton onClick={onUpload}>Upload a file</GlassButton>}
+    />
+  );
+}
+```
+
+The optional `icon` slot is decorative. The heading labels the region and the description is associated automatically. Pass `mode="compatible"` to force the Safari-style finish. It is also exported as `LiquidEmptyState` from `/heroui`; both names refer to the same component.
+
 ## HeroUI controls
 
 ```tsx
@@ -133,7 +155,7 @@ Detection checks CSS capabilities, navigator information, optional mobile client
 
 ## Included components
 
-**Core:** GlassSurface, GlassRenderingProvider, GlassButton, GlassIconButton, GlassInput, GlassSearch, GlassSwitch, GlassSlider, GlassCard, GlassPanel, GlassToolbar, GlassNavbar, GlassFileCard, GlassFolderCard, GlassUploadButton and GlassSearchBar. Also exported: useGlassEnvironment, glassDefaults, GlassConfig and environment-selection helpers.
+**Core:** GlassEmptyState, GlassSurface, GlassRenderingProvider, GlassButton, GlassIconButton, GlassInput, GlassSearch, GlassSwitch, GlassSlider, GlassCard, GlassPanel, GlassToolbar, GlassNavbar, GlassFileCard, GlassFolderCard, GlassUploadButton and GlassSearchBar. Also exported: useGlassEnvironment, glassDefaults, GlassConfig and environment-selection helpers.
 
 The following names use the `Liquid` prefix in `/heroui`:
 

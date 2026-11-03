@@ -2,8 +2,9 @@
 
 ## 0.1.3
 
+- Add `GlassEmptyState` and its `LiquidEmptyState` alias for empty folders, no search results and first-use screens, with a title, description, decorative icon and custom action slots.
 - Restore the useful README navigation links with plain ASCII separators.
-- Keep the obsolete local-demo link removed. Component APIs and runtime behavior are unchanged.
+- Keep the obsolete local-demo link removed. Existing component APIs are unchanged.
 
 ## 0.1.2
 
