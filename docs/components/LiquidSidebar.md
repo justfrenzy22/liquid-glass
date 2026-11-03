@@ -11,7 +11,7 @@ import { LiquidSidebar } from "@justfrenzy/liquid-glass";
 
 export function LiquidSidebarExample() {
   return (
-    <LiquidSidebar heading="Workspace" items={[{ id: "files", label: "Files", href: "/files" }, { id: "recent", label: "Recent", href: "/recent" }]} activeKey="files" onNavigate={(id) => console.log(id)} />
+    <LiquidSidebar items={[{ id: "files", label: "Files", href: "/files" }, { id: "recent", label: "Recent", href: "/recent" }]} activeKey="files" onNavigate={(id) => console.log(id)} />
   );
 }
 ```
@@ -31,7 +31,7 @@ The table includes the component-specific props and common control props. Requir
 | `glass` | No | `GlassConfig` |  |
 | `className` | No | `string` |  |
 | `label` | No | `string` |  |
-| `heading` | No | `string` |  |
+| `heading` | No | `string` | Optional visible heading. Omit it for a sidebar without a title row. |
 | `footer` | No | `ReactNode` |  |
 | `isCollapsed` | No | `boolean` |  |
 | `onCollapsedChange` | No | `(collapsed: boolean) => void` |  |
@@ -53,7 +53,6 @@ export function CollapsibleSidebar() {
   const [collapsed, setCollapsed] = useState(false);
   return (
     <LiquidSidebar
-      heading="Workspace"
       items={[{ id: "files", label: "Files", href: "/files" }]}
       activeKey="files"
       isCollapsed={collapsed}
@@ -67,6 +66,12 @@ export function CollapsibleSidebar() {
 ## Put components inside the sidebar
 
 The `footer` prop accepts React content, including buttons, skeletons and a modal with a form. The `items` array is navigation data, not arbitrary component children. The footer is hidden when collapsed. See the complete [sidebar New Folder modal recipe](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/recipes/sidebar-new-folder.md) for an example with a working form and local folder state. `LiquidModal` renders its own trigger button, so place the modal itself in the footer.
+
+## Optional heading
+
+The sidebar has no visible heading by default in version 0.2.1 and newer. Omit `heading` to start directly with navigation links. Set `heading="Workspace"` (or any text) only when you want a title. Empty or whitespace-only strings are treated as no heading. Without a heading or collapse control, no empty title row is rendered. A collapse button remains available when `onCollapsedChange` is supplied.
+
+Use `label="Project navigation"` for a screen-reader name without adding visible text. The default accessible label is "Sidebar navigation".
 
 ## TypeScript
 

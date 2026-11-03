@@ -25,7 +25,6 @@ export function SidebarWithFolderDialog() {
 
   return (
     <LiquidSidebar
-      heading="Workspace"
       appearance="glass"
       items={[
         { id: "files", label: "Files", href: "/files" },

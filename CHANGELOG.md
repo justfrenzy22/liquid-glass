@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.1
+
+- Hide the sidebar heading by default. Set `heading` explicitly to show one.
+- Omit empty title rows, preserve the collapse control, and keep an accessible navigation label without visible text.
+- Update both Sidebar guides and examples to show the heading as opt-in.
+
 ## 0.2.0
 
 - Expose the full Liquid component collection from the main package entry.

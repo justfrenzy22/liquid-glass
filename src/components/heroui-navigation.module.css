@@ -23,6 +23,7 @@
 .sidebar { width: 220px; transition: width 220ms; flex-shrink: 0; }
 .sideContent { display: flex; flex-direction: column; padding: 12px; min-height: 380px; }
 .sideHeading { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 2px 4px 12px; }
+.sideHeading[data-heading="false"] { justify-content: flex-end; }
 .heading { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
 .collapse { border: 0; background: transparent; color: inherit; border-radius: 10px; width: 36px; height: 36px; display: grid; place-items: center; cursor: pointer; flex-shrink: 0; transition: background 180ms, transform 180ms; }
 .collapse[data-hovered="true"] { background: rgb(var(--lg-neutral-rgb) / 0.451); transform: scale(1.06); }

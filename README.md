@@ -18,7 +18,7 @@ Curious about the optics, Safari treatment and design tradeoffs? Read the [resea
 - Controls retain keyboard operation, disabled states and reduced-motion support. Text remains on a separate, sharp layer.
 - Compiled JavaScript, TypeScript declarations and CSS are included. No Next.js, Tailwind configuration, application aliases or remote visual assets are required.
 
-**Release:** `0.2.0`. Repository: `liquid-glass`. Package/import name: `@justfrenzy/liquid-glass`.
+**Release:** `0.2.1`. Repository: `liquid-glass`. Package/import name: `@justfrenzy/liquid-glass`.
 
 ## Install
 

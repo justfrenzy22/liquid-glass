@@ -31,6 +31,20 @@ test("public friendly aliases and legacy names expose the same HeroUI wrappers",
   assert.match(html, /Normal/);
   assert.doesNotMatch(html, /data-glass-mode/);
 });
+test("sidebars omit headings and empty title rows unless requested", () => {
+  const items = [{ id: "files", label: "Files", href: "/files" }];
+  for (const heading of [undefined, "", "   "]) {
+    const html = renderToString(React.createElement(core.LiquidSidebar, { items, heading }));
+    assert.doesNotMatch(html, /data-slot="sidebar-header"|data-slot="sidebar-heading"/);
+    assert.match(html, /aria-label="Sidebar navigation"/);
+  }
+  const titled = renderToString(React.createElement(core.LiquidSidebar, { items, heading: "My workspace" }));
+  assert.match(titled, /data-slot="sidebar-heading">My workspace/);
+  const collapsible = renderToString(React.createElement(core.GlassSidebar, { items, onCollapsedChange: () => {} }));
+  assert.match(collapsible, /aria-label="Collapse sidebar"/);
+  assert.doesNotMatch(collapsible, /data-slot="sidebar-heading"/);
+});
+
 test("browser selection handles iPad desktop UAs and capability fallbacks", () => {
   const ipad = core.detectGlassEnvironment({ userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) Version/18.0 Safari/605.1.15", maxTouchPoints: 5, backdropBlur: true, svgBackdrop: true });
   assert.equal(ipad.device, "tablet");

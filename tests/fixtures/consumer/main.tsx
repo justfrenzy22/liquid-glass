@@ -23,7 +23,7 @@ function ConsumerFixture() {
     </div>
     <div className="scene">
       <GlassNavbar brand="Liquid Glass" items={items.slice(0, 2)} activeKey={active} onNavigate={setActive} />
-      <div className="workspace"><GlassSidebar heading="Workspace" items={items} activeKey={active} onNavigate={setActive} isCollapsed={collapsed} onCollapsedChange={setCollapsed} footer="Your space to create." />
+      <div className="workspace"><GlassSidebar items={items} activeKey={active} onNavigate={setActive} isCollapsed={collapsed} onCollapsedChange={setCollapsed} footer="Your space to create." />
         <div className="examples">
           <section><h2>Button finishes</h2><div className="stack">
             <LiquidButton appearance="normal" onPress={() => setClicks(clicks + 1)}>Normal</LiquidButton>

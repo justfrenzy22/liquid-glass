@@ -73,22 +73,25 @@ export function LiquidNextUINavbar({ brand, actions, items, activeKey, onNavigat
   );
 }
 
-export function LiquidNextUISidebar({ items, activeKey, onNavigate, heading = "Workspace",
+export function LiquidNextUISidebar({ items, activeKey, onNavigate, heading,
   footer, isCollapsed = false, onCollapsedChange, appearance = "glass", glass,
-  className = "", label = "Workspace navigation" }: NavigationProps & {
+  className = "", label = "Sidebar navigation" }: NavigationProps & {
+    /** Optional visible heading. Omit it for a sidebar without a title row. */
     heading?: string;
     footer?: ReactNode;
     isCollapsed?: boolean;
     onCollapsedChange?: (collapsed: boolean) => void;
   }) {
   const id = useId();
+  const hasHeading = Boolean(heading?.trim());
+  const showHeader = (hasHeading && !isCollapsed) || Boolean(onCollapsedChange);
   return (
     <aside className={`${styles.root} ${styles.sidebar} ${className}`}
-      data-appearance={appearance} data-collapsed={isCollapsed} aria-label={heading}>
+      data-appearance={appearance} data-collapsed={isCollapsed} aria-label={hasHeading ? heading : label}>
       <Surface appearance={appearance} glass={glass}>
         <div className={styles.sideContent}>
-          <div className={styles.sideHeading}>
-            <span className={styles.heading}>{heading}</span>
+          {showHeader && <div className={styles.sideHeading} data-slot="sidebar-header" data-heading={hasHeading}>
+            {hasHeading && <span className={styles.heading} data-slot="sidebar-heading">{heading}</span>}
             {onCollapsedChange && <Button className={styles.collapse}
               aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
               aria-expanded={!isCollapsed} aria-controls={id}
@@ -98,7 +101,7 @@ export function LiquidNextUISidebar({ items, activeKey, onNavigate, heading = "W
                 <path d={isCollapsed ? "m13 9 3 3-3 3" : "m16 9-3 3 3 3"} />
               </svg>
             </Button>}
-          </div>
+          </div>}
           <nav id={id} aria-label={label} className={styles.sideItems}>
             <Items items={items} activeKey={activeKey} onNavigate={onNavigate} compact={isCollapsed} />
           </nav>
