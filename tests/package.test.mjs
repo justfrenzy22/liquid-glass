@@ -60,6 +60,24 @@ test("sidebars omit headings and empty title rows unless requested", () => {
   assert.doesNotMatch(collapsible, /data-slot="sidebar-heading"/);
 });
 
+test("sidebar slots compose in order and support a fully custom body", () => {
+  const props = {
+    header: "Top skeleton",
+    actions: React.createElement("button", null, "Create folder"),
+    items: [{ id: "files", label: "Navigation item", href: "/files" }],
+    children: "Custom body",
+    footer: "Bottom content",
+  };
+  const html = renderToString(React.createElement(core.LiquidSidebar, props));
+  const positions = ["Top skeleton", "Create folder", "Navigation item", "Custom body", "Bottom content"].map(text => html.indexOf(text));
+  assert.ok(positions.every((position, index) => position >= 0 && (!index || position > positions[index - 1])));
+  const custom = renderToString(React.createElement(core.GlassSidebar, { children: "Custom only" }));
+  assert.match(custom, /Custom only/);
+  assert.doesNotMatch(custom, /<nav/);
+  const collapsed = renderToString(React.createElement(core.LiquidSidebar, { ...props, isCollapsed: true }));
+  for (const text of ["Top skeleton", "Create folder", "Custom body", "Bottom content"]) assert.ok(!collapsed.includes(text));
+});
+
 test("browser selection handles iPad desktop UAs and capability fallbacks", () => {
   const ipad = core.detectGlassEnvironment({ userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) Version/18.0 Safari/605.1.15", maxTouchPoints: 5, backdropBlur: true, svgBackdrop: true });
   assert.equal(ipad.device, "tablet");

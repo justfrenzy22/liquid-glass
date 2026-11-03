@@ -1,6 +1,6 @@
 # LiquidSidebar
 
-A vertical navigation area with optional controlled collapse, counts and footer content.
+A composable sidebar with optional navigation links, top content, primary actions, custom body and footer.
 
 ## Example
 
@@ -24,15 +24,19 @@ The table includes the component-specific props and common control props. Requir
 
 | Prop | Required | Type | Notes |
 | --- | --- | --- | --- |
-| `items` | Yes | `LiquidNavigationItem[]` |  |
-| `activeKey` | No | `string` |  |
-| `onNavigate` | No | `(key: string) => void` |  |
+| `label` | No | `string` |  |
+| `className` | No | `string` |  |
 | `appearance` | No | `LiquidNavigationAppearance` |  |
 | `glass` | No | `GlassConfig` |  |
-| `className` | No | `string` |  |
-| `label` | No | `string` |  |
+| `activeKey` | No | `string` |  |
+| `onNavigate` | No | `(key: string) => void` |  |
+| `items` | No | `LiquidNavigationItem[]` | Optional navigation links. Omit when supplying a fully custom body. |
 | `heading` | No | `string` | Optional visible heading. Omit it for a sidebar without a title row. |
-| `footer` | No | `ReactNode` |  |
+| `header` | No | `ReactNode` | Content at the top, above actions and navigation (for example a logo or skeleton). |
+| `actions` | No | `ReactNode` | Primary actions below the header and above the navigation. |
+| `children` | No | `ReactNode` | Custom body content below the optional navigation links. |
+| `footer` | No | `ReactNode` | Bottom content, outside the scrollable body. |
+| `style` | No | `CSSProperties` | Root sizing and styling, such as width and height. |
 | `isCollapsed` | No | `boolean` |  |
 | `onCollapsedChange` | No | `(collapsed: boolean) => void` |  |
 
@@ -65,13 +69,19 @@ export function CollapsibleSidebar() {
 
 ## Put components inside the sidebar
 
-The `footer` prop accepts React content, including buttons, skeletons and a modal with a form. The `items` array is navigation data, not arbitrary component children. The footer is hidden when collapsed. See the complete [sidebar New Folder modal recipe](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/recipes/sidebar-new-folder.md) for an example with a working form and local folder state. `LiquidModal` renders its own trigger button, so place the modal itself in the footer.
+Use `header` for top content such as a skeleton or logo, `actions` for buttons above navigation, `children` for custom body sections, and `footer` for bottom content. Each accepts React components. `items` is optional navigation data; omit it for a fully custom sidebar. Slots other than item icons and the collapse control are hidden when collapsed. See the complete [sidebar New Folder modal recipe](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/recipes/sidebar-new-folder.md) for an example with a working form and local folder state. `LiquidModal` renders its own trigger button, so place the modal itself in `actions` (or `footer` for a bottom action).
 
 ## Optional heading
 
 The sidebar has no visible heading by default in version 0.2.1 and newer. Omit `heading` to start directly with navigation links. Set `heading="Workspace"` (or any text) only when you want a title. Empty or whitespace-only strings are treated as no heading. Without a heading or collapse control, no empty title row is rendered. A collapse button remains available when `onCollapsedChange` is supplied.
 
 Use `label="Project navigation"` for a screen-reader name without adding visible text. The default accessible label is "Sidebar navigation".
+
+## Layout and sizing
+
+Expanded order: optional heading/collapse row, `header`, `actions`, navigation `items`, custom `children`, then `footer`. Omitted slots do not leave empty placeholder rows. Set root `style` or `className` for sizing; for example `style={{ width: 260, height: "100dvh" }}`. The body scrolls inside a fixed-height sidebar while top content, actions and footer stay in place. On narrow screens the default width becomes 100%; an explicit inline width overrides that.
+
+See the complete [custom sidebar composition guide](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/recipes/sidebar-composition.md) for skeletons above a Create Folder action and fully custom content.
 
 ## TypeScript
 

@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.3
+
+- Add Sidebar `header`, `actions` and custom `children` slots alongside the existing footer.
+- Make navigation `items` optional for fully custom or loading sidebars.
+- Add root `style` support and a bounded, scrollable body so fixed-height sidebars keep top actions and footer in place.
+- Document skeleton-above-action composition and update the New Folder recipe.
+
 ## 0.2.2
 
 - Add `brandIcon` and `brandHref` to the navbar for an automatically aligned icon/text brand and optional brand link.

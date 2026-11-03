@@ -1,8 +1,8 @@
 # Sidebar button that opens a New Folder modal
 
-`LiquidSidebar` accepts React components in its `footer` prop. Its `items` prop is only navigation data; it is not a list of arbitrary components. The current sidebar does not accept custom children in the middle of its navigation list.
+`LiquidSidebar` accepts React components in `header`, `actions`, `children` and `footer`. Its optional `items` prop is navigation data. Put the New Folder modal in `actions` to position its trigger above navigation, or in `footer` for a bottom action. See [custom sidebar composition](sidebar-composition.md) for skeletons above the button and custom body content.
 
-`LiquidModal` already renders a button using `triggerLabel`. Put the modal in `footer`, then put a form inside the modal:
+`LiquidModal` already renders a button using `triggerLabel`. Put the modal in `actions`, then put a form inside the modal:
 
 ```tsx
 "use client";
@@ -30,7 +30,7 @@ export function SidebarWithFolderDialog() {
         { id: "files", label: "Files", href: "/files" },
         ...folders,
       ]}
-      footer={
+      actions={
         <LiquidModal triggerLabel="New folder" title="Create a folder">
           <LiquidForm
             onSubmit={(event) => {
@@ -81,15 +81,15 @@ The modal opens when its New Folder button is pressed. Use its built-in **Done**
 
 ## Other sidebar content
 
-The footer can contain any React content, including a button, skeleton, multiple components in a fragment, or your own component:
+The header, actions, body and footer can contain React components. For example, put a skeleton in `header` to place it above the New Folder action:
 
 ```tsx
 import { LiquidSkeleton } from "@justfrenzy/liquid-glass";
 
-// Supply this as LiquidSidebar's footer while your application loads data:
-const loadingFooter = <LiquidSkeleton style={{ width: 160, height: 40 }} />;
+// Supply this as LiquidSidebar's header while your application loads data:
+const loadingHeader = <LiquidSkeleton style={{ width: 160, height: 40 }} />;
 ```
 
-The sidebar hides its footer when collapsed. For a modal's trigger to remain visible, keep the sidebar expanded or place the action outside its collapsible footer.
+The sidebar hides header, actions, custom body children and footer when collapsed. For a modal's trigger to remain visible, keep the sidebar expanded or place that action outside the collapsible sidebar.
 
 [Sidebar reference](../components/LiquidSidebar.md) | [Modal reference](../components/LiquidModal.md)

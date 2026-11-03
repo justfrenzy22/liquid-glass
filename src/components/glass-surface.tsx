@@ -146,7 +146,7 @@ export function GlassSurface({
           <span className={styles.reflectionBottom} />
         </div>
       )}
-      <div className={styles.content}>{children}</div>
+      <div className={styles.content} data-slot="glass-content">{children}</div>
     </div>
   );
 }

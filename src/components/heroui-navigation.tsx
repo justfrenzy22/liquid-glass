@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, type ReactNode } from "react";
+import { useId, type CSSProperties, type ReactNode } from "react";
 import { Button } from "@heroui/react";
 import { GlassSurface } from "./glass-surface.js";
 import type { GlassConfig } from "../lib/types.js";
@@ -82,28 +82,41 @@ export function LiquidNextUINavbar({ brand, brandIcon, brandHref, actions, items
   );
 }
 
-export function LiquidNextUISidebar({ items, activeKey, onNavigate, heading,
-  footer, isCollapsed = false, onCollapsedChange, appearance = "glass", glass,
-  className = "", label = "Sidebar navigation" }: NavigationProps & {
+export function LiquidNextUISidebar({ items = [], activeKey, onNavigate, heading,
+  header, actions, children, footer, style, isCollapsed = false, onCollapsedChange, appearance = "glass", glass,
+  className = "", label = "Sidebar navigation" }: Omit<NavigationProps, "items"> & {
+    /** Optional navigation links. Omit when supplying a fully custom body. */
+    items?: LiquidNavigationItem[];
     /** Optional visible heading. Omit it for a sidebar without a title row. */
     heading?: string;
+    /** Content at the top, above actions and navigation (for example a logo or skeleton). */
+    header?: ReactNode;
+    /** Primary actions below the header and above the navigation. */
+    actions?: ReactNode;
+    /** Custom body content below the optional navigation links. */
+    children?: ReactNode;
+    /** Bottom content, outside the scrollable body. */
     footer?: ReactNode;
+    /** Root sizing and styling, such as width and height. */
+    style?: CSSProperties;
     isCollapsed?: boolean;
     onCollapsedChange?: (collapsed: boolean) => void;
   }) {
   const id = useId();
   const hasHeading = Boolean(heading?.trim());
   const showHeader = (hasHeading && !isCollapsed) || Boolean(onCollapsedChange);
+  const hasContent = (content: ReactNode) => content != null && content !== false;
+  const hasBody = items.length > 0 || (!isCollapsed && hasContent(children));
   return (
     <aside className={`${styles.root} ${styles.sidebar} ${className}`}
-      data-appearance={appearance} data-collapsed={isCollapsed} aria-label={hasHeading ? heading : label}>
+      style={style} data-appearance={appearance} data-collapsed={isCollapsed} aria-label={hasHeading ? heading : label}>
       <Surface appearance={appearance} glass={glass}>
         <div className={styles.sideContent}>
           {showHeader && <div className={styles.sideHeading} data-slot="sidebar-header" data-heading={hasHeading}>
             {hasHeading && <span className={styles.heading} data-slot="sidebar-heading">{heading}</span>}
             {onCollapsedChange && <Button className={styles.collapse}
               aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
-              aria-expanded={!isCollapsed} aria-controls={id}
+              aria-expanded={!isCollapsed} aria-controls={hasBody ? id : undefined}
               onPress={() => onCollapsedChange(!isCollapsed)}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
                 <rect x="3" y="4" width="18" height="16" rx="3" /><path d="M9 4v16" />
@@ -111,10 +124,15 @@ export function LiquidNextUISidebar({ items, activeKey, onNavigate, heading,
               </svg>
             </Button>}
           </div>}
-          <nav id={id} aria-label={label} className={styles.sideItems}>
-            <Items items={items} activeKey={activeKey} onNavigate={onNavigate} compact={isCollapsed} />
-          </nav>
-          {footer && !isCollapsed && <div className={styles.sideFooter}>{footer}</div>}
+          {!isCollapsed && hasContent(header) && <div className={styles.sideSlot} data-slot="sidebar-top">{header}</div>}
+          {!isCollapsed && hasContent(actions) && <div className={styles.sideSlot} data-slot="sidebar-actions">{actions}</div>}
+          {hasBody && <div id={id} className={styles.sideBody} data-slot="sidebar-body">
+            {items.length > 0 && <nav aria-label={label} className={styles.sideItems}>
+              <Items items={items} activeKey={activeKey} onNavigate={onNavigate} compact={isCollapsed} />
+            </nav>}
+            {!isCollapsed && hasContent(children) && <div className={styles.sideSlot} data-slot="sidebar-content">{children}</div>}
+          </div>}
+          {hasContent(footer) && !isCollapsed && <div className={styles.sideFooter} data-slot="sidebar-footer">{footer}</div>}
         </div>
       </Surface>
     </aside>

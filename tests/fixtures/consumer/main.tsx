@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { createRoot } from "react-dom/client";
 import { GlassRenderingProvider, GlassEmptyState, GlassNavbar, GlassSidebar, GlassSwitch, useGlassEnvironment, type GlassRenderMode } from "@justfrenzy/liquid-glass";
-import { LiquidButton, LiquidSwitch, LiquidInput, LiquidTabs, LiquidNavbar, LiquidSidebar, LiquidModal, LiquidColorPicker, FinderTable } from "@justfrenzy/liquid-glass/heroui";
+import { LiquidButton, LiquidSwitch, LiquidInput, LiquidTabs, LiquidNavbar, LiquidSidebar, LiquidModal, LiquidColorPicker, LiquidSkeleton, FinderTable } from "@justfrenzy/liquid-glass/heroui";
 import { GlassButton, GlassSlider, GlassCard } from "@justfrenzy/liquid-glass/native";
 import "./consumer.css";
 
@@ -23,7 +23,7 @@ function ConsumerFixture() {
     </div>
     <div className="scene">
       <GlassNavbar brand={<span><strong>Liquid</strong> Glass</span>} brandHref="#brand-home" brandIcon={<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 7h7l2 3h9v10H3z" /></svg>} items={items.slice(0, 2)} activeKey={active} onNavigate={setActive} />
-      <div className="workspace"><GlassSidebar items={items} activeKey={active} onNavigate={setActive} isCollapsed={collapsed} onCollapsedChange={setCollapsed} footer="Your space to create." />
+      <div className="workspace"><GlassSidebar header={<LiquidSkeleton style={{ width: 120, height: 24 }} />} actions={<LiquidButton appearance="normal" onPress={() => setClicks(value => value + 1)}>Sidebar action</LiquidButton>} style={{ height: 440 }} items={items} activeKey={active} onNavigate={setActive} isCollapsed={collapsed} onCollapsedChange={setCollapsed} footer="Your space to create."><div style={{ minHeight: 480 }}>Sidebar custom content</div></GlassSidebar>
         <div className="examples">
           <section><h2>Button finishes</h2><div className="stack">
             <LiquidButton appearance="normal" onPress={() => setClicks(clicks + 1)}>Normal</LiquidButton>

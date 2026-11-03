@@ -18,7 +18,7 @@ Curious about the optics, Safari treatment and design tradeoffs? Read the [resea
 - Controls retain keyboard operation, disabled states and reduced-motion support. Text remains on a separate, sharp layer.
 - Compiled JavaScript, TypeScript declarations and CSS are included. No Next.js, Tailwind configuration, application aliases or remote visual assets are required.
 
-**Release:** `0.2.2`. Repository: `liquid-glass`. Package/import name: `@justfrenzy/liquid-glass`.
+**Release:** `0.2.3`. Repository: `liquid-glass`. Package/import name: `@justfrenzy/liquid-glass`.
 
 ## Install
 
@@ -184,6 +184,7 @@ Detection checks CSS capabilities, navigator information, optional mobile client
 | Navigation links and active routes | [Navbar](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/components/LiquidNavbar.md) |
 | Collapsible navigation | [Sidebar](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/components/LiquidSidebar.md) |
 | Sidebar button, modal and form | [New Folder recipe](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/recipes/sidebar-new-folder.md) |
+| Skeletons, top actions and custom sidebar sections | [Compose your sidebar](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/recipes/sidebar-composition.md) |
 | Text fields and controlled values | [Input](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/components/LiquidInput.md) |
 | Data, row selection and appearance | [Table](https://github.com/justfrenzy22/liquid-glass/blob/main/docs/components/LiquidTable.md) |
 
