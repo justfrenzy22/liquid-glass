@@ -194,8 +194,8 @@
 }
 .finderTable {
   @apply liquid:p-0 liquid:overflow-hidden;
-  background: var(--lg-solid-background);
-  border: 1px solid #d9dce2;
+  background: var(--lg-table-background);
+  border: 1px solid var(--lg-table-border);
   @apply liquid:rounded-[14px];
   box-shadow: 0 2px 6px #18223608;
 }
@@ -203,28 +203,28 @@
   @apply liquid:rounded-none;
 }
 .finderTable .column {
-  background: var(--lg-subtle-background);
+  background: var(--lg-table-header);
   @apply liquid:p-[12px_16px];
   color: var(--lg-muted);
-  border-bottom: 1px solid #d9dce2;
+  border-bottom: 1px solid var(--lg-table-border);
 }
 .finderTable .column + .column {
-  border-left: 1px solid #d9dce2;
+  border-left: 1px solid var(--lg-table-border);
 }
 .finderTable .cell {
   @apply liquid:p-[12px_16px];
 }
 .finderTable .row:nth-child(odd) {
-  background: var(--lg-solid-background);
+  background: var(--lg-table-background);
 }
 .finderTable .row:nth-child(even) {
-  background: var(--lg-subtle-background);
+  background: var(--lg-table-stripe);
 }
 .finderTable .row + .row {
   border-top: 0;
 }
 .finderTable .row[data-hovered="true"] {
-  background: var(--lg-hover-background);
+  background: var(--lg-table-hover);
 }
 .finderTable .row[data-selected="true"] {
   background: #0878ed;
@@ -234,7 +234,7 @@
   outline-color: #ffffff;
 }
 .finderTable[data-selection-appearance="subtle"] .row[data-selected="true"] {
-  background: var(--lg-selection-background);
+  background: var(--lg-table-selection);
   color: var(--lg-foreground, inherit);
 }
 .finderTable[data-selection-appearance="subtle"]

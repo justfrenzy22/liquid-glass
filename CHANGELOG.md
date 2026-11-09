@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.3
+
+- Give solid/Finder tables a dedicated neutral dark palette for alternating rows, headers, hover and subtle selection.
+- Replace fixed light table borders with theme-aware colors. Preserve the existing light palette and optional blue selection.
+
 ## 0.3.2
 
 - Remove the fixed 160px minimum width from text buttons; labels determine width with consistent padding.

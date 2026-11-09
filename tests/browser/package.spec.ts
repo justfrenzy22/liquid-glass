@@ -166,3 +166,44 @@ test("buttons fit short labels and support centered icon-only actions", async ({
   await page.keyboard.press("Enter");
   await expect(page.getByLabel("Button presses")).toHaveText("1 presses");
 });
+
+
+test("solid tables use coherent dark colors and preserve the light palette", async ({ page }, testInfo) => {
+  await page.goto("/");
+  const table = page.getByLabel("Example files", { exact: true });
+  const frame = page.locator('[data-table-appearance="finder"]');
+  const first = table.getByRole("row").filter({ hasText: "Project brief" });
+  const second = table.getByRole("row").filter({ hasText: "Research" });
+  for (const scenario of [
+    { scheme: "dark", theme: null, foreground: "rgb(237, 237, 237)", odd: "rgb(32, 32, 32)", even: "rgb(40, 40, 40)", header: "rgb(44, 44, 44)", border: "rgb(59, 59, 59)", hover: "rgb(52, 52, 52)", selected: "rgb(69, 69, 69)" },
+    { scheme: "light", theme: "dark", foreground: "rgb(237, 237, 237)", odd: "rgb(32, 32, 32)", even: "rgb(40, 40, 40)", header: "rgb(44, 44, 44)", border: "rgb(59, 59, 59)", hover: "rgb(52, 52, 52)", selected: "rgb(69, 69, 69)" },
+    { scheme: "dark", theme: "light", foreground: "rgb(23, 23, 23)", odd: "rgb(255, 255, 255)", even: "rgb(240, 242, 245)", header: "rgb(240, 242, 245)", border: "rgb(217, 220, 226)", hover: "rgb(230, 237, 246)", selected: "rgb(221, 227, 235)" },
+  ] as const) {
+    await page.emulateMedia({ colorScheme: scenario.scheme });
+    await page.evaluate(({ theme, foreground }) => {
+      document.documentElement.classList.remove("light", "dark");
+      if (theme) document.documentElement.dataset.theme = theme;
+      else delete document.documentElement.dataset.theme;
+      document.body.style.color = foreground;
+    }, scenario);
+    await expect(first).toHaveCSS("background-color", scenario.odd);
+    await expect(second).toHaveCSS("background-color", scenario.even);
+    await expect(frame).toHaveCSS("border-top-color", scenario.border);
+    await expect(table.getByRole("columnheader").first()).toHaveCSS("background-color", scenario.header);
+    await expect(table).toHaveCSS("color", scenario.foreground);
+    if (testInfo.project.name !== "webkit-mobile") {
+      await second.hover();
+      await expect(second).toHaveCSS("background-color", scenario.hover);
+      await page.mouse.move(0, 0);
+    }
+    await first.click();
+    await expect(first).toHaveAttribute("aria-selected", "true");
+    await expect(first).toHaveCSS("background-color", scenario.selected);
+    await expect(first).toHaveCSS("color", scenario.foreground);
+    await frame.screenshot({ path: `test-results/finder-${scenario.theme ?? "system-dark"}-${testInfo.project.name}.png` });
+    // Single selection permits clearing the selected row before the next theme.
+    await first.click({ modifiers: ["ControlOrMeta"] });
+    await expect(first).toHaveAttribute("aria-selected", "false");
+    await page.mouse.move(0, 0);
+  }
+});
